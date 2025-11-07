@@ -18,7 +18,7 @@ class KeywordPromptOutput(BaseModel):
 def _looks_like_schema(obj: Any) -> bool:
     if not isinstance(obj, dict):
         return False
-    if "prompt" in obj:  # ya trae instancia válida
+    if "prompt" in obj: 
         return False
     return (
         "$schema" in obj
@@ -32,7 +32,7 @@ async def obtener_prompt_por_keywords(
     rol: str,
     topic: str,
     keywords: List[str],
-    llm_agent: 'LLMAgent', # Recibe el agente central
+    llm_agent: 'LLMAgent',
     n: int = 1,
     temperatura: float = 0.9,
     max_reintentos: int = 2,
@@ -49,7 +49,6 @@ async def obtener_prompt_por_keywords(
         prompt_text: Optional[str] = None
 
         while intentos <= max_reintentos and prompt_text is None:
-            # La llamada a Ollama se delega al agente centralizado
             obj = await llm_agent.regenerar_prompt(
                 texto_referencia=texto_referencia,
                 rol=rol,

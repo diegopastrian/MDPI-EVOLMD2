@@ -18,12 +18,10 @@ class PromptOutput(BaseModel):
 
 
 def _looks_like_schema(obj: Any) -> bool:
-    """Heurística: detecta si 'obj' parece un JSON Schema en vez de una instancia."""
     if not isinstance(obj, dict):
         return False
-    if "prompt" in obj:  # ya trae la instancia
+    if "prompt" in obj:  
         return False
-    # Señales típicas de schema
     return (
         "$schema" in obj
         or ("type" in obj and obj.get("type") == "object" and "properties" in obj)
@@ -36,7 +34,7 @@ async def obtener_prompts_agente(
     rol: str,
     task: str,
     n: int,
-    llm_agent: 'LLMAgent', # Recibe el agente central
+    llm_agent: 'LLMAgent',
     temperatura: float = 0.9,
     deduplicar: bool = True,
     max_reintentos: int = 2,

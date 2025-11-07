@@ -1,22 +1,5 @@
 # metrics/bert.py
-import json
-from pathlib import Path
 from bert_score import score
-
-DATA_PATH = Path("../data.json")
-REF_PATH = Path("../data/reference.txt")
-
-
-def cargar_individuos(archivo=DATA_PATH):
-    with open(archivo, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def guardar_individuos(individuos, archivo=DATA_PATH):
-    with open(archivo, "w", encoding="utf-8") as f:
-        json.dump(individuos, f, indent=2, ensure_ascii=False)
-    # print(f"✅ {len(individuos)} individuos con fitness guardados en {archivo}")
-
 
 def bertscore_individuos(
     individuos,
@@ -46,20 +29,3 @@ def bertscore_individuos(
         ind["fitness"] = fit
 
     return individuos
-
-
-def main():
-    if not REF_PATH.exists():
-        raise FileNotFoundError(f"No se encontró el archivo de referencia: {REF_PATH}")
-    ref_text = REF_PATH.read_text(encoding="utf-8").strip()
-
-    individuos = cargar_individuos()
-    print(f"⚙️ Calculando BERTScore para {len(individuos)} individuos...")
-
-    individuos = bertscore_individuos(individuos, ref_text)
-
-    guardar_individuos(individuos)
-
-
-if __name__ == "__main__":
-    main()

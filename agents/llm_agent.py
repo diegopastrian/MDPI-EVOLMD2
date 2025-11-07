@@ -18,7 +18,6 @@ class LLMAgent:
     Clase centralizada asíncrona para manejar todas las interacciones con el modelo LLM.
     """
     def __init__(self, model: str = "llama3"):
-        # print(f"Inicializando LLMAgent")
         self.model = model
         self.client = ollama.AsyncClient(host='http://127.0.0.1:11434')
 

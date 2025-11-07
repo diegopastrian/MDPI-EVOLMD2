@@ -32,7 +32,6 @@ async def generar_data_con_ollama(
     temperatura: float = 0.7
 ) -> Optional[DataOutput]:
 
-    # Llamamos al método correspondiente del agente centralizado
     return await llm_agent.generar_data(
         individuo=individuo,
         texto_referencia=texto_referencia,

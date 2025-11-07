@@ -141,8 +141,7 @@ async def extraer_keywords_con_ollama(
     prompt: str,
     topic: str,
     rol: str,
-    llm_agent: 'LLMAgent', # Recibe el agente central
-    modelo_llm: str = "llama3", # Parámetro no usado, pero se mantiene por consistencia
+    llm_agent: 'LLMAgent',
     temperatura: float = 0.3,
     max_reintentos: int = 1,
     k_min: int = 5,

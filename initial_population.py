@@ -115,7 +115,6 @@ def construir_individuo(rol: str, topic: str, prompt: str, keywords: List[str]) 
 def guardar_json(individuos, archivo="data.json"):
     with open(archivo, "w", encoding="utf-8") as f:
         json.dump(individuos, f, ensure_ascii=False, indent=2)
-    # print(f"✅ {len(individuos)} individuos guardados en {archivo}")
 
 async def generar_poblacion_inicial(
     n: int,

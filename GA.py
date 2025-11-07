@@ -32,7 +32,6 @@ def guardar_individuos(individuos, archivo: Path):
     ensure_dir(archivo.parent)
     with open(archivo, "w", encoding="utf-8") as f:
         json.dump(individuos, f, indent=2, ensure_ascii=False)
-    # print(f"✅ {len(individuos)} individuos guardados en {archivo}")
 
 # -------- métricas --------
 def _fitness_list(poblacion):
@@ -196,8 +195,6 @@ async def main():
     outdir = args.outdir
     ensure_dir(outdir)
 
-    # print(f"📦 Outdir: {outdir}")
-
     t_total0 = time.perf_counter()
 
     if not REF_PATH.exists(): raise FileNotFoundError(f"No se encontró referencia: {REF_PATH}")
@@ -210,7 +207,6 @@ async def main():
 
     # Generación de data inicial
     t_init_gen0 = time.perf_counter()
-    # print(f"⚙️ Generando data inicial para {len(individuos)} individuos...")
     # La generación de data inicial también se hace en paralelo
     tasks_iniciales = [generar_data_para_individuo(ind, ref_text, llm_agent) for ind in individuos]
     individuos = await asyncio.gather(*tasks_iniciales)
@@ -218,7 +214,6 @@ async def main():
 
     # Evaluación inicial
     t_init_eval0 = time.perf_counter()
-    # print("\n📏 Fitness inicial...")
     individuos = bertscore_individuos(individuos, ref_text, model_type=args.bert_model)
     data_inicial_eval_path = outdir / "data_inicial_evaluada.json"
     guardar_individuos(individuos, data_inicial_eval_path)
@@ -226,7 +221,6 @@ async def main():
     append_metrics(outdir, 0, individuos, duration_sec=t_init_eval)
 
     # Evolución
-    # print("\n🚀 Evolución...")
     poblacion_final = await metaheuristica(
         individuos=individuos,
         ref_text=ref_text,
@@ -234,7 +228,7 @@ async def main():
         bert_model=args.bert_model,
         generaciones=args.generaciones,
         k=args.k,
-        prob_crossover=args.prob_crossover,  # manter prob_crossover
+        prob_crossover=args.prob_crossover,
         prob_mutacion=args.prob_mutacion,
         num_elitismo=args.num_elitismo,
         outdir=outdir,
@@ -250,7 +244,6 @@ async def main():
     if best_final:
         with open(best_individual_path, "w", encoding="utf-8") as f:
             json.dump(best_final, f, ensure_ascii=False, indent=2)
-        # print(f"🏁 Mejor individuo final -> {best_individual_path}")
     t_final_eval = time.perf_counter() - t_final_eval0
 
     total_sec = time.perf_counter() - t_total0
