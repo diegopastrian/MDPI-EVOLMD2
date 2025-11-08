@@ -108,14 +108,14 @@ async def mutacion(individuo: Dict, llm_agent: 'LLMAgent') -> Dict:
     Realiza mutación y pasa la instancia del llm_agent a las sub-funciones.
     """
     individuo_mutado = individuo.copy()
-    parametros = ["rol", "topic", "keywords"]
+    parametros = ["role", "topic", "keywords"]
     
     p = random.randint(1, len(parametros))
     parametros_a_mutar = random.sample(parametros, p)
       
     for parametro in parametros_a_mutar:
-        if parametro == "rol":
-            individuo_mutado["rol"] = await mutar_texto(individuo["rol"], individuo, "rol", llm_agent)
+        if parametro == "role":
+            individuo_mutado["role"] = await mutar_texto(individuo["role"], individuo, "role", llm_agent)
         elif parametro == "topic":
             individuo_mutado["topic"] = await mutar_texto(individuo["topic"], individuo, "topic", llm_agent)
         elif parametro == "keywords":

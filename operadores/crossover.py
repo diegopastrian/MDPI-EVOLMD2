@@ -37,15 +37,15 @@ def crossover(padre1: Dict, padre2: Dict) -> Dict:
     """
     hijo = padre1.copy()
 
-    parametros = ["rol", "topic", "keywords"]
+    parametros = ["role", "topic", "keywords"]
 
     # Selecciona aleatoriamente entre 1 y 3 parámetros a intercambiar
     p = random.randint(1, len(parametros))
     parametros_a_intercambiar = random.sample(parametros, p)
 
     for parametro in parametros_a_intercambiar:
-        if parametro == "rol":
-            hijo["rol"] = padre2["rol"]
+        if parametro == "role":
+            hijo["role"] = padre2["role"]
         elif parametro == "topic":
             hijo["topic"] = padre2["topic"]
         elif parametro == "keywords":

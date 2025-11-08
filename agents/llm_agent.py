@@ -8,7 +8,7 @@ from typing import List, Dict, Any, Optional
 # Importamos los modelos Pydantic de los otros agentes
 from .generate_data import DataOutput, _looks_like_schema as looks_like_data_schema
 from .initial_prompts import PromptOutput, _looks_like_schema as looks_like_prompt_schema
-from .keyword_prompts import KeywordPromptOutput, _looks_like_schema as looks_like_kw_prompt_schema
+from .regenerate_prompt import RegeneratePromptOutput, _looks_like_schema as looks_like_regenerate_schema
 from .keywords import KeywordsOutput, _looks_like_schema as looks_like_keywords_schema, _normalize_and_filter_keywords, _fallback_extract_from_prompt
 from .synonym_selection import SynonymOutput, _looks_like_schema as looks_like_synonym_schema
 
@@ -22,7 +22,7 @@ class LLMAgent:
         self.client = ollama.AsyncClient(host='http://127.0.0.1:11434')
 
     async def generar_prompt_inicial(
-        self, texto_referencia: str, rol: str, task: str, temperatura: float = 0.9
+        self, texto_referencia: str, role: str, topic: str, temperatura: float = 0.9
     ) -> Optional[PromptOutput]:
         """
         Genera un prompt inicial. Lógica extraída de 'initial_prompts.py'.
@@ -32,7 +32,7 @@ You are an AI prompt engineer.
 Your job: create ONE high-quality prompt that:
 - Will be given directly to another LLM to generate text.
 - Must clearly instruct that LLM on what to produce, how, and from what perspective.
-- Fulfills the given task
+- Fulfills the given topic
 - Is written from the specified role's perspective
 - Is thematically aligned with the reference text
 - Must be concise and fit within 2 lines of text (about 1–2 sentences).
@@ -41,15 +41,15 @@ STRICT OUTPUT RULES:
 - Return a JSON object that is a VALID INSTANCE of this schema (NOT the schema itself).
 - The prompt must be a ready-to-use instruction for the LLM — do not describe the prompt or add meta-comments.
 - Do NOT include explanations, code fences, or any extra text.
-- Do NOT include the words "Role" or "Task" in the output.
+- Do NOT include the words "Role" or "Topic" in the output.
 
 JSON Schema:
 {PromptOutput.model_json_schema()}
 """.strip()
         user_prompt = f"""
 Reference text: "{texto_referencia}"
-Role: {rol}
-Task: {task}
+Role: {role}
+Topic: {topic}
 """.strip()
         try:
             response = await self.client.chat(
@@ -74,7 +74,7 @@ Task: {task}
             return None
 
     async def extraer_keywords(
-        self, prompt: str, topic: str, rol: str, temperatura: float = 0.3, max_reintentos: int = 1, k_min: int = 5, k_max: int = 12
+        self, prompt: str, topic: str, role: str, temperatura: float = 0.3, max_reintentos: int = 1, k_min: int = 5, k_max: int = 12
     ) -> List[str]:
         """
         Extrae keywords de un prompt. Lógica extraída de 'keywords.py'.
@@ -92,7 +92,7 @@ CRITICAL RULES:
 JSON Schema:
 {KeywordsOutput.model_json_schema()}
 """.strip()
-        user_prompt = f"role: {rol}\ntopic: {topic}\nprompt: \"{prompt}\"".strip()
+        user_prompt = f"role: {role}\ntopic: {topic}\nprompt: \"{prompt}\"".strip()
         
         intentos = 0
         while intentos <= max_reintentos:
@@ -151,7 +151,7 @@ JSON Schema:
 Reference text:
 \"\"\"{texto_referencia}\"\"\"
 
-Role: {individuo.get('rol')}
+Role: {individuo.get('role')}
 Topic: {individuo.get('topic')}
 Prompt: {individuo.get('prompt')}
 """.strip()
@@ -175,8 +175,8 @@ Prompt: {individuo.get('prompt')}
             return None
 
     async def regenerar_prompt(
-        self, texto_referencia: str, rol: str, topic: str, keywords: List[str], temperatura: float = 0.9
-    ) -> Optional[KeywordPromptOutput]:
+        self, texto_referencia: str, role: str, topic: str, keywords: List[str], temperatura: float = 0.9
+    ) -> Optional[RegeneratePromptOutput]:
         """
         Regenera un prompt a partir de keywords. Lógica de 'keyword_prompts.py'.
         """
@@ -195,13 +195,13 @@ STRICT RULES:
 - Do NOT include explanations, comments, or code fences.
 
 JSON Schema:
-{KeywordPromptOutput.model_json_schema()}
+{RegeneratePromptOutput.model_json_schema()}
 """.strip()
         user_prompt = f"""
 Reference text:
 \"\"\"{texto_referencia}\"\"\"
 
-Role: {rol}
+Role: {role}
 Topic: {topic}
 Keywords: {", ".join(keywords)}
 """.strip()
@@ -214,11 +214,11 @@ Keywords: {", ".join(keywords)}
             )
             content = response["message"]["content"]
             if isinstance(content, dict):
-                if looks_like_kw_prompt_schema(content): raise ValueError("Model returned schema")
-                return KeywordPromptOutput.model_validate(content)
+                if looks_like_regenerate_schema(content): raise ValueError("Model returned schema")
+                return RegeneratePromptOutput.model_validate(content)
             if isinstance(content, str):
                 if (("\"properties\"" in content or "\"type\": \"object\"" in content) and "\"prompt\"" not in content): raise ValueError("Model returned schema")
-                return KeywordPromptOutput.model_validate_json(content)
+                return RegeneratePromptOutput.model_validate_json(content)
             raise ValueError("Unexpected response content type")
         except Exception as e:
             print(f"❌ Error en LLMAgent.regenerar_prompt: {e}")
@@ -245,7 +245,7 @@ JSON Schema:
 """.strip()
         user_prompt = f"""
 MUTATION CONTEXT:
-- Role: "{individuo.get('rol', '')}"
+- Role: "{individuo.get('role', '')}"
 - Topic: "{individuo.get('topic', '')}"
 - Keywords: {individuo.get('keywords', [])}"
 

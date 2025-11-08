@@ -13,7 +13,7 @@ class PromptOutput(BaseModel):
     """
     prompt: str = Field(
         ...,
-        description="A single high-quality prompt string generated for the given role, task, and reference text."
+        description="A single high-quality prompt string generated for the given role, topic, and reference text."
     )
 
 
@@ -31,8 +31,8 @@ def _looks_like_schema(obj: Any) -> bool:
 
 async def obtener_prompts_agente(
     texto_referencia: str,
-    rol: str,
-    task: str,
+    role: str,
+    topic: str,
     n: int,
     llm_agent: 'LLMAgent',
     temperatura: float = 0.9,
@@ -54,8 +54,8 @@ async def obtener_prompts_agente(
             # La llamada a Ollama se delega al agente centralizado
             obj = await llm_agent.generar_prompt_inicial(
                 texto_referencia=texto_referencia,
-                rol=rol,
-                task=task,
+                role=role,
+                topic=topic,
                 temperatura=temperatura,
             )
 

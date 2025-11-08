@@ -5,9 +5,9 @@ import time
 
 
 # --- Modelo de validación Pydantic ---
-class KeywordPromptOutput(BaseModel):
+class RegeneratePromptOutput(BaseModel):
     """
-    Modelo para validar la salida del LLM que genera prompts en base a keywords.
+    Modelo para validar la salida del LLM que genera prompts en base a individuo.
     """
     prompt: str = Field(
         ...,
@@ -27,9 +27,9 @@ def _looks_like_schema(obj: Any) -> bool:
     )
 
 
-async def obtener_prompt_por_keywords(
+async def obtener_prompt_regenerado(
     texto_referencia: str,
-    rol: str,
+    role: str,
     topic: str,
     keywords: List[str],
     llm_agent: 'LLMAgent',
@@ -39,7 +39,7 @@ async def obtener_prompt_por_keywords(
     sleep_seg: float = 0.0,
 ) -> List[str]:
     """
-    Devuelve hasta n prompts generados a partir de keywords, delegando al LLMAgent.
+    Devuelve hasta n prompts generados a partir de un individuo, delegando al LLMAgent.
     """
     prompts: List[str] = []
     vistos = set()
@@ -51,7 +51,7 @@ async def obtener_prompt_por_keywords(
         while intentos <= max_reintentos and prompt_text is None:
             obj = await llm_agent.regenerar_prompt(
                 texto_referencia=texto_referencia,
-                rol=rol,
+                role=role,
                 topic=topic,
                 keywords=keywords,
                 temperatura=temperatura,

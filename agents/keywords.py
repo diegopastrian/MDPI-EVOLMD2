@@ -140,7 +140,7 @@ def _fallback_extract_from_prompt(prompt: str, k_min: int = 5, k_max: int = 12) 
 async def extraer_keywords_con_ollama(
     prompt: str,
     topic: str,
-    rol: str,
+    role: str,
     llm_agent: 'LLMAgent',
     temperatura: float = 0.3,
     max_reintentos: int = 1,
@@ -153,7 +153,7 @@ async def extraer_keywords_con_ollama(
     return await llm_agent.extraer_keywords(
         prompt=prompt,
         topic=topic,
-        rol=rol,
+        role=role,
         temperatura=temperatura,
         max_reintentos=max_reintentos,
         k_min=k_min,
