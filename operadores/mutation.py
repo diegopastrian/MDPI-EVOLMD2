@@ -6,10 +6,8 @@ nltk.download("wordnet", quiet=True)
 nltk.download("averaged_perceptron_tagger_eng", quiet=True)
 from nltk.corpus import wordnet as wn
 from nltk.tag import pos_tag
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'agents'))
-from synonym_selection import seleccionar_sinonimo
+
+from agents.synonym_selection import seleccionar_sinonimo
 
 def procesar_synsets_wordnet(palabra: str) -> List[str]:
     """

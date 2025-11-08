@@ -1,8 +1,10 @@
-# agents/keyword_prompts.py
-from typing import List, Optional, Any
+# agents/regenerate_prompt.py
+
+from typing import List, Optional
 from pydantic import BaseModel, Field
 import time
 
+from .llm_agent import LLMAgent
 
 # --- Modelo de validación Pydantic ---
 class RegeneratePromptOutput(BaseModel):
@@ -14,17 +16,38 @@ class RegeneratePromptOutput(BaseModel):
         description="A single high-quality prompt string generated using the given keywords, role, topic, and reference text."
     )
 
+def _get_system_prompt() -> str:
 
-def _looks_like_schema(obj: Any) -> bool:
-    if not isinstance(obj, dict):
-        return False
-    if "prompt" in obj: 
-        return False
-    return (
-        "$schema" in obj
-        or ("type" in obj and obj.get("type") == "object" and "properties" in obj)
-        or ("description" in obj and "properties" in obj and "type" in obj)
-    )
+    return f"""
+    You are an AI prompt engineer. Your task is to create ONE high-quality instruction prompt that:
+    - Will be given directly to another LLM to generate text.
+    - Must be clearly written from the perspective of the specified role.
+    - Must align with the given topic.
+    - Must explicitly incorporate and focus on the provided keywords.
+    - Must be thematically aligned with the reference text.
+    - The prompt must be concise (1–2 sentences, max 2 lines).
+
+    STRICT RULES:
+    - Output MUST be a JSON object valid against the schema.
+    - Do NOT return the schema itself.
+    - Do NOT include explanations, comments, or code fences.
+
+    JSON Schema:
+    {RegeneratePromptOutput.model_json_schema()}
+    """.strip()
+
+def _get_user_prompt(texto_referencia: str, role: str, topic: str, keywords: List[str]) -> str:
+    """
+    Devuelve el user prompt específico para este agente.
+    """
+    return  f"""
+    Reference text:
+    \"\"\"{texto_referencia}\"\"\"
+
+    Role: {role}
+    Topic: {topic}
+    Keywords: {", ".join(keywords)}
+    """.strip()
 
 
 async def obtener_prompt_regenerado(
@@ -39,21 +62,24 @@ async def obtener_prompt_regenerado(
     sleep_seg: float = 0.0,
 ) -> List[str]:
     """
-    Devuelve hasta n prompts generados a partir de un individuo, delegando al LLMAgent.
+    Devuelve hasta n prompts generados a partir de un individuo, delegando al LLM Agent.
     """
     prompts: List[str] = []
     vistos = set()
+
+    # Preparamos los prompts
+    system_prompt = _get_system_prompt()
+    user_prompt = _get_user_prompt(texto_referencia, role, topic, keywords)
 
     while len(prompts) < n:
         intentos = 0
         prompt_text: Optional[str] = None
 
         while intentos <= max_reintentos and prompt_text is None:
-            obj = await llm_agent.regenerar_prompt(
-                texto_referencia=texto_referencia,
-                role=role,
-                topic=topic,
-                keywords=keywords,
+            obj = await llm_agent.call_llm(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                output_model=RegeneratePromptOutput,
                 temperatura=temperatura,
             )
 

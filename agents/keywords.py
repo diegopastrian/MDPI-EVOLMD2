@@ -1,7 +1,10 @@
-# agents/keywords_extractor.py
-from typing import List, Iterable, Tuple, Any
+# agents/keywords.py
+
+from typing import List, Iterable, Tuple
 from pydantic import BaseModel, Field
 import re
+
+from .llm_agent import LLMAgent
 
 # ---------------- Utilidades de normalización ----------------
 
@@ -59,19 +62,6 @@ class KeywordsOutput(BaseModel):
     keywords: List[str] = Field(
         ...,
         description="A list of 5–12 keywords/phrases, each appearing verbatim (case-insensitive) inside the given prompt."
-    )
-
-# ---------------- Heurística de schema ----------------
-
-def _looks_like_schema(obj: Any) -> bool:
-    if not isinstance(obj, dict):
-        return False
-    if "keywords" in obj:
-        return False
-    return (
-        "$schema" in obj
-        or ("type" in obj and obj.get("type") == "object" and "properties" in obj)
-        or ("description" in obj and "properties" in obj and "type" in obj)
     )
 
 # ---------------- Normalización de keywords devueltas ----------------
@@ -135,6 +125,32 @@ def _fallback_extract_from_prompt(prompt: str, k_min: int = 5, k_max: int = 12) 
 
     return selected[:k_max]
 
+# ---------------- Lógica de Prompt ----------------
+
+def _get_system_prompt(k_min: int, k_max: int) -> str:
+    """
+    Devuelve el system prompt específico para este agente.
+    """
+    return f"""
+    You are an expert at keyword extraction. Given a role, a topic, and a short prompt, extract {k_min}–{k_max} concise keywords or key phrases.
+
+    CRITICAL RULES:
+    - Every keyword MUST appear verbatim (case-insensitive) inside the given prompt text. Do NOT invent words or synonyms.
+    - Prefer 1–3 word phrases that will be useful to guide an LLM later (e.g., reuse exact phrases present in the prompt).
+    - Lowercase all keywords. No hashtags. No trailing punctuation.
+    - Return ONLY a JSON object that is a VALID INSTANCE of the schema below (NOT the schema itself).
+    - No explanations, no code fences, no extra text.
+
+    JSON Schema:
+    {KeywordsOutput.model_json_schema()}
+    """.strip()
+
+def _get_user_prompt(role: str, topic: str, prompt: str) -> str:
+    """
+    Devuelve el user prompt específico para este agente.
+    """
+    return f"role: {role}\ntopic: {topic}\nprompt: \"{prompt}\"".strip()
+
 # ---------------- Agente: extracción de keywords ----------------
 
 async def extraer_keywords_con_ollama(
@@ -150,12 +166,41 @@ async def extraer_keywords_con_ollama(
     """
     Extrae keywords delegando la lógica de la llamada al LLMAgent.
     """
-    return await llm_agent.extraer_keywords(
-        prompt=prompt,
-        topic=topic,
-        role=role,
-        temperatura=temperatura,
-        max_reintentos=max_reintentos,
-        k_min=k_min,
-        k_max=k_max
-    )
+    # Preparamos los prompt
+    system_prompt = _get_system_prompt(k_min, k_max)
+    user_prompt = _get_user_prompt(role, topic, prompt)
+
+    intentos = 0
+    while intentos <= max_reintentos:
+        try:
+            # 1. Llamamos al 'call_llm' genérico
+            obj = await llm_agent.call_llm(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                output_model=KeywordsOutput,
+                temperatura=temperatura
+            )
+            
+            # 2. Recogemos la propuesta del LLM
+            proposed = obj.keywords if (obj and isinstance(obj, KeywordsOutput)) else []
+            
+            # 3. Filtramos la respuesta del LLM
+            filtered = _normalize_and_filter_keywords(proposed, prompt_text=prompt, max_items=k_max)
+            
+            # 4. Comprobamos si el LLM nos dio suficientes keywords
+            if len(filtered) < k_min:
+                # Si no, usamos el fallback
+                extra = _fallback_extract_from_prompt(prompt, k_min=k_min, k_max=k_max)
+                merged = list(dict.fromkeys(filtered + extra))
+                filtered = merged[:k_max]
+            
+            return filtered
+        
+        except Exception as e:
+            intentos += 1
+            if intentos > max_reintentos:
+                print(f"❌ Error en extraer_keywords_con_ollama tras {intentos} intentos: {e}")
+                break # Salimos del bucle si fallamos todos los reintentos
+    
+    # Si el LLM falla todas las veces, usamos el fallback como último recurso
+    return _fallback_extract_from_prompt(prompt, k_min=k_min, k_max=k_max)

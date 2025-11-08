@@ -8,7 +8,7 @@ from pathlib import Path
 
 # Agentes
 from agents.llm_agent import LLMAgent
-from agents.initial_prompts import obtener_prompts_agente
+from agents.initial_prompts import obtener_prompts_iniciales
 from agents.keywords import extraer_keywords_con_ollama
 
 # === Conjuntos por defecto ===
@@ -62,7 +62,7 @@ async def crear_un_individuo(
     role_i = role_fijo or random.choice(ROLES_DEFAULT)
     topic_i = topic_fijo or random.choice(TOPICS_DEFAULT)
     
-    prompts_i = await obtener_prompts_agente(
+    prompts_i = await obtener_prompts_iniciales(
         texto_referencia=texto_referencia,
         role=role_i,
         topic=topic_i,
