@@ -63,7 +63,7 @@ async def seleccionar_sinonimo(
     palabra_a_sustituir: str,
     sinonimos_disponibles: List[str],
     llm_agent: 'LLMAgent',
-    temperatura: float = 0.3
+    temperatura: float = 0.7
 ) -> Optional[SynonymOutput]:
     """
     Delega la selección inteligente del sinónimo al LLMAgent.

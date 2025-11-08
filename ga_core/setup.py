@@ -4,16 +4,43 @@ import random
 from pathlib import Path
 from typing import Optional, Tuple
 from datetime import datetime
+import csv
 
-def cargar_texto_unico(archivo: str = "corpus_ejemplo.txt") -> str:
+def cargar_texto_unico(archivo: str = "corpus_filtrado.csv") -> str:
     """
     Carga una línea aleatoria del archivo de corpus especificado.
     """
     p = Path(archivo)
     if not p.exists():
-        raise FileNotFoundError(f"No se encontró el archivo de corpus: {archivo}")
+        # Si no se encuentra el corpus filtrado, usar el de ejemplo
+        p_ejemplo = Path("corpus_ejemplo.txt")
+        if p_ejemplo.exists():
+            print(f"Advertencia: No se encontró '{archivo}'. Usando 'corpus_ejemplo.txt' como fallback.")
+            p = p_ejemplo
+            # Lógica original para leer el .txt
+            lineas = [ln.strip() for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
+            if not lineas:
+                raise ValueError(f"El archivo {p} está vacío o sin líneas válidas.")
+            return random.choice(lineas)
+        else:
+            raise FileNotFoundError(f"No se encontró el archivo de corpus {archivo}. Usa el corpus de ejemplo o busca el corpus original y ejecuta 'preparar_corpus.py'.")
     
-    lineas = [ln.strip() for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    # Leer CSV filtrado
+    lineas = []
+    try:
+        with open(p, mode='r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            
+            # Leemos todas las filas
+            for row in reader:
+                if row: # Si la fila no está vacía
+                    tweet = row[0].strip()
+                    if tweet:
+                        lineas.append(tweet)
+                        
+    except Exception as e:
+        raise IOError(f"Error al leer el archivo CSV {archivo}: {e}")
+
     
     if not lineas:
         raise ValueError(f"El archivo {archivo} está vacío o sin líneas válidas.")

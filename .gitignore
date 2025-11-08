@@ -3,3 +3,5 @@ __pycache__/
 experiments archives/
 exec/
 venv/
+corpus.csv
+corpus_filtrado.csv

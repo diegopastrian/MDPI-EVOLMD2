@@ -12,7 +12,7 @@ class DataOutput(BaseModel):
     """
     data: str = Field(
         ...,
-        description="Generated text based on the reference text, adapted to the given prompt, role, and topic."
+        description="Generated text based on the reference text, adapted to the given prompt, role, topic and keywords."
     )
 
 def _get_system_prompt() -> str:
@@ -20,9 +20,10 @@ def _get_system_prompt() -> str:
     Devuelve el system prompt específico para este agente.
     """
     return f"""
-    You are an AI text generator. Your job: produce ONE short output text that resembles the reference text in style and tone, but adapted to the given role and topic.
+    You are an AI text generator. Your job: produce ONE short output text that resembles the reference text in style and tone, but adapted to the given role, topic, prompt and keywords.
 
     STRICT RULES:
+    - You MUST incorporate the thematic essence of the provided keywords.
     - Output MUST be a JSON object conforming to the schema.
     - Do not output the schema itself.
     - No explanations, no meta-comments, no code fences.
@@ -37,12 +38,16 @@ def _get_user_prompt(individuo: Dict[str, Any], texto_referencia: str) -> str:
     """
     Devuelve el user prompt específico para este agente.
     """
+    # Convertimos la lista de keywords a un string legible
+    keywords_str = ", ".join(individuo.get('keywords', []))
+
     return f"""
     Reference text:
     \"\"\"{texto_referencia}\"\"\"
 
     Role: {individuo.get('role')}
     Topic: {individuo.get('topic')}
+    Keywords: [{keywords_str}]
     Prompt: {individuo.get('prompt')}
     """.strip()
 
