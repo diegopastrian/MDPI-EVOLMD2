@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional, Tuple
 from datetime import datetime
 
-def cargar_texto_unico(archivo: str = "corpus_reducido_v2.txt") -> str:
+def cargar_texto_unico(archivo: str = "corpus_ejemplo.txt") -> str:
     """
     Carga una línea aleatoria del archivo de corpus especificado.
     """

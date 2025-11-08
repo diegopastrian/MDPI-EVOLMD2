@@ -1,6 +1,4 @@
 *.swp
 __pycache__/
-idk/
 experiments archives/
-fixed_references/
-reference.txt
+exec/
