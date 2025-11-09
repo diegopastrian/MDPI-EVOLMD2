@@ -5,3 +5,4 @@ exec/
 venv/
 corpus.csv
 corpus_filtrado.csv
+test.log

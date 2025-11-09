@@ -8,6 +8,7 @@ from nltk.corpus import wordnet as wn
 from nltk.tag import pos_tag
 
 from agents.synonym_selection import seleccionar_sinonimo
+from ga_core.initial_population import ROLES_DEFAULT, TOPICS_DEFAULT
 
 def procesar_synsets_wordnet(palabra: str) -> List[str]:
     """
@@ -50,7 +51,7 @@ async def obtener_sinonimo(palabra: str, individuo: Dict, parametro_a_mutar: str
             parametro_a_mutar=parametro_a_mutar,
             palabra_a_sustituir=palabra,
             sinonimos_disponibles=sinonimos_disponibles,
-            llm_agent=llm_agent # Se pasa el agente
+            llm_agent=llm_agent
         )
         
         if resultado:
@@ -66,7 +67,7 @@ async def obtener_sinonimo(palabra: str, individuo: Dict, parametro_a_mutar: str
 
 async def mutar_keywords(keywords: List[str], individuo: Dict, llm_agent: 'LLMAgent') -> List[str]:
     """
-    Muta keywords y pasa el llm_agent a obtener_sinonimo.
+    Muta keywords (solo mutación de sinónimos/explotación)
     """
     if not keywords: return keywords
     
@@ -83,7 +84,7 @@ async def mutar_keywords(keywords: List[str], individuo: Dict, llm_agent: 'LLMAg
 
 async def mutar_texto(texto: str, individuo: Dict, parametro: str, llm_agent: 'LLMAgent') -> str:
     """
-    Muta un texto y pasa el llm_agent a obtener_sinonimo.
+    Muta un texto (mutación de sinónimos/explotación)
     """
     if not texto: return texto
     
@@ -103,20 +104,36 @@ async def mutar_texto(texto: str, individuo: Dict, parametro: str, llm_agent: 'L
 
 async def mutacion(individuo: Dict, llm_agent: 'LLMAgent') -> Dict:
     """
-    Realiza mutación y pasa la instancia del llm_agent a las sub-funciones.
+    Realiza mutación combinando Explotación (sinónimos) y Exploración (reemplazo).
     """
     individuo_mutado = individuo.copy()
     parametros = ["role", "topic", "keywords"]
     
     p = random.randint(1, len(parametros))
     parametros_a_mutar = random.sample(parametros, p)
+
+    # Define la probabilidad de que una mutación de role/topic sea "fuerte" (Exploración)
+    PROB_REEMPLAZO_TOTAL = 0.2
       
     for parametro in parametros_a_mutar:
         if parametro == "role":
-            individuo_mutado["role"] = await mutar_texto(individuo["role"], individuo, "role", llm_agent)
+            if random.random() < PROB_REEMPLAZO_TOTAL:
+                # Mutación de Exploración
+                individuo_mutado["role"] = random.choice(ROLES_DEFAULT)
+            else:
+                # Mutación de Explotación
+                individuo_mutado["role"] = await mutar_texto(individuo["role"], individuo, "role", llm_agent)
+                
         elif parametro == "topic":
-            individuo_mutado["topic"] = await mutar_texto(individuo["topic"], individuo, "topic", llm_agent)
+            if random.random() < PROB_REEMPLAZO_TOTAL:
+                # Mutación de Exploración 
+                individuo_mutado["topic"] = random.choice(TOPICS_DEFAULT)
+            else:
+                # Mutación de Explotación 
+                individuo_mutado["topic"] = await mutar_texto(individuo["topic"], individuo, "topic", llm_agent)
+                
         elif parametro == "keywords":
+            # Para keywords, solo usamos la mutación de Explotación
             individuo_mutado["keywords"] = await mutar_keywords(individuo["keywords"], individuo, llm_agent)
     
     individuo_mutado["prompt"] = ""
