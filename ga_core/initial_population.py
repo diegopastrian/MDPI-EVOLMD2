@@ -93,7 +93,7 @@ def construir_individuo(role: str, topic: str, prompt: str, keywords: List[str])
         "topic": topic,
         "prompt": prompt,
         "keywords": keywords,
-        "fitness": 0,
+        "objetivos": [0.0,0.0],
         "generated_data": "",
     }
 

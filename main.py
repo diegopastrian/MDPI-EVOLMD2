@@ -7,46 +7,40 @@ import asyncio
 from ga_core import setup
 from ga_core import initial_population
 from ga_core.utils import guardar_individuos
-from metrics.reports import append_metrics
-from metrics.bert import bertscore_individuos
+# from metrics.reports import append_metrics  <-- Desactivado temporalmente (requiere adaptación a MOEA)
 from agents.llm_agent import LLMAgent
-from ga_core.ga import metaheuristica, generar_data_para_individuo
+from ga_core.ga import metaheuristica, generar_data_para_individuo, evaluar_poblacion # Importamos evaluar_poblacion
 
 async def main():
-    parser = argparse.ArgumentParser(description="Algoritmo genético para evolución de prompts")
+    parser = argparse.ArgumentParser(description="Algoritmo genético multiobjetivo para evolución de prompts")
 
-    # --- Argumentos de GA (Evolución) ---
+    # --- Argumentos de GA ---
     parser.add_argument("--generaciones", type=int, default=3)
     parser.add_argument("--k", type=int, default=3)
     parser.add_argument("--prob-crossover", type=float, default=0.8)
     parser.add_argument("--prob-mutacion", type=float, default=0.1)
-    parser.add_argument("--num-elitismo", type=int, default=2)
+    parser.add_argument("--num-elitismo", type=int, default=2) # Ya no se usa en NSGA-II, pero lo dejamos por compatibilidad de args
     parser.add_argument("--model", default="llama3", help="Modelo LLM a utilizar.")
-    parser.add_argument("--bert-model", default="bert-base-uncased", help="Modelo BERT a utilizar para la función de fitness.")
+    parser.add_argument("--bert-model", default="bert-base-uncased", help="Modelo BERT (obsoleto, usamos SBERT).")
 
     # --- Argumentos de Población Inicial ---
     parser.add_argument("--n", type=int, required=True, help="Cantidad de individuos.")
-    parser.add_argument("--texto-referencia", type=str, default=None, help="Texto de referencia específico a utilizar.")
+    parser.add_argument("--texto-referencia", type=str, default=None, help="Texto de referencia específico.")
     
     # --- Argumentos de Salida ---
-    parser.add_argument("--outdir-base", type=Path, default=Path("exec"), help="Directorio donde se guardan las ejecuciones.")
+    parser.add_argument("--outdir-base", type=Path, default=Path("exec"), help="Directorio de salida.")
     
     args = parser.parse_args()
 
     # --- 1. Preparar Entorno ---
     print("1/5 Preparando directorio del experimento...")
-    outdir, ref_text = setup.setup_experiment(
-        base_dir=args.outdir_base,
-        texto_referencia_arg=args.texto_referencia
-    )
+    outdir, ref_text = setup.setup_experiment(base_dir=args.outdir_base, texto_referencia_arg=args.texto_referencia)
     print(f"   → Todos los archivos se guardarán en: {outdir}")
 
     t_total0 = time.perf_counter()
 
     # --- 2. Crear Agente y Población Inicial ---
     print(f"2/5 Generando población inicial de {args.n} individuos...")
-
-    # Se crea una única instancia del agente
     llm_agent = LLMAgent(model=args.model)
 
     individuos = await initial_population.generar_poblacion_inicial(
@@ -63,22 +57,23 @@ async def main():
     individuos = await asyncio.gather(*tasks_iniciales)
     t_init_gen = time.perf_counter() - t_init_gen0
 
-    # --- 4. Evaluación Inicial ---
-    print("4/5 Evaluando fitness de la población inicial...")
-    t_init_eval0 = time.perf_counter()
-    individuos = bertscore_individuos(individuos, ref_text, model_type=args.bert_model)
-    data_inicial_eval_path = outdir / "data_inicial_evaluada.json"
-    guardar_individuos(individuos, data_inicial_eval_path) 
-    t_init_eval = time.perf_counter() - t_init_eval0
-    append_metrics(outdir, 0, individuos, duration_sec=t_init_eval)
+    # --- 4. Evaluación Inicial (Multiobjetivo) ---
+    print("4/5 Evaluando fitness inicial (SBERT + Diversidad)...")
+    # Usamos la nueva función de evaluación de ga.py
+    individuos = evaluar_poblacion(individuos, ref_text)
+    
+    # Guardamos la población inicial evaluada
+    guardar_individuos(individuos, outdir / "data_inicial_evaluada.json") 
 
-    # --- 5. Evolución ---
-    print("5/5 Iniciando evolución...")
+    # --- 5. Evolución (NSGA-II) ---
+    print("5/5 Iniciando evolución NSGA-II...")
+    
+    # Llamamos a la nueva metaheurística
     poblacion_final = await metaheuristica(
         individuos=individuos,
         ref_text=ref_text,
         llm_agent=llm_agent,
-        bert_model=args.bert_model,
+        bert_model=args.bert_model, # Se pasa pero se ignora dentro
         generaciones=args.generaciones,
         k=args.k,
         prob_crossover=args.prob_crossover,
@@ -87,13 +82,11 @@ async def main():
         outdir=outdir,
     )
 
-    # --- Guardado final ---
-    t_final_eval0 = time.perf_counter()
-    poblacion_final_eval = bertscore_individuos(poblacion_final, ref_text, model_type=args.bert_model)
-    data_final_eval_path = outdir / "data_final_evaluada.json"
-    guardar_individuos(poblacion_final_eval, data_final_eval_path)
+    # --- Guardado Final (Frente de Pareto) ---
+    print("💾 Guardando Frente de Pareto final...")
+    # La población final YA es el frente de pareto (o la mejor aproximación)
+    guardar_individuos(poblacion_final, outdir / "pareto_front.json")
     
-    t_final_eval = time.perf_counter() - t_final_eval0
     total_sec = time.perf_counter() - t_total0
 
     # --- Escribir Tiempos ---
@@ -111,8 +104,6 @@ async def main():
 
     with open(runtime_path, "w", encoding="utf-8") as f:
         f.write(f"initial_gen_sec={t_init_gen:.6f}\n")
-        f.write(f"initial_eval_sec={t_init_eval:.6f}\n")
-        f.write(f"final_eval_sec={t_final_eval:.6f}\n")
         f.write(f"evolution_sec={evo_sec:.6f}\n")
         f.write(f"total_sec={total_sec:.6f}\n")
 
