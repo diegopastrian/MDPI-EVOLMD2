@@ -48,9 +48,10 @@ def calculate_kmeans_inertia(embeddings: torch.Tensor, k: int = 5) -> float:
     'k' es el número de clusters. Elegir 'k' es un desafío, 
     pero para medir dispersión, un valor fijo (ej. 5) es suficiente.
     """
-    if embeddings.shape[0] < k:
-        # No podemos tener más clusters que muestras
-        k = embeddings.shape[0]
+    n_samples = embeddings.shape[0] 
+    
+    if n_samples < k:
+        k = n_samples
 
     if k == 0:
         return 0.0
@@ -61,9 +62,13 @@ def calculate_kmeans_inertia(embeddings: torch.Tensor, k: int = 5) -> float:
     kmeans = KMeans(n_clusters=k, random_state=0, n_init=10) # n_init=10 para evitar malos inicios
     kmeans.fit(embeddings_np)
 
-    # La inercia es la suma de las distancias al cuadrado de las muestras a su centro de cluster más cercano.
-    # Queremos maximizarla.
-    return float(kmeans.inertia_)
+    total_inertia = float(kmeans.inertia_)
+    
+    # 2. NORMALIZACIÓN: Dividimos por N
+    # Esto nos da la "distancia cuadrada promedio" por individuo
+    normalized_inertia = total_inertia / n_samples
+    
+    return normalized_inertia
 
 # --- Métricas de Cobertura Conceptual (Entity Entropy) ---
 

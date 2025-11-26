@@ -158,6 +158,8 @@ def evaluar_poblacion(poblacion: List[Dict], ref_text: str) -> List[Dict]:
 # 4. SELECCIÓN AMBIENTAL (MOTOR NSGA-II)
 # ==========================================
 
+# En ga_core/ga.py
+
 def seleccion_nsga2(poblacion_combinada: List[Dict], n_survivors: int) -> List[Dict]:
     """
     Aplica el operador de supervivencia de NSGA-II (Rank & Crowding Distance).
@@ -165,41 +167,47 @@ def seleccion_nsga2(poblacion_combinada: List[Dict], n_survivors: int) -> List[D
     """
     # --- CLASE DUMMY PARA ENGAÑAR A PYMOO ---
     class DummyProblem:
+        def __init__(self):
+            self.n_obj = 2 # Definimos explícitamente 2 objetivos
         def has_constraints(self):
-            return False # ¡No tenemos restricciones!
+            return False 
+    
     # ----------------------------------------
-    # 1. Crear objetos Individual de Pymoo manualmente
-    pymoo_individuals = []
-    for ind_dict in poblacion_combinada:
-        # Crear un individuo vacío de Pymoo
-        ind = PymooIndividual()
-        
-        # Asignar nuestros datos:
-        # X: El diccionario original (para recuperarlo después)
-        # F: Los objetivos (negativos porque Pymoo minimiza)
-        # CV: Violación de restricciones (0.0 = válido)
-        ind.X = ind_dict
-        ind.F = np.array([ -ind_dict["objetivos"][0], -ind_dict["objetivos"][1] ])
-        ind.CV = np.array([0.0])
-        # NOTA: No asignamos ind.feasible porque es read-only y se deriva de CV.
-        
-        pymoo_individuals.append(ind)
+    # 1. Preparar matriz de Objetivos (F) vectorizada
+    # Pymoo minimiza, por lo que negamos nuestros objetivos (que eran de maximización)
+    # Forma resultante esperada: (N_individuos, 2)
     
-    # 2. Crear la Población Pymoo desde la lista de individuos
-    pop = Population.create(pymoo_individuals)
+    F_list = []
+    for ind in poblacion_combinada:
+        # Aseguramos que sean floats puros y negamos
+        f1 = -float(ind["objetivos"][0])
+        f2 = -float(ind["objetivos"][1])
+        F_list.append([f1, f2])
     
-    # 3. Ejecutar Algoritmo de Supervivencia
-    # RankAndCrowdingSurvival ordena por Frentes de Pareto y desempata por Distancia de Aglomeración
+    F = np.array(F_list, dtype=float)
+    
+    # 2. Preparar restricciones (CV)
+    # Todos cumplen restricciones (0.0), forma (N_individuos, 1)
+    CV = np.zeros((len(poblacion_combinada), 1))
+    
+    # 3. Crear la Población Pymoo en bloque (Más eficiente y seguro dimensionalmente)
+    # Pasamos los diccionarios originales como variable 'X' (tipo objeto)
+    X = np.array(poblacion_combinada, dtype=object)
+    
+    pop = Population.new(X=X, F=F, CV=CV)
+    
+    # 4. Ejecutar Algoritmo de Supervivencia
+    # RankAndCrowdingSurvival usa pop.F y pop.CV internamente
     survivors_pop = RankAndCrowdingSurvival().do(
         problem=DummyProblem(), 
         pop=pop, 
         n_survive=n_survivors
     )
     
-    # 4. Desempaquetar y Retornar
-    # Recuperamos nuestros diccionarios originales desde el atributo .X de cada individuo
-    return [ind.X for ind in survivors_pop]
-
+    # 5. Desempaquetar y Retornar
+    # Recuperamos nuestros diccionarios originales desde el atributo .X
+    # survivors_pop.get("X") devuelve un array numpy de objetos, lo convertimos a lista
+    return list(survivors_pop.get("X"))
 
 # ==========================================
 # 5. BUCLE PRINCIPAL (METAHEURÍSTICA)

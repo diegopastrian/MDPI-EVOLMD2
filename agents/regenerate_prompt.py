@@ -31,6 +31,9 @@ def _get_system_prompt() -> str:
     - Do NOT return the schema itself.
     - Do NOT include explanations, comments, or code fences.
 
+    - FORBIDDEN START: Do NOT start the prompt with "As a...". 
+    - Be creative with the structure. Avoid repetitive patterns.
+
     JSON Schema:
     {RegeneratePromptOutput.model_json_schema()}
     """.strip()

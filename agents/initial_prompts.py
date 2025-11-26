@@ -36,6 +36,9 @@ def _get_system_prompt() -> str:
     - The prompt must be a ready-to-use instruction for the LLM — do not describe the prompt or add meta-comments.
     - Do NOT include explanations, code fences, or any extra text.
     - Do NOT include the words "Role" or "Topic" in the output.
+    
+    - NEGATIVE CONSTRAINT: Do NOT start the prompt with the phrase "As a [Role]" or "As a...". 
+    - Use varied sentence structures (e.g., "Write a...", "Draft a...", "From the perspective of...", "Consider...").
 
     JSON Schema:
     {PromptOutput.model_json_schema()}

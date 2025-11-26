@@ -3,6 +3,7 @@ import argparse
 from pathlib import Path
 import time
 import asyncio
+import sys
 
 from ga_core import setup
 from ga_core import initial_population
@@ -10,7 +11,7 @@ from ga_core.utils import guardar_individuos
 # from metrics.reports import append_metrics  <-- Desactivado temporalmente (requiere adaptación a MOEA)
 from agents.llm_agent import LLMAgent
 from ga_core.ga import metaheuristica, generar_data_para_individuo, evaluar_poblacion # Importamos evaluar_poblacion
-
+sys.stdout.reconfigure(line_buffering=True)
 async def main():
     parser = argparse.ArgumentParser(description="Algoritmo genético multiobjetivo para evolución de prompts")
 

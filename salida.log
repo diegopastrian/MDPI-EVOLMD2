@@ -1,0 +1,570 @@
+==================================================
+   AUTOMATIZACIÓN DE EXPERIMENTOS (MODO DESATENDIDO)
+==================================================
+Seleccione el tipo de prueba:
+1. 🐇 PRUEBA RÁPIDA (Debug) -> (n=10, gen=3)
+2. 🐢 PRUEBA EXTENSIVA (Producción) -> (n=100, gen=100)
+==================================================
+👉 Ingrese opción (1 o 2): 
+🚀 Ejecutando Fase 1: Algoritmo Genético...
+   Comando: /home/colossus/LLM/MDPI-EVOLMD2/venv/bin/python main.py --n 100 --generaciones 100 --k 5 --num-elitismo 5 --prob-crossover 0.8 --prob-mutacion 0.05
+⚡ Cargando modelos de métricas (SBERT y Spacy)...
+✅ Modelos cargados correctamente.
+1/5 Preparando directorio del experimento...
+   → Todos los archivos se guardarán en: exec/2025-11-26_02-43-27
+2/5 Generando población inicial de 100 individuos...
+Generando la población inicial...
+Población de 100 individuos generada.
+3/5 Generando data para la población inicial...
+4/5 Evaluando fitness inicial (SBERT + Diversidad)...
+5/5 Iniciando evolución NSGA-II...
+📊 Evaluando población inicial (Multiobjetivo)...
+
+🌀 Generación 1/100
+   → Max Fidelidad: 0.7334
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 309.89s
+
+🌀 Generación 2/100
+   → Max Fidelidad: 0.7334
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 292.48s
+
+🌀 Generación 3/100
+   → Max Fidelidad: 0.7334
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 268.20s
+
+🌀 Generación 4/100
+   → Max Fidelidad: 0.7334
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 267.67s
+
+🌀 Generación 5/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 267.88s
+
+🌀 Generación 6/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 268.13s
+
+🌀 Generación 7/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 278.77s
+
+🌀 Generación 8/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 265.47s
+
+🌀 Generación 9/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 260.07s
+
+🌀 Generación 10/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 267.66s
+
+🌀 Generación 11/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 273.45s
+
+🌀 Generación 12/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 274.69s
+
+🌀 Generación 13/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 270.17s
+
+🌀 Generación 14/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 277.05s
+
+🌀 Generación 15/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 281.23s
+
+🌀 Generación 16/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 281.01s
+
+🌀 Generación 17/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 274.33s
+
+🌀 Generación 18/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 270.45s
+
+🌀 Generación 19/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 284.08s
+
+🌀 Generación 20/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 274.97s
+
+🌀 Generación 21/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 273.66s
+
+🌀 Generación 22/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 265.69s
+
+🌀 Generación 23/100
+   → Max Fidelidad: 0.7755
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 268.72s
+
+🌀 Generación 24/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 275.19s
+
+🌀 Generación 25/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 277.47s
+
+🌀 Generación 26/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 277.02s
+
+🌀 Generación 27/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 280.28s
+
+🌀 Generación 28/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 270.11s
+
+🌀 Generación 29/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 277.97s
+
+🌀 Generación 30/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 289.85s
+
+🌀 Generación 31/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 286.65s
+
+🌀 Generación 32/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 284.05s
+
+🌀 Generación 33/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 301.86s
+
+🌀 Generación 34/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 282.04s
+
+🌀 Generación 35/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 286.88s
+
+🌀 Generación 36/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 285.55s
+
+🌀 Generación 37/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 284.34s
+
+🌀 Generación 38/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 294.00s
+
+🌀 Generación 39/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 288.45s
+
+🌀 Generación 40/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 289.09s
+
+🌀 Generación 41/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 272.13s
+
+🌀 Generación 42/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 282.52s
+
+🌀 Generación 43/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 291.54s
+
+🌀 Generación 44/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 260.83s
+
+🌀 Generación 45/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 247.31s
+
+🌀 Generación 46/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 247.27s
+
+🌀 Generación 47/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 257.51s
+
+🌀 Generación 48/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 260.67s
+
+🌀 Generación 49/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 253.22s
+
+🌀 Generación 50/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 254.91s
+
+🌀 Generación 51/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 257.32s
+
+🌀 Generación 52/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 259.40s
+
+🌀 Generación 53/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 256.13s
+
+🌀 Generación 54/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 251.11s
+
+🌀 Generación 55/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 250.28s
+
+🌀 Generación 56/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 262.03s
+
+🌀 Generación 57/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 249.90s
+
+🌀 Generación 58/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 253.20s
+
+🌀 Generación 59/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 253.36s
+
+🌀 Generación 60/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 257.27s
+
+🌀 Generación 61/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 261.01s
+
+🌀 Generación 62/100
+   → Max Fidelidad: 0.7823
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 258.40s
+
+🌀 Generación 63/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 255.98s
+
+🌀 Generación 64/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 264.47s
+
+🌀 Generación 65/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 256.00s
+
+🌀 Generación 66/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 256.76s
+
+🌀 Generación 67/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 255.04s
+
+🌀 Generación 68/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 249.49s
+
+🌀 Generación 69/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 253.46s
+
+🌀 Generación 70/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 248.44s
+
+🌀 Generación 71/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 262.96s
+
+🌀 Generación 72/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 254.82s
+
+🌀 Generación 73/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 257.46s
+
+🌀 Generación 74/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 237.61s
+
+🌀 Generación 75/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 251.59s
+
+🌀 Generación 76/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 247.59s
+
+🌀 Generación 77/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 246.97s
+
+🌀 Generación 78/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 250.33s
+
+🌀 Generación 79/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 251.62s
+
+🌀 Generación 80/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 249.69s
+
+🌀 Generación 81/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 262.78s
+
+🌀 Generación 82/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 262.76s
+
+🌀 Generación 83/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 252.85s
+
+🌀 Generación 84/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 260.93s
+
+🌀 Generación 85/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 251.46s
+
+🌀 Generación 86/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 252.39s
+
+🌀 Generación 87/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 245.27s
+
+🌀 Generación 88/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 251.50s
+
+🌀 Generación 89/100
+   → Max Fidelidad: 0.7880
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 250.96s
+
+🌀 Generación 90/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 266.88s
+
+🌀 Generación 91/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 247.41s
+
+🌀 Generación 92/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 247.15s
+
+🌀 Generación 93/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 259.69s
+
+🌀 Generación 94/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 256.73s
+
+🌀 Generación 95/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 255.76s
+
+🌀 Generación 96/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 260.23s
+
+🌀 Generación 97/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 252.81s
+
+🌀 Generación 98/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 249.24s
+
+🌀 Generación 99/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 253.40s
+
+🌀 Generación 100/100
+   → Max Fidelidad: 0.7960
+   → Max Diversidad: 3.4962
+   → Tiempo Gen: 252.73s
+💾 Guardando Frente de Pareto final...
+
+✅ Proceso completado. Resultados guardados en: exec/2025-11-26_02-43-27
+
+🔍 Detectando carpeta de resultados...
+✅ Carpeta detectada: '2025-11-26_02-43-27'
+🚀 Procediendo automáticamente con el análisis...
+
+🧠 Ejecutando Fase 2: Análisis MCDM (TOPSIS)...
+   Analizando carpeta: 2025-11-26_02-43-27
+📂 Cargando: exec/2025-11-26_02-43-27/pareto_front.json
+📊 Estadísticas de la población (100 individuos):
+   - Fidelidad (Obj 1): Min 0.6309 | Max 0.7960
+   - Diversidad (Obj 2): Min 1.8573 | Max 3.4962
+
+⚖️  Pesos Calculados (Entropy Method):
+   - Peso Fidelidad: 0.2935
+   - Peso Diversidad: 0.7065
+   (ℹ️ La Diversidad tiene más peso porque varía más en tus resultados)
+
+============================================================
+🏆  TOP 3 PROMPTS SELECCIONADOS (TOPSIS + ENTROPY)
+============================================================
+
+🥇 RANGO #1 | Score: 0.9498
+   Fidelidad: 0.7334 | Diversidad: 3.4962
+   Role: an artist
+   Prompt: "As an artist and COVID-19 responder, describe the collective well-being implications of our global reliance on money-based societies in the face of the pandemic. Offer alternative solutions to address the crisis."
+   Generado (preview): "As a COVID-19 responder and artist, I see how the pandemic has exposed the crack..."
+
+🥇 RANGO #2 | Score: 0.9115
+   Fidelidad: 0.6906 | Diversidad: 3.4465
+   Role: an influencer
+   Prompt: "As a concerned influencer, share your thoughts on why the COVID-19 pandemic is a wake-up call for our money-based society, highlighting its flaws and proposing a better alternative."
+   Generado (preview): "As we navigate the COVID-19 pandemic, it's clear that our money-based society ha..."
+
+🥇 RANGO #3 | Score: 0.9106
+   Fidelidad: 0.6893 | Diversidad: 3.4465
+   Role: an artist
+   Prompt: "As a visionary artist, reflect on the societal impact of the coronavirus pandemic, highlighting its flaws in a money-based system and envisioning a better future."
+   Generado (preview): "As an artist, I see the corona virus as a wake-up call for our money-based socie..."
+
+------------------------------------------------------------
+✅ Ranking completo guardado en: exec/2025-11-26_02-43-27/pareto_ranked.json
+El primer elemento de este archivo es tu prompt ganador.
+
+==================================================
+✅ CICLO COMPLETO FINALIZADO CON ÉXITO
+==================================================
