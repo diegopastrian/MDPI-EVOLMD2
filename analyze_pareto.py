@@ -1,160 +1,136 @@
 import argparse
 import json
-import numpy as np
-from pathlib import Path
 import sys
+from pathlib import Path
+# Importamos la librería para usar el modelo NLI
+# Asegúrate de tener instalado: pip install sentence-transformers
+from sentence_transformers import CrossEncoder 
 
 def load_json(filepath):
+    """Carga datos desde un JSON."""
     if not filepath.exists():
         print(f"❌ Error: No se encontró el archivo {filepath}")
         sys.exit(1)
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def calculate_entropy_weights(matrix):
+def run_greedy_nli_selection(data, n_select=5):
     """
-    Calcula los pesos objetivos usando el método de Entropía de Shannon.
-    Referencia: Estado del Arte, Sección 4.2.2 (Ponderación de Criterios).
+    Algoritmo de Selección Voraz con Veto por NLI.
+    
+    Lógica:
+    1. Ordena todos los candidatos por FIDELIDAD (Calidad SBERT) de mayor a menor.
+    2. Recorre la lista y selecciona el candidato SOLO SI no es redundante (Entailment)
+       con ninguno de los que ya han sido seleccionados.
     """
-    # 1. Normalización para obtener probabilidades (P_ij)
-    # Dividimos cada valor por la suma de su columna
-    sum_cols = matrix.sum(axis=0)
-    sum_cols[sum_cols == 0] = 1.0 # Evitar división por cero
-    P = matrix / sum_cols
-
-    # 2. Calcular constante k
-    m, n = matrix.shape
-    if m <= 1: 
-        return np.ones(n) / n # Si solo hay 1 individuo, pesos iguales
     
-    k = 1.0 / np.log(m)
-
-    # 3. Calcular Entropía (E_j)
-    # E = -k * sum(P * log(P))
-    # Manejamos log(0) usando una máscara
-    P_log_P = np.zeros_like(P)
-    mask = P > 0
-    P_log_P[mask] = P[mask] * np.log(P[mask])
+    # --- PASO 1: ORDENAMIENTO MAESTRO (CALIDAD) ---
+    # Ordenamos de Mayor a Menor Fidelidad (Objetivo 0).
+    # Ignoramos la "Diversidad" histórica (Objetivo 1) que venía del algoritmo genético.
+    candidates = sorted(data, key=lambda x: x["objetivos"][0], reverse=True)
     
-    E = -k * P_log_P.sum(axis=0)
+    print(f"📊 Total candidatos evaluados: {len(candidates)}")
+    print("🔄 Iniciando proceso de selección (Filtro NLI)...")
 
-    # 4. Calcular Divergencia (d_j) y Pesos (w_j)
-    d = 1 - E
+    # --- PASO 2: CARGA DEL MODELO NLI ---
+    # Usamos DeBERTa-v3, un modelo estado del arte para detectar implicancia lógica.
+    model_id = 'cross-encoder/nli-deberta-v3-base'
+    print(f"🧠 Cargando modelo de validación: {model_id}...")
+    try:
+        model = CrossEncoder(model_id)
+    except Exception as e:
+        print(f"❌ Error cargando el modelo NLI. Asegúrate de tener internet o el modelo en caché.\nError: {e}")
+        sys.exit(1)
     
-    # Si la divergencia es 0 en todo (todos iguales), usamos pesos uniformes
-    if d.sum() == 0:
-        return np.ones(n) / n
+    # Mapeo de labels para este modelo específico:
+    # 0: Contradiction, 1: Entailment (Implicación/Redundancia), 2: Neutral
+    LABEL_ENTAILMENT = 1 
+    
+    selected_ind = []
+
+    # --- PASO 3: BUCLE VORAZ (GREEDY LOOP) ---
+    for i, cand in enumerate(candidates):
+        # Condición de parada: Si ya tenemos los k deseados, terminamos.
+        if len(selected_ind) >= n_select:
+            break
         
-    w = d / d.sum()
-    return w
+        text_cand = cand["generated_data"]
+        
+        if cand["objetivos"][0] > 0.95:
+            continue
 
-def run_topsis(data):
-    """
-    Ejecuta el algoritmo TOPSIS para rankear las soluciones.
-    Referencia: Estado del Arte, Sección 4.2.2 (Métodos MCDM).
-    """
-    # Extraemos matriz [N_individuos, 2_objetivos]
-    # Objetivos: [Fidelidad, Diversidad]
-    raw_matrix = np.array([ind["objetivos"] for ind in data])
-    
-    print(f"📊 Estadísticas de la población ({len(data)} individuos):")
-    print(f"   - Fidelidad (Obj 1): Min {raw_matrix[:,0].min():.4f} | Max {raw_matrix[:,0].max():.4f}")
-    print(f"   - Diversidad (Obj 2): Min {raw_matrix[:,1].min():.4f} | Max {raw_matrix[:,1].max():.4f}")
+        # A. EL PRIMERO SIEMPRE ENTRA
+        # Como están ordenados por fidelidad, el primero es el "Mejor Absoluto".
+        if not selected_ind:
+            selected_ind.append(cand)
+            print(f"   ✅ [1/{n_select}] Seleccionado (Mejor Calidad): \"{text_cand[:60]}...\"")
+            continue
+        
+        # B. COMPARACIÓN "TODOS CONTRA TODOS" (VETO)
+        # Preparamos los pares para comparar el candidato actual contra TODOS los ya elegidos
+        # Formato: [(Texto Nuevo, Texto Elegido 1), (Texto Nuevo, Texto Elegido 2)...]
+        pairs_to_check = [(text_cand, sel["generated_data"]) for sel in selected_ind]
+        
+        # El modelo predice para todos los pares a la vez (Batch processing)
+        scores = model.predict(pairs_to_check)
+        predicted_labels = scores.argmax(axis=1) # Obtiene el índice de la clase más probable
+        
+        # C. DECISIÓN DE VETO
+        # Si CUALQUIERA de las comparaciones da "Entailment" (1), significa que el candidato
+        # es una repetición semántica de algo que ya tenemos.
+        if LABEL_ENTAILMENT in predicted_labels:
+            # Es redundante. Lo descartamos silenciosamente y pasamos al siguiente.
+            continue
+        
+        # Si sobrevive a todas las comparaciones (es decir, es Neutral o Contradictorio con todos) -> ENTRA
+        selected_ind.append(cand)
+        print(f"   ✅ [{len(selected_ind)}/{n_select}] Seleccionado (Único): \"{text_cand[:60]}...\"")
 
-    # --- PASO 1: PONDERACIÓN (ENTROPY) ---
-    # Usamos Min-Max para el cálculo de entropía para evitar sesgos por escala
-    min_vals = raw_matrix.min(axis=0)
-    max_vals = raw_matrix.max(axis=0)
-    ranges = max_vals - min_vals
-    ranges[ranges == 0] = 1.0
-    
-    # Matriz normalizada solo para calcular pesos (0 a 1)
-    norm_for_entropy = (raw_matrix - min_vals) / ranges
-    # Añadimos un epsilon pequeño para evitar log(0) en ceros puros
-    weights = calculate_entropy_weights(norm_for_entropy + 1e-9)
-    
-    print(f"\n⚖️  Pesos Calculados (Entropy Method):")
-    print(f"   - Peso Fidelidad: {weights[0]:.4f}")
-    print(f"   - Peso Diversidad: {weights[1]:.4f}")
-    if weights[1] > weights[0]:
-        print("   (ℹ️ La Diversidad tiene más peso porque varía más en tus resultados)")
-
-    # --- PASO 2: NORMALIZACIÓN VECTORIAL (TOPSIS) ---
-    # r_ij = x_ij / sqrt(sum(x^2))
-    denominators = np.sqrt((raw_matrix**2).sum(axis=0))
-    denominators[denominators == 0] = 1.0
-    norm_matrix = raw_matrix / denominators
-
-    # --- PASO 3: MATRIZ PONDERADA ---
-    weighted_matrix = norm_matrix * weights
-
-    # --- PASO 4: SOLUCIONES IDEALES ---
-    # Asumimos que AMBOS objetivos son de MAXIMIZACIÓN
-    # Ideal Best (A+): El valor máximo de cada columna
-    A_plus = weighted_matrix.max(axis=0)
-    # Ideal Worst (A-): El valor mínimo de cada columna
-    A_minus = weighted_matrix.min(axis=0)
-
-    # --- PASO 5: DISTANCIAS EUCLIDIANAS ---
-    dist_plus = np.sqrt(((weighted_matrix - A_plus)**2).sum(axis=1))
-    dist_minus = np.sqrt(((weighted_matrix - A_minus)**2).sum(axis=1))
-
-    # --- PASO 6: SCORE TOPSIS ---
-    # Score = Dist_Worst / (Dist_Best + Dist_Worst)
-    # Cercano a 1 es mejor.
-    scores = dist_minus / (dist_plus + dist_minus)
-    
-    return scores, weights
+    return selected_ind
 
 def main():
-    parser = argparse.ArgumentParser(description="Selección MCDM del mejor prompt usando TOPSIS y Entropy.")
+    parser = argparse.ArgumentParser(description="Selección final de prompts usando Greedy NLI Veto.")
     parser.add_argument("--folder", type=str, required=True, help="Nombre de la carpeta en 'exec/' (ej: 2025-11-24_14-51-56)")
+    # Puedes cambiar el default a 10 si quieres más variedad
+    parser.add_argument("--top-k", type=int, default=5, help="Cuántos prompts diversos seleccionar")
+    
     args = parser.parse_args()
 
-    # Construir rutas
+    # Rutas
     base_path = Path("exec") / args.folder
     json_path = base_path / "pareto_front.json"
 
-    # Cargar datos
-    print(f"📂 Cargando: {json_path}")
+    print(f"📂 Cargando Frente de Pareto: {json_path}")
     data = load_json(json_path)
 
     if not data:
         print("⚠️ El archivo está vacío.")
         return
 
-    # Ejecutar Análisis
-    scores, final_weights = run_topsis(data)
-
-    # Asignar scores y ordenar
-    for i, ind in enumerate(data):
-        ind["topsis_score"] = float(scores[i])
-        # Guardamos también los pesos usados para referencia futura
-        ind["weights_used"] = {"fidelity": float(final_weights[0]), "diversity": float(final_weights[1])}
-
-    # Ordenar descendente (Mayor score es mejor)
-    ranked_data = sorted(data, key=lambda x: x["topsis_score"], reverse=True)
+    # --- EJECUTAR LA NUEVA LÓGICA DE SELECCIÓN ---
+    top_prompts = run_greedy_nli_selection(data, n_select=args.top_k)
 
     # --- REPORTE EN CONSOLA ---
     print("\n" + "="*60)
-    print("🏆  TOP 3 PROMPTS SELECCIONADOS (TOPSIS + ENTROPY)")
+    print(f"🏆  TOP {len(top_prompts)} PROMPTS FINALES (Calidad + Diversidad NLI)")
     print("="*60)
     
-    for i, ind in enumerate(ranked_data[:3]):
-        print(f"\n🥇 RANGO #{i+1} | Score: {ind['topsis_score']:.4f}")
-        print(f"   Fidelidad: {ind['objetivos'][0]:.4f} | Diversidad: {ind['objetivos'][1]:.4f}")
+    for i, ind in enumerate(top_prompts):
+        print(f"\n🥇 RANGO #{i+1}")
+        print(f"   Fidelidad (SBERT): {ind['objetivos'][0]:.4f}") # Mostramos la fidelidad original
         print(f"   Role: {ind['role']}")
         print(f"   Prompt: \"{ind['prompt']}\"")
-        print(f"   Generado (preview): \"{ind['generated_data'][:80]}...\"")
+        print(f"   Generado: \"{ind['generated_data']}\"")
 
     # --- GUARDAR RESULTADO ---
-    out_file = base_path / "pareto_ranked.json"
+    # Lo guardamos con un nombre distinto para diferenciarlo del método antiguo
+    out_file = base_path / "final_selection_nli.json"
     with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(ranked_data, f, indent=2, ensure_ascii=False)
+        json.dump(top_prompts, f, indent=2, ensure_ascii=False)
     
     print("\n" + "-"*60)
-    print(f"✅ Ranking completo guardado en: {out_file}")
-    print("El primer elemento de este archivo es tu prompt ganador.")
+    print(f"✅ Selección guardada en: {out_file}")
+    print("Estos son los prompts que deberías usar para generar tu dataset sintético.")
 
 if __name__ == "__main__":
     main()
