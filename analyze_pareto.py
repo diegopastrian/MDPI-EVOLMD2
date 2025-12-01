@@ -1,136 +1,131 @@
 import argparse
 import json
 import sys
+import torch
+import numpy as np
 from pathlib import Path
-# Importamos la librería para usar el modelo NLI
-# Asegúrate de tener instalado: pip install sentence-transformers
-from sentence_transformers import CrossEncoder 
+from sentence_transformers import SentenceTransformer, util
 
 def load_json(filepath):
-    """Carga datos desde un JSON."""
     if not filepath.exists():
         print(f"❌ Error: No se encontró el archivo {filepath}")
         sys.exit(1)
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def run_greedy_nli_selection(data, n_select=5):
-    """
-    Algoritmo de Selección Voraz con Veto por NLI.
-    
-    Lógica:
-    1. Ordena todos los candidatos por FIDELIDAD (Calidad SBERT) de mayor a menor.
-    2. Recorre la lista y selecciona el candidato SOLO SI no es redundante (Entailment)
-       con ninguno de los que ya han sido seleccionados.
-    """
-    
-    # --- PASO 1: ORDENAMIENTO MAESTRO (CALIDAD) ---
-    # Ordenamos de Mayor a Menor Fidelidad (Objetivo 0).
-    # Ignoramos la "Diversidad" histórica (Objetivo 1) que venía del algoritmo genético.
-    candidates = sorted(data, key=lambda x: x["objetivos"][0], reverse=True)
-    
-    print(f"📊 Total candidatos evaluados: {len(candidates)}")
-    print("🔄 Iniciando proceso de selección (Filtro NLI)...")
+def calculate_topsis_scores(candidates):
+    # --- 1. Preparar Matriz de Decisión ---
+    matrix = np.array([c["objetivos"] for c in candidates])
+    if len(matrix) == 0: return []
 
-    # --- PASO 2: CARGA DEL MODELO NLI ---
-    # Usamos DeBERTa-v3, un modelo estado del arte para detectar implicancia lógica.
-    model_id = 'cross-encoder/nli-deberta-v3-base'
-    print(f"🧠 Cargando modelo de validación: {model_id}...")
-    try:
-        model = CrossEncoder(model_id)
-    except Exception as e:
-        print(f"❌ Error cargando el modelo NLI. Asegúrate de tener internet o el modelo en caché.\nError: {e}")
-        sys.exit(1)
+    # --- 2. Normalización Vectorial (L2) ---
+    norm = np.linalg.norm(matrix, axis=0)
+    norm = np.where(norm == 0, 1, norm) 
+    normalized_matrix = matrix / norm
+
+    # --- 3. Definir Soluciones Ideal y Anti-Ideal ---
+    ideal_solution = np.max(normalized_matrix, axis=0)
+    anti_ideal_solution = np.min(normalized_matrix, axis=0)
+
+    # --- 4. Calcular Distancias Euclidianas ---
+    dist_to_ideal = np.sqrt(np.sum((normalized_matrix - ideal_solution)**2, axis=1))
+    dist_to_anti_ideal = np.sqrt(np.sum((normalized_matrix - anti_ideal_solution)**2, axis=1))
+
+    # --- 5. Calcular Score TOPSIS ---
+    denom = dist_to_ideal + dist_to_anti_ideal
+    topsis_scores = np.divide(dist_to_anti_ideal, denom, out=np.zeros_like(dist_to_anti_ideal), where=denom!=0)
     
-    # Mapeo de labels para este modelo específico:
-    # 0: Contradiction, 1: Entailment (Implicación/Redundancia), 2: Neutral
-    LABEL_ENTAILMENT = 1 
+    return topsis_scores.tolist()
+
+def run_hybrid_selection(data, n_select=5, lambda_param=0.5, max_fidelity_threshold=0.99):
+    print(f"🧠 Inicializando Selección Híbrida (Lambda={lambda_param})...")
+    model = SentenceTransformer('all-MiniLM-L6-v2')
     
-    selected_ind = []
+    # --- 1. Filtrado de Candidatos (Vacíos / Exceso Fidelidad) ---
+    candidates = []
+    for c in data:
+        text = c.get("generated_data", "").strip()
+        fid_score = c["objetivos"][0]
+        if text and fid_score <= max_fidelity_threshold:
+            candidates.append(c)
 
-    # --- PASO 3: BUCLE VORAZ (GREEDY LOOP) ---
-    for i, cand in enumerate(candidates):
-        # Condición de parada: Si ya tenemos los k deseados, terminamos.
-        if len(selected_ind) >= n_select:
-            break
-        
-        text_cand = cand["generated_data"]
-        
-        if cand["objetivos"][0] > 0.99:
-            continue
+    if not candidates:
+        print("⚠️ No quedaron candidatos viables.")
+        return []
 
-        # A. EL PRIMERO SIEMPRE ENTRA
-        # Como están ordenados por fidelidad, el primero es el "Mejor Absoluto".
-        if not selected_ind:
-            selected_ind.append(cand)
-            print(f"   ✅ [1/{n_select}] Seleccionado (Mejor Calidad): \"{text_cand[:60]}...\"")
-            continue
-        
-        # B. COMPARACIÓN "TODOS CONTRA TODOS" (VETO)
-        # Preparamos los pares para comparar el candidato actual contra TODOS los ya elegidos
-        # Formato: [(Texto Nuevo, Texto Elegido 1), (Texto Nuevo, Texto Elegido 2)...]
-        pairs_to_check = [(text_cand, sel["generated_data"]) for sel in selected_ind]
-        
-        # El modelo predice para todos los pares a la vez (Batch processing)
-        scores = model.predict(pairs_to_check)
-        predicted_labels = scores.argmax(axis=1) # Obtiene el índice de la clase más probable
-        
-        # C. DECISIÓN DE VETO
-        # Si CUALQUIERA de las comparaciones da "Entailment" (1), significa que el candidato
-        # es una repetición semántica de algo que ya tenemos.
-        if LABEL_ENTAILMENT in predicted_labels:
-            # Es redundante. Lo descartamos silenciosamente y pasamos al siguiente.
-            continue
-        
-        # Si sobrevive a todas las comparaciones (es decir, es Neutral o Contradictorio con todos) -> ENTRA
-        selected_ind.append(cand)
-        print(f"   ✅ [{len(selected_ind)}/{n_select}] Seleccionado (Único): \"{text_cand[:60]}...\"")
+    # --- 2. Calcular Relevancia (TOPSIS) ---
+    topsis_vals = calculate_topsis_scores(candidates)
+    for i, c in enumerate(candidates):
+        c["topsis_score"] = topsis_vals[i]
 
-    return selected_ind
+    # --- 3. Pre-cálculo Embeddings (Redundancia) ---
+    texts = [c["generated_data"] for c in candidates]
+    cand_embeddings = model.encode(texts, convert_to_tensor=True)
+    
+    selected_indices = []
+    
+    # --- 4. Bucle MMR (Greedy) ---
+    print("🔄 Ejecutando bucle MMR sobre Scores TOPSIS...")
+    
+    for _ in range(min(n_select, len(candidates))):
+        best_mmr_score = -float('inf')
+        best_idx = -1
+        
+        for i in range(len(candidates)):
+            if i in selected_indices: continue
+                
+            # MMR: Score = (λ * TOPSIS) - ((1-λ) * Similitud_Max)
+            relevance = candidates[i]["topsis_score"]
+            
+            if not selected_indices:
+                redundancy = 0.0
+            else:
+                sims = util.cos_sim(cand_embeddings[i], cand_embeddings[selected_indices])
+                redundancy = torch.max(sims).item()
+            
+            mmr_score = (lambda_param * relevance) - ((1 - lambda_param) * redundancy)
+            
+            if mmr_score > best_mmr_score:
+                best_mmr_score = mmr_score
+                best_idx = i
+        
+        if best_idx != -1:
+            selected_indices.append(best_idx)
+            c = candidates[best_idx]
+            print(f"   ✅ [MMR: {best_mmr_score:.3f}] TOPSIS: {c['topsis_score']:.3f} (Fid: {c['objetivos'][0]:.2f}, Div: {c['objetivos'][1]:.2f}) -> Role: {c['role']}")
+
+    return [candidates[i] for i in selected_indices]
 
 def main():
-    parser = argparse.ArgumentParser(description="Selección final de prompts usando Greedy NLI Veto.")
-    parser.add_argument("--folder", type=str, required=True, help="Nombre de la carpeta en 'exec/' (ej: 2025-11-24_14-51-56)")
-    # Puedes cambiar el default a 10 si quieres más variedad
-    parser.add_argument("--top-k", type=int, default=5, help="Cuántos prompts diversos seleccionar")
-    
+    # --- Argumentos CLI ---
+    parser = argparse.ArgumentParser(description="Selección final Híbrida (TOPSIS + MMR).")
+    parser.add_argument("--folder", type=str, required=True, help="Carpeta en 'exec/'")
+    parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument("--lambda-param", type=float, default=0.6, help="Peso del Score TOPSIS vs Redundancia en MMR")
+    parser.add_argument("--max-fidelity", type=float, default=0.99)
     args = parser.parse_args()
 
-    # Rutas
+    # --- Carga de Datos ---
     base_path = Path("exec") / args.folder
     json_path = base_path / "pareto_front.json"
-
-    print(f"📂 Cargando Frente de Pareto: {json_path}")
+    print(f"📂 Cargando: {json_path}")
     data = load_json(json_path)
+    if not data: return
 
-    if not data:
-        print("⚠️ El archivo está vacío.")
-        return
+    # --- Ejecución ---
+    final_selection = run_hybrid_selection(
+        data, 
+        n_select=args.top_k, 
+        lambda_param=args.lambda_param,
+        max_fidelity_threshold=args.max_fidelity
+    )
 
-    # --- EJECUTAR LA NUEVA LÓGICA DE SELECCIÓN ---
-    top_prompts = run_greedy_nli_selection(data, n_select=args.top_k)
-
-    # --- REPORTE EN CONSOLA ---
-    print("\n" + "="*60)
-    print(f"🏆  TOP {len(top_prompts)} PROMPTS FINALES (Calidad + Diversidad NLI)")
-    print("="*60)
-    
-    for i, ind in enumerate(top_prompts):
-        print(f"\n🥇 RANGO #{i+1}")
-        print(f"   Fidelidad (SBERT): {ind['objetivos'][0]:.4f}") # Mostramos la fidelidad original
-        print(f"   Role: {ind['role']}")
-        print(f"   Prompt: \"{ind['prompt']}\"")
-        print(f"   Generado: \"{ind['generated_data']}\"")
-
-    # --- GUARDAR RESULTADO ---
-    # Lo guardamos con un nombre distinto para diferenciarlo del método antiguo
-    out_file = base_path / "final_selection_nli.json"
+    # --- Guardado ---
+    out_file = base_path / "final_selection_hybrid.json"
     with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(top_prompts, f, indent=2, ensure_ascii=False)
+        json.dump(final_selection, f, indent=2, ensure_ascii=False)
     
-    print("\n" + "-"*60)
-    print(f"✅ Selección guardada en: {out_file}")
-    print("Estos son los prompts que deberías usar para generar tu dataset sintético.")
+    print(f"\n✅ Selección guardada en: {out_file}")
 
 if __name__ == "__main__":
     main()

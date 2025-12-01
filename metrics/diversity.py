@@ -1,7 +1,7 @@
 # metrics/diversity.py
 
 import torch
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, util
 from collections import Counter
 from scipy.stats import entropy
 from sklearn.cluster import KMeans

@@ -106,55 +106,38 @@ async def procesar_hijo(hijo: Dict, ref_text: str, llm_agent: 'LLMAgent', prob_m
 # ==========================================
 
 def evaluar_poblacion(poblacion: List[Dict], ref_text: str) -> List[Dict]:
-    """
-    Calcula los objetivos para toda la población simultáneamente.
-    Objetivo 1: Fidelidad (Individual) -> SBERT Similarity
-    Objetivo 2: Diversidad (Poblacional) -> K-Means Inertia * Entity Entropy
-    """
     if not poblacion: return []
     
-    # Extraemos los textos para procesarlos en lote (batch processing)
     textos_generados = [ind["generated_data"] for ind in poblacion]
     
-    # A. Vectorización (Embeddings)
-    # Convertimos texto a vectores numéricos una sola vez
+    # A. Vectorización
     pop_embeddings = SBERT_MODEL.encode(textos_generados, convert_to_tensor=True, normalize_embeddings=True)
     ref_embedding = SBERT_MODEL.encode([ref_text], convert_to_tensor=True, normalize_embeddings=True)
 
-    # B. Cálculo Objetivo 1: Fidelidad
-    # Similitud del coseno entre cada individuo y la referencia
+    # B. Fidelidad (Individual)
     scores_fidelidad = calculate_sbert_similarity(pop_embeddings, ref_embedding)
     
-    # C. Cálculo Objetivo 2: Diversidad
-    # 1. Dispersión Semántica (Inercia)
-    # Usamos k=5 como heurística estándar para detectar agrupamientos
-    inercia = calculate_kmeans_inertia(pop_embeddings, k=min(5, len(poblacion)))
+    # C. Diversidad (AHORA INDIVIDUAL)
+    # Llamamos a la nueva función que creaste en metrics/diversity.py
+    scores_diversidad_ind = calculate_individual_diversity_score(pop_embeddings)
     
-    # 2. Cobertura Conceptual (Entropía)
-    if SPACY_MODEL:
-        entropia = calculate_entity_entropy(textos_generados)
-    else:
-        entropia = 0.0
-    
-    # Score Combinado de Diversidad
-    # Multiplicamos para asegurar que ambos factores contribuyan.
-    # (entropia + 1.0) evita anular la inercia si la entropía es 0.
-    score_diversidad = inercia * (entropia + 1.0)
-    
-    # D. Asignación de Objetivos
+    # D. Métricas Globales (Solo para reporte, no para optimización)
+    inercia_global = calculate_kmeans_inertia(pop_embeddings, k=min(5, len(poblacion)))
+    entropia_global = calculate_entity_entropy(textos_generados)
+
+    # E. Asignación de Objetivos
     for i, ind in enumerate(poblacion):
-        # Guardamos los objetivos que usará NSGA-II
         ind["objetivos"] = [
-            float(scores_fidelidad[i]), # Obj 1
-            float(score_diversidad)     # Obj 2 (Mismo valor para toda la gen, fuerza dispersión)
+            float(scores_fidelidad[i]),      # Obj 1: Fidelidad
+            float(scores_diversidad_ind[i])  # Obj 2: Novedad Individual (CORREGIDO)
         ]
         
-        # Guardamos el desglose para análisis/debugging
+        # Guardamos detalle para debugging
         ind["metrics_detail"] = {
             "fidelity_sbert": float(scores_fidelidad[i]),
-            "diversity_inertia": float(inercia),
-            "diversity_entropy": float(entropia),
-            "diversity_combined": float(score_diversidad)
+            "diversity_individual": float(scores_diversidad_ind[i]),
+            "pop_inertia": float(inercia_global),
+            "pop_entropy": float(entropia_global)
         }
 
     return poblacion
