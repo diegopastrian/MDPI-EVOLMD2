@@ -3,9 +3,9 @@ from pathlib import Path
 import sys
 
 # --- Configuración ---
-ARCHIVO_ENTRADA = Path("corpus.csv")
-ARCHIVO_SALIDA = Path("corpus_filtrado.csv")
-MIN_PALABRAS = 5 # Umbral mínimo de palabras
+ARCHIVO_ENTRADA = Path("data/raw/corpus.csv")      
+ARCHIVO_SALIDA = Path("data/processed/corpus_filtrado.csv") 
+MIN_PALABRAS = 5
 # ---------------------
 
 def filtrar_corpus_simple():

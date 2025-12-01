@@ -34,7 +34,8 @@ def run_main_script(args):
 
 def run_analysis_script(folder_name):
     """Ejecuta analyze_pareto.py con la carpeta dada."""
-    cmd = [sys.executable, "analyze_pareto.py", "--folder", folder_name]
+    script_path = Path("scripts/analyze_pareto.py")
+    cmd = [sys.executable, str(script_path), "--folder", folder_name]
     print(f"\n🧠 Ejecutando Fase 2: Análisis MCDM (NLI Selection)...")
     print(f"   Analizando carpeta: {folder_name}")
     subprocess.run(cmd, check=True)

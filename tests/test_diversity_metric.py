@@ -5,7 +5,7 @@ import time
 import torch
 
 # Añade la carpeta raíz (MDPI-EVOLMD) al path de Python
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
 # Importamos métricas de diversidad Y fidelidad
 from metrics.diversity import get_population_embeddings, calculate_kmeans_inertia, calculate_entity_entropy

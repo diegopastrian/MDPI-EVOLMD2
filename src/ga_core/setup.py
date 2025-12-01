@@ -13,7 +13,7 @@ def cargar_texto_unico(archivo: str = "corpus_filtrado.csv") -> str:
     p = Path(archivo)
     if not p.exists():
         # Si no se encuentra el corpus filtrado, usar el de ejemplo
-        p_ejemplo = Path("corpus_ejemplo.txt")
+        p_ejemplo = Path("data/corpus_ejemplo.txt")
         if p_ejemplo.exists():
             print(f"Advertencia: No se encontró '{archivo}'. Usando 'corpus_ejemplo.txt' como fallback.")
             p = p_ejemplo

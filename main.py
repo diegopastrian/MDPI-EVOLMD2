@@ -4,7 +4,8 @@ from pathlib import Path
 import time
 import asyncio
 import sys
-
+import os 
+sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 from ga_core import setup
 from ga_core import initial_population
 from ga_core.utils import guardar_individuos

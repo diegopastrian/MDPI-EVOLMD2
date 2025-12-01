@@ -1,7 +1,15 @@
-*.swp
+# .gitignore actualizado
 __pycache__/
-experiments archives/
-exec/
+*.swp
 venv/
-corpus.csv
-corpus_filtrado.csv
+.env
+
+# Ignorar Outputs y Logs
+exec/
+logs/
+*.log
+
+# Ignorar Datos (Solo subir ejemplos o templates)
+data/raw/
+data/processed/
+!data/corpus_ejemplo.txt  # Mantener el ejemplo

@@ -1,8 +1,10 @@
 # test_metrics_loop.py
 import time
 import torch
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# --- Importamos nuestras funciones ---
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
+
 from metrics.fidelity import calculate_sbert_similarity, calculate_bertscore
 from metrics.diversity import get_population_embeddings
 
