@@ -2,7 +2,7 @@ nohup: ignoring input
 ⚡ Cargando modelos de métricas (SBERT y Spacy)...
 ✅ Modelos cargados correctamente.
 1/5 Preparando directorio del experimento...
-   → Todos los archivos se guardarán en: exec/2025-11-26_22-38-57
+   → Todos los archivos se guardarán en: exec/2025-11-27_23-50-28
 2/5 Generando población inicial de 100 individuos...
 Generando la población inicial...
 Población de 100 individuos generada.
@@ -12,594 +12,578 @@ Población de 100 individuos generada.
 📊 Evaluando población inicial (Multiobjetivo)...
 
 🌀 Generación 1/100
-   → Max Fidelidad: 0.7711
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 203.76s
+   → Max Fidelidad: 0.7799
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 203.66s
 
 🌀 Generación 2/100
-   → Max Fidelidad: 0.7923
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 243.98s
+   → Max Fidelidad: 0.7834
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 197.88s
 
 🌀 Generación 3/100
-   → Max Fidelidad: 0.8110
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 261.08s
+   → Max Fidelidad: 0.8056
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 198.19s
 
 🌀 Generación 4/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8110
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 271.79s
+   → Max Fidelidad: 0.8143
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.16s
 
 🌀 Generación 5/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8329
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 264.37s
+   → Max Fidelidad: 0.8143
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 199.60s
 
 🌀 Generación 6/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 272.37s
+   → Max Fidelidad: 0.8299
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 211.79s
 
 🌀 Generación 7/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 279.07s
+   → Max Fidelidad: 0.8299
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 199.95s
 
 🌀 Generación 8/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 263.82s
+   → Max Fidelidad: 0.8299
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 209.73s
 
 🌀 Generación 9/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 251.12s
+   → Max Fidelidad: 0.8299
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 194.71s
 
 🌀 Generación 10/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 253.49s
+   → Max Fidelidad: 0.8299
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 192.56s
 
 🌀 Generación 11/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 240.15s
+   → Max Fidelidad: 0.8299
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 183.70s
 
 🌀 Generación 12/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 267.84s
+   → Max Fidelidad: 0.8307
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 192.07s
 
 🌀 Generación 13/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 252.97s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 202.73s
 
 🌀 Generación 14/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 267.17s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 196.57s
 
 🌀 Generación 15/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 281.20s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 196.44s
 
 🌀 Generación 16/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 260.56s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 194.36s
 
 🌀 Generación 17/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 255.60s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 189.34s
 
 🌀 Generación 18/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 266.68s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 192.40s
 
 🌀 Generación 19/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 224.26s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 204.63s
 
 🌀 Generación 20/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.92s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 213.56s
 
 🌀 Generación 21/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 296.53s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 219.69s
 
 🌀 Generación 22/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 254.76s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 214.52s
 
 🌀 Generación 23/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 275.90s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 213.18s
 
 🌀 Generación 24/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 245.59s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 222.96s
 
 🌀 Generación 25/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 284.75s
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 229.56s
 
 🌀 Generación 26/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 271.32s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 232.01s
 
 🌀 Generación 27/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 294.64s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 208.45s
 
 🌀 Generación 28/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 290.92s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 205.83s
 
 🌀 Generación 29/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 273.38s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 202.94s
 
 🌀 Generación 30/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 224.33s
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 195.15s
 
 🌀 Generación 31/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 190.58s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 221.55s
 
 🌀 Generación 32/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.14s
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 192.77s
 
 🌀 Generación 33/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 199.88s
-
-🌀 Generación 34/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.34s
-
-🌀 Generación 35/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 190.92s
-
-🌀 Generación 36/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.60s
-
-🌀 Generación 37/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 197.12s
-
-🌀 Generación 38/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 208.23s
-
-🌀 Generación 39/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 205.90s
-
-🌀 Generación 40/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.05s
-
-🌀 Generación 41/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 193.50s
-
-🌀 Generación 42/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.61s
-
-🌀 Generación 43/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 210.77s
-
-🌀 Generación 44/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 199.74s
-
-🌀 Generación 45/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 202.97s
-
-🌀 Generación 46/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 201.39s
-
-🌀 Generación 47/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 207.03s
-
-🌀 Generación 48/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 198.01s
-
-🌀 Generación 49/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 207.26s
-
-🌀 Generación 50/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 212.16s
-
-🌀 Generación 51/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 202.67s
-
-🌀 Generación 52/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.17s
-
-🌀 Generación 53/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 208.36s
-
-🌀 Generación 54/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 199.69s
-
-🌀 Generación 55/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 202.40s
-
-🌀 Generación 56/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 214.97s
-
-🌀 Generación 57/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 203.16s
-
-🌀 Generación 58/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.45s
-
-🌀 Generación 59/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 200.51s
-
-🌀 Generación 60/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.81s
-
-🌀 Generación 61/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 212.92s
-
-🌀 Generación 62/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 202.98s
-
-🌀 Generación 63/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.82s
-
-🌀 Generación 64/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 213.50s
-
-🌀 Generación 65/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.28s
-
-🌀 Generación 66/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 201.00s
-
-🌀 Generación 67/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 200.24s
-
-🌀 Generación 68/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 211.80s
-
-🌀 Generación 69/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p... mitigate the impact?"}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 214.45s
-
-🌀 Generación 70/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 201.70s
-
-🌀 Generación 71/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 202.38s
-
-🌀 Generación 72/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 208.71s
-
-🌀 Generación 73/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 211.87s
-
-🌀 Generación 74/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.78s
-
-🌀 Generación 75/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 205.21s
-
-🌀 Generación 76/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 207.52s
-
-🌀 Generación 77/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.89s
-
-🌀 Generación 78/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 207.55s
-
-🌀 Generación 79/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
    → Tiempo Gen: 202.61s
 
-🌀 Generación 80/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 200.55s
+🌀 Generación 34/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 201.26s
 
-🌀 Generación 81/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 207.20s
+🌀 Generación 35/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 215.26s
 
-🌀 Generación 82/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 211.40s
+🌀 Generación 36/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 216.34s
 
-🌀 Generación 83/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 211.10s
+🌀 Generación 37/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 204.52s
 
-🌀 Generación 84/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 213.58s
+🌀 Generación 38/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 205.37s
 
-🌀 Generación 85/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...nt similar outbreaks?'}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 214.68s
+🌀 Generación 39/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 209.55s
 
-🌀 Generación 86/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 216.98s
+🌀 Generación 40/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 206.16s
 
-🌀 Generación 87/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 216.50s
+🌀 Generación 41/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 202.65s
 
-🌀 Generación 88/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 211.20s
+🌀 Generación 42/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 203.60s
 
-🌀 Generación 89/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 211.19s
+🌀 Generación 43/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.15s
 
-🌀 Generación 90/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 213.42s
+🌀 Generación 44/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 206.62s
 
-🌀 Generación 91/100
-❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
-prompt
-  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 213.33s
+🌀 Generación 45/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 197.52s
 
-🌀 Generación 92/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 216.58s
+🌀 Generación 46/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 204.73s
 
-🌀 Generación 93/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
+🌀 Generación 47/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 206.90s
+
+🌀 Generación 48/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
    → Tiempo Gen: 204.01s
 
+🌀 Generación 49/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 204.01s
+
+🌀 Generación 50/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 211.50s
+
+🌀 Generación 51/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 213.73s
+
+🌀 Generación 52/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 208.52s
+
+🌀 Generación 53/100
+   → Max Fidelidad: 0.9128
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 215.53s
+
+🌀 Generación 54/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 210.31s
+
+🌀 Generación 55/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 206.00s
+
+🌀 Generación 56/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 205.95s
+
+🌀 Generación 57/100
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 225.31s
+
+🌀 Generación 58/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 200.51s
+
+🌀 Generación 59/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 206.15s
+
+🌀 Generación 60/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 212.41s
+
+🌀 Generación 61/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 212.57s
+
+🌀 Generación 62/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 219.92s
+
+🌀 Generación 63/100
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 204.38s
+
+🌀 Generación 64/100
+   → Max Fidelidad: 0.9220
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 210.13s
+
+🌀 Generación 65/100
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': None, 'pr...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 209.19s
+
+🌀 Generación 66/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 220.08s
+
+🌀 Generación 67/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 216.76s
+
+🌀 Generación 68/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 201.21s
+
+🌀 Generación 69/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.56s
+
+🌀 Generación 70/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 216.59s
+
+🌀 Generación 71/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.97s
+
+🌀 Generación 72/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 214.18s
+
+🌀 Generación 73/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 204.45s
+
+🌀 Generación 74/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 202.52s
+
+🌀 Generación 75/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 199.92s
+
+🌀 Generación 76/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 211.44s
+
+🌀 Generación 77/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 200.71s
+
+🌀 Generación 78/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 214.44s
+
+🌀 Generación 79/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.23s
+
+🌀 Generación 80/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 212.16s
+
+🌀 Generación 81/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 202.56s
+
+🌀 Generación 82/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 210.39s
+
+🌀 Generación 83/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.23s
+
+🌀 Generación 84/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 210.48s
+
+🌀 Generación 85/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 214.56s
+
+🌀 Generación 86/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 205.26s
+
+🌀 Generación 87/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 207.46s
+
+🌀 Generación 88/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 191.95s
+
+🌀 Generación 89/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 203.88s
+
+🌀 Generación 90/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 200.40s
+
+🌀 Generación 91/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 199.38s
+
+🌀 Generación 92/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 211.42s
+
+🌀 Generación 93/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 219.47s
+
 🌀 Generación 94/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.43s
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 208.52s
 
 🌀 Generación 95/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 213.26s
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 217.19s
 
 🌀 Generación 96/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 209.42s
-
-🌀 Generación 97/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 210.34s
-
-🌀 Generación 98/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 210.83s
-
-🌀 Generación 99/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
    → Tiempo Gen: 204.50s
 
+🌀 Generación 97/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 206.19s
+
+🌀 Generación 98/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 210.46s
+
+🌀 Generación 99/100
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 199.01s
+
 🌀 Generación 100/100
-   → Max Fidelidad: 0.8887
-   → Max Diversidad: 2.8314
-   → Tiempo Gen: 206.35s
+   → Max Fidelidad: 0.9242
+   → Max Diversidad: 2.8023
+   → Tiempo Gen: 216.40s
 💾 Guardando Frente de Pareto final...
 
-✅ Proceso completado. Resultados guardados en: exec/2025-11-26_22-38-57
-📂 Cargando Frente de Pareto: exec/2025-11-26_22-38-57/pareto_front.json
+✅ Proceso completado. Resultados guardados en: exec/2025-11-27_23-50-28
+📂 Cargando Frente de Pareto: exec/2025-11-27_23-50-28/pareto_front.json
 📊 Total candidatos evaluados: 100
 🔄 Iniciando proceso de selección (Filtro NLI)...
 🧠 Cargando modelo de validación: cross-encoder/nli-deberta-v3-base...
-   ✅ [1/5] Seleccionado (Mejor Calidad): "Italy's situation is alarming! With 31st January being the f..."
-   ✅ [2/5] Seleccionado (Único): "Brother, listen up! Italy's case is spiraling out of control..."
-   ✅ [3/5] Seleccionado (Único): "A rapid surge in coronavirus cases has been reported in Ital..."
-   ✅ [4/5] Seleccionado (Único): "Be vigilant, little brother! Look at Italy's case - it went ..."
-   ✅ [5/5] Seleccionado (Único): "Italy tops the death list with coronavirus cases surging at ..."
+   ✅ [1/5] Seleccionado (Mejor Calidad): "Brother, look at Italy's case! First few cases came on Janua..."
+   ✅ [2/5] Seleccionado (Único): "Hey, just look at Italy's case - first few cases came in on ..."
+   ✅ [3/5] Seleccionado (Único): "Brothers, listen up! Italy's case is a wake-up call - just a..."
+   ✅ [4/5] Seleccionado (Único): "Brother, act swiftly! Italy's case count is skyrocketing - 3..."
+   ✅ [5/5] Seleccionado (Único): "Italy tops the death list with Corona virus cases spreading ..."
 
 ============================================================
 🏆  TOP 5 PROMPTS FINALES (Calidad + Diversidad NLI)
 ============================================================
 
 🥇 RANGO #1
-   Fidelidad (SBERT): 0.8887
-   Role: an influencer
-   Prompt: "Deliver a public health advisory on the rapid spread of coronavirus cases in Italy, highlighting concerns about medical facilities and urging caution, as a brother advises his neighbor to be vigilant and prepared for potential worst-case scenarios."
-   Generado: "Italy's situation is alarming! With 31st January being the first few cases reported, it's now topping the death list. The rapid spread of Corona Virus Cases is boom! Medical facilities are struggling in South East Asia, and you have neighbors with even worse conditions. Your government must be very careful, take heed of this public health advisory and prepare for potential worst-case scenarios."
+   Fidelidad (SBERT): 0.9242
+   Role: a normal person
+   Prompt: "Share the urgency of the COVID-19 situation in Italy, emphasizing the rapid rise in cases and tragic consequences, while appealing to governments worldwide to prioritize precautions and learn from the country's struggles."
+   Generado: "Brother, look at Italy's case! First few cases came on January 31st, now it's top of the death list due to Corona virus cases booming very fast. Medical facilities are also not good in South East Asia and you have neighboring countries with worst conditions. Your government needs to be very careful."
 
 🥇 RANGO #2
-   Fidelidad (SBERT): 0.8706
-   Role: a pattern someone
-   Prompt: "Craft an urgent warning to a brother, highlighting the alarming surge in COVID-19 cases in Italy and neighboring countries, particularly concerning medical facilities' capacities and the gravity of the situation on the global death list."
-   Generado: "Brother, listen up! Italy's case is spiraling out of control - 31st January saw a surge in cases that now puts it at the top of the dreaded death list. Corona virus cases are booming fast and medical facilities are struggling to keep pace, especially in South East Asia where conditions are dire. Your government needs to take immediate action, brother, before things get even worse globally."
+   Fidelidad (SBERT): 0.8927
+   Role: a normal person
+   Prompt: "Imagine you're discussing the COVID-19 pandemic with a brother from South East Asia who has been following Italy's experience; caution him about the rapid spread of cases and the potential for his region to become a new hot spot if they don't take precautions."
+   Generado: "Hey, just look at Italy's case - first few cases came in on January 31st and now it's topping the death list! Corona virus cases are booming very fast, medical facilities aren't good enough here, and you have neighbors with even worse conditions. As a health expert would caution, your government needs to be very careful, too."
 
 🥇 RANGO #3
-   Fidelidad (SBERT): 0.8694
-   Role: an skilled
-   Prompt: "Craft a clear public health advisory that addresses the rapid surge of coronavirus cases in Italy and South East Asia, highlighting the urgency to improve medical infrastructure and government response."
-   Generado: "A rapid surge in coronavirus cases has been reported in Italy and South East Asia. As of 31st January, Italy is now topping the death list. It is crucial for governments to take immediate action to address this crisis. Medical facilities in these regions are overstretched, and it's essential to improve infrastructure to prevent further tragedy."
+   Fidelidad (SBERT): 0.8769
+   Role: a normal person
+   Prompt: "Imagine yourself trying to warn others about the rapid spread of COVID-19 and its devastating impact in Italy, where cases are surging; describe the alarming situation and the need for caution, drawing parallels from Italy's experience."
+   Generado: "Brothers, listen up! Italy's case is a wake-up call - just a few weeks ago, cases were surging rapidly, now it tops the death list. Corona virus cases are spreading like wildfire, with medical facilities struggling to cope in South East Asia, and your government should be extremely cautious."
 
 🥇 RANGO #4
-   Fidelidad (SBERT): 0.8551
-   Role: a pattern someone
-   Prompt: "A brother's warning: examine Italy's rapid rise to the top of the death list due to COVID-19, despite medical facilities being stretched; cautionary tale for neighboring countries with poor conditions and government neglect."
-   Generado: "Be vigilant, little brother! Look at Italy's case - it went from a few cases on January 31st to now topping the death list due to Corona virus cases spreading rapidly. Medical facilities are struggling too. This is a cautionary tale for our neighboring countries with poor conditions and government neglect. We must be careful!"
+   Fidelidad (SBERT): 0.8757
+   Role: a normal person
+   Prompt: "Imagine you're urging your brother to take action amid the rapid spread of COVID-19 cases in Italy, now topping the global death list. Cautioning swift action, you emphasize the urgency and chaos unfolding in South East Asia, where medical facilities are overwhelmed, serving as a cautionary tale for others."
+   Generado: "Brother, act swiftly! Italy's case count is skyrocketing - 31st January marks the top of the global death list. Corona virus cases are booming fast and medical facilities in South East Asia are overwhelmed. It's a cautionary tale, a reminder to take drastic measures now before it's too late."
 
 🥇 RANGO #5
-   Fidelidad (SBERT): 0.8497
+   Fidelidad (SBERT): 0.8641
    Role: an influencer
-   Prompt: "Share the latest public health advisory on COVID-19, highlighting Italy's concerning case numbers and the dire situation in South East Asia, citing recent news and emphasizing the importance of government caution."
-   Generado: "Italy tops the death list with coronavirus cases surging at an alarming rate! As per recent news, the situation is dire, especially in South East Asia where medical facilities are already stretched thin. Your government must take immediate action to address this public health crisis, folks!"
+   Prompt: "Craft a concise yet informative social media post as an influencer, addressing the rapid spread of COVID-19 cases in Italy and South East Asia, highlighting the public's growing concerns about the situation, health facilities, and government advisories."
+   Generado: "Italy tops the death list with Corona virus cases spreading rapidly! As an influencer, I'm raising concerns about the situation in SE Asia too. Medical facilities are overwhelmed & govt advisories seem unclear. Let's stay informed, not misinformed!"
 
 ------------------------------------------------------------
-✅ Selección guardada en: exec/2025-11-26_22-38-57/final_selection_nli.json
+✅ Selección guardada en: exec/2025-11-27_23-50-28/final_selection_nli.json
 Estos son los prompts que deberías usar para generar tu dataset sintético.
 ⚡ Cargando modelos de métricas (SBERT y Spacy)...
 ✅ Modelos cargados correctamente.
 1/5 Preparando directorio del experimento...
-   → Todos los archivos se guardarán en: exec/2025-11-27_04-56-57
+   → Todos los archivos se guardarán en: exec/2025-11-28_05-39-33
 2/5 Generando población inicial de 100 individuos...
 Generando la población inicial...
 Población de 100 individuos generada.
@@ -609,558 +593,566 @@ Población de 100 individuos generada.
 📊 Evaluando población inicial (Multiobjetivo)...
 
 🌀 Generación 1/100
-   → Max Fidelidad: 0.8519
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 223.23s
+   → Max Fidelidad: 0.8660
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 242.55s
 
 🌀 Generación 2/100
-   → Max Fidelidad: 0.8519
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 228.40s
+   → Max Fidelidad: 0.8660
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 232.03s
 
 🌀 Generación 3/100
-   → Max Fidelidad: 0.8685
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 222.56s
+   → Max Fidelidad: 0.8660
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 227.96s
 
 🌀 Generación 4/100
-   → Max Fidelidad: 0.8909
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 228.91s
+   → Max Fidelidad: 0.8660
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 248.61s
 
 🌀 Generación 5/100
-   → Max Fidelidad: 0.8909
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 214.32s
+   → Max Fidelidad: 0.8660
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 236.61s
 
 🌀 Generación 6/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 222.65s
+   → Max Fidelidad: 0.8807
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.68s
 
 🌀 Generación 7/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 213.72s
+   → Max Fidelidad: 0.8807
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 224.01s
 
 🌀 Generación 8/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 235.55s
+   → Max Fidelidad: 0.8807
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 235.16s
 
 🌀 Generación 9/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 213.52s
+   → Max Fidelidad: 0.8807
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 231.73s
 
 🌀 Generación 10/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 225.19s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 224.38s
 
 🌀 Generación 11/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 214.58s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 234.50s
 
 🌀 Generación 12/100
-   → Max Fidelidad: 0.8942
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 216.69s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 248.42s
 
 🌀 Generación 13/100
-   → Max Fidelidad: 0.8947
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 222.61s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 234.48s
 
 🌀 Generación 14/100
-   → Max Fidelidad: 0.8947
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 209.85s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 237.98s
 
 🌀 Generación 15/100
-   → Max Fidelidad: 0.8947
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 213.34s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.50s
 
 🌀 Generación 16/100
-   → Max Fidelidad: 0.9015
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 186.86s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.30s
 
 🌀 Generación 17/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 200.82s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 209.99s
 
 🌀 Generación 18/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 205.06s
+   → Max Fidelidad: 0.9071
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 215.71s
 
 🌀 Generación 19/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 198.59s
+   → Max Fidelidad: 0.9160
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.46s
 
 🌀 Generación 20/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 205.27s
+   → Max Fidelidad: 0.9160
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 219.55s
 
 🌀 Generación 21/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 197.44s
+   → Max Fidelidad: 0.9160
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 227.53s
 
 🌀 Generación 22/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 211.82s
+   → Max Fidelidad: 0.9160
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 219.67s
 
 🌀 Generación 23/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.66s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 221.90s
 
 🌀 Generación 24/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 208.63s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 219.86s
 
 🌀 Generación 25/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 203.37s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 215.38s
 
 🌀 Generación 26/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 209.56s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 227.59s
 
 🌀 Generación 27/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 211.23s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 226.56s
 
 🌀 Generación 28/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 205.61s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 230.95s
 
 🌀 Generación 29/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 194.28s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 220.14s
 
 🌀 Generación 30/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 186.77s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 218.91s
 
 🌀 Generación 31/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 221.41s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.93s
 
 🌀 Generación 32/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 196.42s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 220.39s
 
 🌀 Generación 33/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 204.69s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.29s
 
 🌀 Generación 34/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 208.92s
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 212.93s
 
 🌀 Generación 35/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 196.78s
-
-🌀 Generación 36/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 199.26s
-
-🌀 Generación 37/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 212.74s
-
-🌀 Generación 38/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 208.76s
-
-🌀 Generación 39/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 203.19s
-
-🌀 Generación 40/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 216.57s
-
-🌀 Generación 41/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 198.62s
-
-🌀 Generación 42/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 199.29s
-
-🌀 Generación 43/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 210.99s
-
-🌀 Generación 44/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 196.24s
-
-🌀 Generación 45/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 212.32s
-
-🌀 Generación 46/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 208.60s
-
-🌀 Generación 47/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 193.20s
-
-🌀 Generación 48/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 190.22s
-
-🌀 Generación 49/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 190.34s
-
-🌀 Generación 50/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 207.24s
-
-🌀 Generación 51/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 204.99s
-
-🌀 Generación 52/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.79s
-
-🌀 Generación 53/100
-   → Max Fidelidad: 0.9506
-   → Max Diversidad: 3.0508
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
    → Tiempo Gen: 210.38s
 
+🌀 Generación 36/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 200.24s
+
+🌀 Generación 37/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 211.39s
+
+🌀 Generación 38/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 218.81s
+
+🌀 Generación 39/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.02s
+
+🌀 Generación 40/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 211.85s
+
+🌀 Generación 41/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 213.19s
+
+🌀 Generación 42/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 209.19s
+
+🌀 Generación 43/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 213.19s
+
+🌀 Generación 44/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.77s
+
+🌀 Generación 45/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 214.52s
+
+🌀 Generación 46/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 204.24s
+
+🌀 Generación 47/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 209.39s
+
+🌀 Generación 48/100
+   → Max Fidelidad: 0.9181
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 207.69s
+
+🌀 Generación 49/100
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.11s
+
+🌀 Generación 50/100
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 211.54s
+
+🌀 Generación 51/100
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 221.71s
+
+🌀 Generación 52/100
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 201.73s
+
+🌀 Generación 53/100
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.86s
+
 🌀 Generación 54/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 206.37s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.73s
 
 🌀 Generación 55/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 200.96s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 210.71s
 
 🌀 Generación 56/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 211.41s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 218.94s
 
 🌀 Generación 57/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 199.11s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 217.99s
 
 🌀 Generación 58/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 206.85s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 226.90s
 
 🌀 Generación 59/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 210.22s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 211.04s
 
 🌀 Generación 60/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 199.89s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 215.50s
 
 🌀 Generación 61/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 206.66s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 207.69s
 
 🌀 Generación 62/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 215.26s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 201.19s
 
 🌀 Generación 63/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 208.18s
+   → Max Fidelidad: 0.9427
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 203.40s
 
 🌀 Generación 64/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 210.05s
+   → Max Fidelidad: 0.9831
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 205.99s
 
 🌀 Generación 65/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 209.26s
+   → Max Fidelidad: 0.9831
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 212.61s
 
 🌀 Generación 66/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 209.56s
+   → Max Fidelidad: 0.9831
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 217.64s
 
 🌀 Generación 67/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 217.63s
+   → Max Fidelidad: 0.9831
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 212.34s
 
 🌀 Generación 68/100
-   → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 207.88s
+   → Max Fidelidad: 0.9831
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 212.20s
 
 🌀 Generación 69/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 203.05s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 213.80s
 
 🌀 Generación 70/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 213.41s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 223.73s
 
 🌀 Generación 71/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 197.75s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.34s
 
 🌀 Generación 72/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 205.44s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 212.93s
 
 🌀 Generación 73/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 204.96s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.03s
 
 🌀 Generación 74/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 210.05s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 202.21s
 
 🌀 Generación 75/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 196.39s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 205.19s
 
 🌀 Generación 76/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 204.90s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.84s
 
 🌀 Generación 77/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 207.03s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 215.08s
 
 🌀 Generación 78/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 211.41s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 210.72s
 
 🌀 Generación 79/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.91s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 218.36s
 
 🌀 Generación 80/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 202.17s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 212.02s
 
 🌀 Generación 81/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 207.21s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 207.24s
 
 🌀 Generación 82/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 214.33s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 214.47s
 
 🌀 Generación 83/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 194.55s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 221.83s
 
 🌀 Generación 84/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 196.56s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 223.97s
 
 🌀 Generación 85/100
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 205.14s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 222.31s
 
 🌀 Generación 86/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 208.81s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 213.19s
 
 🌀 Generación 87/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 200.79s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 203.33s
 
 🌀 Generación 88/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.30s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 213.72s
 
 🌀 Generación 89/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.98s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 204.38s
 
 🌀 Generación 90/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.49s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 206.06s
 
 🌀 Generación 91/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 209.92s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 209.40s
 
 🌀 Generación 92/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 200.01s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.72s
 
 🌀 Generación 93/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 201.62s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 199.18s
 
 🌀 Generación 94/100
+❌ Error en LLMAgent.call_llm (Modelo: RegeneratePromptOutput): 1 validation error for RegeneratePromptOutput
+prompt
+  Field required [type=missing, input_value={'description': 'Modelo p...tput', 'type': 'object'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 197.37s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.76s
 
 🌀 Generación 95/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 211.02s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 227.07s
 
 🌀 Generación 96/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 209.57s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 206.83s
 
 🌀 Generación 97/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 203.21s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 215.81s
 
 🌀 Generación 98/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 194.44s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 233.28s
 
 🌀 Generación 99/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 202.89s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 216.43s
 
 🌀 Generación 100/100
    → Max Fidelidad: 1.0000
-   → Max Diversidad: 3.0508
-   → Tiempo Gen: 211.27s
+   → Max Diversidad: 3.2116
+   → Tiempo Gen: 219.13s
 💾 Guardando Frente de Pareto final...
 
-✅ Proceso completado. Resultados guardados en: exec/2025-11-27_04-56-57
-📂 Cargando Frente de Pareto: exec/2025-11-27_04-56-57/pareto_front.json
+✅ Proceso completado. Resultados guardados en: exec/2025-11-28_05-39-33
+📂 Cargando Frente de Pareto: exec/2025-11-28_05-39-33/pareto_front.json
 📊 Total candidatos evaluados: 100
 🔄 Iniciando proceso de selección (Filtro NLI)...
 🧠 Cargando modelo de validación: cross-encoder/nli-deberta-v3-base...
    ✅ [1/5] Seleccionado (Mejor Calidad): "this quarantine has kicked my depression up a couple notches..."
-   ✅ [2/5] Seleccionado (Único): "Candidly, this quarantine has been a campaign against my men..."
-   ✅ [3/5] Seleccionado (Único): "Candidly, I'm struggling with my mental health during this q..."
-   ✅ [4/5] Seleccionado (Único): "Quarantine life has taken a toll on my mental health – const..."
-   ✅ [5/5] Seleccionado (Único): "Quarantine has taken a toll on my mental health - I'm experi..."
+   ✅ [2/5] Seleccionado (Único): "Quarantine has triggered my depression, thanks to the void i..."
+   ✅ [3/5] Seleccionado (Único): "Quarantine has exacerbated my depression as I struggle to ma..."
+   ✅ [4/5] Seleccionado (Único): "Quarantine has been a nightmare for my depression, making my..."
+   ✅ [5/5] Seleccionado (Único): "Quarantine's got me feeling stuck in a rut – my depression's..."
 
 ============================================================
 🏆  TOP 5 PROMPTS FINALES (Calidad + Diversidad NLI)
 ============================================================
 
 🥇 RANGO #1
-   Fidelidad (SBERT): 1.0000
+   Fidelidad (SBERT): 0.9831
    Role: a normal person
-   Prompt: "As daily life comes to a standstill due to COVID-19 and social isolation, describe how you're coping with the mental health effects of this new reality. Please highlight the signs and symptoms that are most concerning to you."
-   Generado: "this quarantine has kicked my depression up a couple notches thanks to my work and routine being void now and im effectively avoiding my phone now bc everyone is nuts sending corona stuff dont blame them but christ the anxiety is driving me up the Wall"
+   Prompt: "Share an honest and authentic account of how the pandemic's quarantine era has impacted your mental health, specifically highlighting your struggles with depression. Please include the challenges you've faced and the measures you've taken to cope with anxiety."
+   Generado: "this quarantine has kicked my depression up a couple notches, thanks to my work and routine being void now. I'm effectively avoiding my phone now bc everyone is nuts sending corona stuff - don't blame them but christ the anxiety is driving me up the wall"
 
 🥇 RANGO #2
-   Fidelidad (SBERT): 0.9137
+   Fidelidad (SBERT): 0.9277
    Role: a normal person
-   Prompt: "Write about your personal experience with depression during the COVID-19 quarantine, being candid about the emotional toll it's taken on you and how you're coping. Focus on the impact it's had on your daily routine and relationships."
-   Generado: "Candidly, this quarantine has been a campaign against my mental well-being. Depression's taken a devastating toll on me, making it hard to participate in even the simplest tasks. My daily routine's gone awry, and I've become withdrawn, avoiding my phone due to the overwhelming anxiety-inducing corona updates."
+   Prompt: "Imagine sharing your genuine thoughts about coping with mental health issues during the pandemic, specifically highlighting how quarantine measures have affected your depression and daily routine. Draw from your authentic account to explore the challenges and struggles you've faced, and consider how remote work and online schooling have impacted your personal reflection on healthcare."
+   Generado: "Quarantine has triggered my depression, thanks to the void in my work and routine. I'm avoiding my phone due to overwhelming Corona-related updates. As a normal person, I'm struggling with anxiety, feeling like I'm stuck between a rock and a hard place."
 
 🥇 RANGO #3
-   Fidelidad (SBERT): 0.8601
+   Fidelidad (SBERT): 0.9004
    Role: a normal person
-   Prompt: "Candidly discuss your personal experience of living through the COVID-19 pandemic, highlighting the effects it has had on your mental health and well-being, including any symptoms of depression and anxiety. Consider how the sudden change in routine due to quarantine may have exacerbated these struggles."
-   Generado: "Candidly, I'm struggling with my mental health during this quarantine. The sudden loss of routine has triggered depression and anxiety symptoms. It's like a never-ending cycle of pressure, making it hard for me to cope. Even the thought of checking my phone is overwhelming, as it's filled with COVID-19 updates that only add to my stress levels."
+   Prompt: "Write an honest reflection of your experiences with public health advisories on coronavirus, drawing from your own struggles with depression and the impact of social isolation during this quarantine. Incorporate personal anecdotes about avoiding social media due to overwhelming pressure and the challenges you've faced in coping with anxiety."
+   Generado: "Quarantine has exacerbated my depression as I struggle to maintain a routine without work, leading to social isolation and increased anxiety from constant Corona-related updates on social media. Avoiding my phone is my only coping mechanism amidst the overwhelming pressure and chaos."
 
 🥇 RANGO #4
-   Fidelidad (SBERT): 0.8402
+   Fidelidad (SBERT): 0.8936
    Role: a normal person
-   Prompt: "Generate text from the perspective of someone experiencing increased depression and anxiety during the COVID-19 quarantine, expressing frustration with relentless notifications about the pandemic and their own avoidance tactics to cope with overwhelming feelings."
-   Generado: "Quarantine life has taken a toll on my mental health – constant notifications about Covid cases are driving me nuts! I've started avoiding my phone altogether to escape the anxiety and fear that comes with every new alert."
+   Prompt: "Imagine yourself as someone struggling with depression and recount your personal experience during the COVID-19 pandemic's quarantine measures. How did you find it affecting your daily routine and mental health?"
+   Generado: "Quarantine has been a nightmare for my depression, making my anxiety spiral out of control. My usual routine is gone, replaced by endless scrolling through corona updates, which only amplifies the stress"
 
 🥇 RANGO #5
-   Fidelidad (SBERT): 0.8348
-   Role: an influencer
-   Prompt: "Open up about your struggles with mental health during the COVID-19 pandemic and how you're coping with the stress of quarantine, avoiding phone notifications to reduce anxiety."
-   Generado: "Quarantine has taken a toll on my mental health - I'm experiencing increased symptoms of depression and anxiety. To cope, I've been avoiding phone notifications, which helps reduce my stress levels. It's crucial to prioritize self-care during this pandemic, and for me, that means taking breaks from social media and focusing on my vaccination journey."
+   Fidelidad (SBERT): 0.8878
+   Role: a normal person
+   Prompt: "Write from the perspective of a worker struggling with depression and anxiety during COVID-19 quarantine, drawing from your personal experiences and expressing concerns about maintaining routine and avoiding unwanted phone notifications."
+   Generado: "Quarantine's got me feeling stuck in a rut – my depression's flared up again. It's tough to maintain any semblance of normalcy when I'm stuck at home, and the constant stream of Corona-related updates on my phone isn't helping."
 
 ------------------------------------------------------------
-✅ Selección guardada en: exec/2025-11-27_04-56-57/final_selection_nli.json
+✅ Selección guardada en: exec/2025-11-28_05-39-33/final_selection_nli.json
 Estos son los prompts que deberías usar para generar tu dataset sintético.
 ⚡ Cargando modelos de métricas (SBERT y Spacy)...
 ✅ Modelos cargados correctamente.
 1/5 Preparando directorio del experimento...
-   → Todos los archivos se guardarán en: exec/2025-11-27_10-46-05
+   → Todos los archivos se guardarán en: exec/2025-11-28_11-47-06
 2/5 Generando población inicial de 100 individuos...
 Generando la población inicial...
 Población de 100 individuos generada.
@@ -1170,498 +1162,601 @@ Población de 100 individuos generada.
 📊 Evaluando población inicial (Multiobjetivo)...
 
 🌀 Generación 1/100
-   → Max Fidelidad: 0.8994
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 201.03s
+   → Max Fidelidad: 0.9010
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 202.04s
 
 🌀 Generación 2/100
-   → Max Fidelidad: 0.8994
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 200.12s
+   → Max Fidelidad: 0.9010
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.77s
 
 🌀 Generación 3/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 187.86s
+   → Max Fidelidad: 0.9010
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 188.16s
 
 🌀 Generación 4/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 186.47s
+   → Max Fidelidad: 0.9027
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.51s
 
 🌀 Generación 5/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 195.76s
+   → Max Fidelidad: 0.9113
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 187.27s
 
 🌀 Generación 6/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 185.68s
+   → Max Fidelidad: 0.9113
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.52s
 
 🌀 Generación 7/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 192.44s
+   → Max Fidelidad: 0.9113
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 219.34s
 
 🌀 Generación 8/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.13s
+   → Max Fidelidad: 0.9113
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 187.73s
 
 🌀 Generación 9/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 177.02s
+   → Max Fidelidad: 0.9198
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 201.75s
 
 🌀 Generación 10/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.72s
+   → Max Fidelidad: 0.9198
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 191.82s
 
 🌀 Generación 11/100
-   → Max Fidelidad: 0.9272
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 187.19s
-
-🌀 Generación 12/100
-   → Max Fidelidad: 0.9305
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 186.00s
-
-🌀 Generación 13/100
-   → Max Fidelidad: 0.9305
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 186.69s
-
-🌀 Generación 14/100
-   → Max Fidelidad: 0.9305
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.07s
-
-🌀 Generación 15/100
-   → Max Fidelidad: 0.9305
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 179.30s
-
-🌀 Generación 16/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 190.02s
-
-🌀 Generación 17/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.53s
-
-🌀 Generación 18/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 181.60s
-
-🌀 Generación 19/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 185.30s
-
-🌀 Generación 20/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.40s
-
-🌀 Generación 21/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 186.63s
-
-🌀 Generación 22/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
+   → Max Fidelidad: 0.9198
+   → Max Diversidad: 3.0144
    → Tiempo Gen: 196.03s
 
+🌀 Generación 12/100
+   → Max Fidelidad: 0.9198
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.11s
+
+🌀 Generación 13/100
+   → Max Fidelidad: 0.9198
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.14s
+
+🌀 Generación 14/100
+   → Max Fidelidad: 0.9198
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 200.53s
+
+🌀 Generación 15/100
+   → Max Fidelidad: 0.9375
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 204.89s
+
+🌀 Generación 16/100
+   → Max Fidelidad: 0.9450
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.14s
+
+🌀 Generación 17/100
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 194.68s
+
+🌀 Generación 18/100
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 187.40s
+
+🌀 Generación 19/100
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.04s
+
+🌀 Generación 20/100
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 205.65s
+
+🌀 Generación 21/100
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 205.35s
+
+🌀 Generación 22/100
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 200.78s
+
 🌀 Generación 23/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.37s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 203.99s
 
 🌀 Generación 24/100
-   → Max Fidelidad: 0.9430
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.95s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 197.49s
 
 🌀 Generación 25/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 191.92s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 193.98s
 
 🌀 Generación 26/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 187.94s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 208.32s
 
 🌀 Generación 27/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 186.78s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 199.74s
 
 🌀 Generación 28/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 194.12s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.54s
 
 🌀 Generación 29/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 181.92s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 207.38s
 
 🌀 Generación 30/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 193.50s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 204.55s
 
 🌀 Generación 31/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 197.85s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 197.98s
 
 🌀 Generación 32/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 201.31s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 197.45s
 
 🌀 Generación 33/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 185.90s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 187.37s
 
 🌀 Generación 34/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 205.16s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 202.17s
 
 🌀 Generación 35/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 193.99s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 193.77s
 
 🌀 Generación 36/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 194.07s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.00s
 
 🌀 Generación 37/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.83s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.36s
 
 🌀 Generación 38/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 189.08s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 191.09s
 
 🌀 Generación 39/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 194.13s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.28s
 
 🌀 Generación 40/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 184.49s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 189.67s
 
 🌀 Generación 41/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 190.12s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 190.62s
 
 🌀 Generación 42/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 191.64s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 189.77s
 
 🌀 Generación 43/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 209.12s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.30s
 
 🌀 Generación 44/100
-   → Max Fidelidad: 0.9484
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 188.51s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.15s
 
 🌀 Generación 45/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 194.62s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.18s
 
 🌀 Generación 46/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 181.10s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.44s
 
 🌀 Generación 47/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 190.60s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 201.41s
 
 🌀 Generación 48/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 189.18s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 191.66s
 
 🌀 Generación 49/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 195.59s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.65s
 
 🌀 Generación 50/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 204.86s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 190.64s
 
 🌀 Generación 51/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 191.87s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 199.91s
 
 🌀 Generación 52/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 189.79s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 191.37s
 
 🌀 Generación 53/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 183.55s
+   → Max Fidelidad: 0.9464
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.49s
 
 🌀 Generación 54/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 204.70s
+   → Max Fidelidad: 0.9575
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.09s
 
 🌀 Generación 55/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 192.88s
+   → Max Fidelidad: 0.9575
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.53s
 
 🌀 Generación 56/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 181.35s
+   → Max Fidelidad: 0.9575
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.37s
 
 🌀 Generación 57/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 185.66s
+   → Max Fidelidad: 0.9575
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 190.72s
 
 🌀 Generación 58/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 197.85s
+   → Max Fidelidad: 0.9575
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 182.07s
 
 🌀 Generación 59/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 199.04s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.21s
 
 🌀 Generación 60/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 190.70s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 190.85s
 
 🌀 Generación 61/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 180.68s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 193.30s
 
 🌀 Generación 62/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 199.25s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 179.51s
 
 🌀 Generación 63/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 177.84s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.88s
 
 🌀 Generación 64/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 191.47s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 204.09s
 
 🌀 Generación 65/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 198.34s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 190.57s
 
 🌀 Generación 66/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 201.35s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.18s
 
 🌀 Generación 67/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 193.55s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.43s
 
 🌀 Generación 68/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 194.33s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 204.23s
 
 🌀 Generación 69/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 205.84s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.89s
 
 🌀 Generación 70/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 198.48s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 193.31s
 
 🌀 Generación 71/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 226.74s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 200.50s
 
 🌀 Generación 72/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 208.98s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.84s
 
 🌀 Generación 73/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 208.22s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.06s
 
 🌀 Generación 74/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 214.65s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 189.45s
 
 🌀 Generación 75/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 208.82s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 189.63s
 
 🌀 Generación 76/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 201.83s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 195.21s
 
 🌀 Generación 77/100
-   → Max Fidelidad: 0.9519
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 204.10s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 207.53s
 
 🌀 Generación 78/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 211.06s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 202.04s
 
 🌀 Generación 79/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 200.31s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 187.20s
 
 🌀 Generación 80/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 220.14s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.96s
 
 🌀 Generación 81/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 234.37s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.24s
 
 🌀 Generación 82/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 220.49s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 189.82s
 
 🌀 Generación 83/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 216.41s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 193.96s
 
 🌀 Generación 84/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 212.61s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.96s
 
 🌀 Generación 85/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 218.98s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.95s
 
 🌀 Generación 86/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 229.58s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 188.19s
 
 🌀 Generación 87/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 224.27s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 181.55s
 
 🌀 Generación 88/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 227.98s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 189.93s
 
 🌀 Generación 89/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 246.65s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 194.45s
 
 🌀 Generación 90/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 219.65s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 196.21s
 
 🌀 Generación 91/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 210.62s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 184.69s
 
 🌀 Generación 92/100
-   → Max Fidelidad: 0.9551
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 213.04s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 184.75s
 
 🌀 Generación 93/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 231.64s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 200.60s
 
 🌀 Generación 94/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 211.83s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 185.73s
 
 🌀 Generación 95/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 222.50s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 192.05s
 
 🌀 Generación 96/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 219.29s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 191.94s
 
 🌀 Generación 97/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 224.87s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 202.07s
 
 🌀 Generación 98/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 223.13s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 198.42s
 
 🌀 Generación 99/100
-   → Max Fidelidad: 0.9576
-   → Max Diversidad: 2.9211
-   → Tiempo Gen: 214.79s
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 190.17s
 
 🌀 Generación 100/100
+   → Max Fidelidad: 0.9650
+   → Max Diversidad: 3.0144
+   → Tiempo Gen: 193.95s
+💾 Guardando Frente de Pareto final...
+
+✅ Proceso completado. Resultados guardados en: exec/2025-11-28_11-47-06
+📂 Cargando Frente de Pareto: exec/2025-11-28_11-47-06/pareto_front.json
+📊 Total candidatos evaluados: 100
+🔄 Iniciando proceso de selección (Filtro NLI)...
+🧠 Cargando modelo de validación: cross-encoder/nli-deberta-v3-base...
+   ✅ [1/5] Seleccionado (Mejor Calidad): "Our Action Center has been updated with the latest informati..."
+   ✅ [2/5] Seleccionado (Único): "I'd be happy to help you navigate this challenging time! Our..."
+   ✅ [3/5] Seleccionado (Único): "Our Action Center has been updated with crucial information ..."
+   ✅ [4/5] Seleccionado (Único): "Our Action Center has been updated with more information on ..."
+   ✅ [5/5] Seleccionado (Único): "We've updated our Action Center with crucial info on restaur..."
+
+============================================================
+🏆  TOP 5 PROMPTS FINALES (Calidad + Diversidad NLI)
+============================================================
+
+🥇 RANGO #1
+   Fidelidad (SBERT): 0.9650
+   Role: first respondent
+   Prompt: "Respond to a small business owner's query about the latest updates from our Action Center regarding restaurant shutdowns and disaster financing options during the current economic crisis, providing supporting resources for community resilience during lockdowns."
+   Generado: "Our Action Center has been updated with the latest information on restaurant shutdowns and disaster financing options for SMBs. I'm happy to share that we're now offering additional resources to support your business during this challenging time."
+
+🥇 RANGO #2
+   Fidelidad (SBERT): 0.9575
+   Role: first respondent
+   Prompt: "Create a concise and informative statement as the first respondent to a community member seeking guidance on navigating restaurant shutdowns and accessing disaster financing options for SMBs during lockdowns, emphasizing the latest updates from our action center and available resources to mitigate the evolving economic impact and uncertainty."
+   Generado: "I'd be happy to help you navigate this challenging time! Our Action Center has been updated with the latest information on restaurant shutdowns and disaster financing options for SMBs. You can find more details on our website, including resources to support your business during this evolving economic landscape."
+
+🥇 RANGO #3
+   Fidelidad (SBERT): 0.9536
+   Role: an influencer
+   Prompt: "Given the ongoing economic crisis and uncertainties surrounding restaurant shutdowns, generate an official update for small business owners (SMBS) on the latest developments in our action center, focusing on available financing options and guidelines for navigating restrictions while ensuring continuity and prioritizing safety."
+   Generado: "Our Action Center has been updated with crucial information to support SMBS through restaurant shutdowns. Get official guidance on disaster financing options, navigate restrictions, prioritize continuity & safety"
+
+🥇 RANGO #4
+   Fidelidad (SBERT): 0.9525
+   Role: first respondent
+   Prompt: "As the first point of contact, provide an updated overview of the COVID-19 prevention measures in place for small and medium-sized businesses (smbs) operating in residential areas, specifically addressing restaurant shutdowns and disaster financing options now available through our action center."
+   Generado: "Our Action Center has been updated with more information on restaurant shutdowns and disaster financing options for SMBs. As the first point of contact, we're committed to providing the evolving resources and support needed to help businesses in residential areas navigate these challenges."
+
+🥇 RANGO #5
+   Fidelidad (SBERT): 0.9522
+   Role: first respondent
+   Prompt: "Update the community on new resources supporting SMBs impacted by restaurant shutdowns during lockdowns, emphasizing ways to access disaster financing options."
+   Generado: "We've updated our Action Center with crucial info on restaurant shutdowns and disaster financing options for SMBs. Now you can get support and navigate this challenging time more effectively."
+
+------------------------------------------------------------
+✅ Selección guardada en: exec/2025-11-28_11-47-06/final_selection_nli.json
+Estos son los prompts que deberías usar para generar tu dataset sintético.
+==================================================
+   AUTOMATIZACIÓN DE EXPERIMENTOS
+==================================================
+👉 Modo seleccionado por argumento: 3
+
+============================================================
+🔄 INICIANDO MODO BATCH (3 Ejecuciones Secuenciales)
+============================================================
+
+📢 --- INICIANDO EXPERIMENTO 1/3 ---
+📄 Archivo de referencia creado: ref_temp_batch_1.txt
+
+🚀 Ejecutando Fase 1: Algoritmo Genético...
+   Comando: /home/colossus/LLM/MDPI-EVOLMD2/venv/bin/python main.py --n 100 --generaciones 100 --k 5 --num-elitismo 5 --prob-crossover 0.8 --prob-mutacion 0.05 --texto-referencia ref_temp_batch_1.txt
+✅ Carpeta detectada: 2025-11-27_23-50-28
+
+🧠 Ejecutando Fase 2: Análisis MCDM (NLI Selection)...
+   Analizando carpeta: 2025-11-27_23-50-28
+⏱️  Tiempos guardados en: exec/2025-11-27_23-50-28/runtime.txt
+🧹 Archivo temporal eliminado.
+✅ FIN EXPERIMENTO 1/3
+------------------------------------------------------------
+
+📢 --- INICIANDO EXPERIMENTO 2/3 ---
+📄 Archivo de referencia creado: ref_temp_batch_2.txt
+
+🚀 Ejecutando Fase 1: Algoritmo Genético...
+   Comando: /home/colossus/LLM/MDPI-EVOLMD2/venv/bin/python main.py --n 100 --generaciones 100 --k 5 --num-elitismo 5 --prob-crossover 0.8 --prob-mutacion 0.05 --texto-referencia ref_temp_batch_2.txt
+✅ Carpeta detectada: 2025-11-28_05-39-33
+
+🧠 Ejecutando Fase 2: Análisis MCDM (NLI Selection)...
+   Analizando carpeta: 2025-11-28_05-39-33
+⏱️  Tiempos guardados en: exec/2025-11-28_05-39-33/runtime.txt
+🧹 Archivo temporal eliminado.
+✅ FIN EXPERIMENTO 2/3
+------------------------------------------------------------
+
+📢 --- INICIANDO EXPERIMENTO 3/3 ---
+📄 Archivo de referencia creado: ref_temp_batch_3.txt
+
+🚀 Ejecutando Fase 1: Algoritmo Genético...
+   Comando: /home/colossus/LLM/MDPI-EVOLMD2/venv/bin/python main.py --n 100 --generaciones 100 --k 5 --num-elitismo 5 --prob-crossover 0.8 --prob-mutacion 0.05 --texto-referencia ref_temp_batch_3.txt
+✅ Carpeta detectada: 2025-11-28_11-47-06
+
+🧠 Ejecutando Fase 2: Análisis MCDM (NLI Selection)...
+   Analizando carpeta: 2025-11-28_11-47-06
+⏱️  Tiempos guardados en: exec/2025-11-28_11-47-06/runtime.txt
+🧹 Archivo temporal eliminado.
+✅ FIN EXPERIMENTO 3/3
+------------------------------------------------------------

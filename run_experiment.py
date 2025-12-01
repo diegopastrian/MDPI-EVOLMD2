@@ -39,6 +39,17 @@ def run_analysis_script(folder_name):
     print(f"   Analizando carpeta: {folder_name}")
     subprocess.run(cmd, check=True)
 
+def update_runtime_file(folder_path, analysis_sec, total_process_sec):
+    """Agrega los tiempos de análisis y total al archivo runtime.txt"""
+    runtime_file = folder_path / "runtime.txt"
+    if runtime_file.exists():
+        with open(runtime_file, "a", encoding="utf-8") as f:
+            f.write(f"analysis_sec={analysis_sec:.6f}\n")
+            f.write(f"grand_total_sec={total_process_sec:.6f}\n")
+        print(f"⏱️  Tiempos guardados en: {runtime_file}")
+    else:
+        print(f"⚠️  Advertencia: No se encontró {runtime_file}")
+
 def run_batch_execution():
     """Ejecuta la secuencia de 3 experimentos automáticos."""
     print("\n" + "="*60)
@@ -64,20 +75,39 @@ def run_batch_execution():
         print(f"📄 Archivo de referencia creado: {temp_ref_file}")
 
         try:
+            # --- 1. INICIO CRONÓMETRO TOTAL ---
+            t_start_total = time.perf_counter()
+
             # 2. Configurar argumentos específicos
             current_args = base_args + ["--texto-referencia", str(temp_ref_file)]
             
             # 3. Ejecutar GA
             run_main_script(current_args)
 
-            # 4. Detectar carpeta output (Esperamos un poco para asegurar timestamp único)
+            # 4. Detectar carpeta output
             time.sleep(2) 
-            latest_folder = get_latest_folder(Path("exec"))
+            latest_folder_name = get_latest_folder(Path("exec")) # Devuelve string
             
-            if latest_folder:
-                print(f"✅ Carpeta detectada: {latest_folder}")
-                # 5. Ejecutar Análisis
-                run_analysis_script(latest_folder)
+            if latest_folder_name:
+                print(f"✅ Carpeta detectada: {latest_folder_name}")
+                
+                # --- 2. CRONÓMETRO ANÁLISIS ---
+                t_start_analysis = time.perf_counter()
+                run_analysis_script(latest_folder_name)
+                t_end_analysis = time.perf_counter()
+                
+                # --- 3. FIN CRONÓMETRO TOTAL ---
+                t_end_total = time.perf_counter()
+
+                # Cálculos
+                analysis_sec = t_end_analysis - t_start_analysis
+                total_sec = t_end_total - t_start_total
+
+                # Guardar en runtime.txt
+                # (Reconstruimos el Path completo porque get_latest_folder devuelve solo el nombre)
+                folder_path = Path("exec") / latest_folder_name
+                update_runtime_file(folder_path, analysis_sec, total_sec)
+
             else:
                 print("❌ Error: No se detectó la carpeta de salida.")
 

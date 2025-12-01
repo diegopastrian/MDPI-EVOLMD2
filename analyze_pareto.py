@@ -56,7 +56,7 @@ def run_greedy_nli_selection(data, n_select=5):
         
         text_cand = cand["generated_data"]
         
-        if cand["objetivos"][0] > 0.95:
+        if cand["objetivos"][0] > 0.99:
             continue
 
         # A. EL PRIMERO SIEMPRE ENTRA
