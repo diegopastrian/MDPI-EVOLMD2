@@ -16,7 +16,13 @@ from operadores.mutation import mutacion
 
 # --- Métricas (Fase 1: Fidelidad y Diversidad) ---
 from metrics.fidelity import calculate_sbert_similarity
-from metrics.diversity import get_population_embeddings, calculate_kmeans_inertia, calculate_entity_entropy
+from metrics.diversity import (
+    get_population_embeddings, 
+    calculate_kmeans_inertia, 
+    calculate_entity_entropy, 
+    calculate_individual_diversity_score
+)
+
 from sentence_transformers import SentenceTransformer
 import spacy
 

@@ -6,6 +6,7 @@ from collections import Counter
 from scipy.stats import entropy
 from sklearn.cluster import KMeans
 import numpy as np
+import math
 import spacy
 from scipy.stats import entropy
 
@@ -76,22 +77,23 @@ def calculate_entity_entropy(generated_texts: list[str]) -> float:
     """
     Calcula la Entropía Conceptual (Sustantivos, Verbos, Adjetivos) de un conjunto de textos.
     Un valor MÁS ALTO significa MÁS DIVERSIDAD (se cubren más temas).
+    Fórmula: H(X) / log2(N_words + 1)
+    Penaliza la longitud excesiva si no aporta diversidad proporcional.
+
     """
     model = _load_ner_model() # Carga el modelo spacy
     if model == "error" or model is None:
         return 0.0 
-
+    total_tokens_count = 0
     all_concepts = []
     
-    # --- MODIFICACIÓN ---
-    # Ya no usamos n_process=-1 para evitar las advertencias de "fork"
-    # El procesamiento en batch sigue siendo rápido.
     docs = model.pipe(generated_texts)
     
-    # Tipos de palabras que queremos extraer (Part-of-Speech)
+    # Tipos de palabras que queremos extraer
     POS_KEPT = {"NOUN", "VERB", "ADJ"} 
     
     for doc in docs:
+        total_tokens_count += len(doc)
         for token in doc:
             # En lugar de doc.ents, revisamos el Part-of-Speech (POS)
             if token.pos_ in POS_KEPT:
@@ -103,10 +105,50 @@ def calculate_entity_entropy(generated_texts: list[str]) -> float:
         # No se encontraron conceptos
         return 0.0
     
-    # 2. Contar la frecuencia de cada concepto
+    # 2. Calcular entropia
     entity_counts = Counter(all_concepts)
-    
-    # 3. Calcular la entropía de Shannon
     frequencies = list(entity_counts.values())
+    raw_entropy = entropy(frequencies, base=2)
     
-    return entropy(frequencies, base=2)
+    if total_tokens_count <= 1:
+        return 0.0
+        
+    normalized_entropy = raw_entropy / math.log2(total_tokens_count)
+    
+    return normalized_entropy
+
+
+def calculate_individual_diversity_score(embeddings: torch.Tensor) -> list[float]:
+    """
+    Calcula un score de diversidad (novedad) para CADA individuo.
+    Lógica: 1.0 - (Similitud promedio con el resto de la población).
+    
+    - Si el individuo es un clon del promedio -> Score cercano a 0.
+    - Si el individuo es único/diferente -> Score cercano a 1.
+    """
+    n_samples = embeddings.shape[0]
+    if n_samples <= 1:
+        return [0.0] * n_samples
+
+    # 1. Calculamos la matriz de similitud (Todos contra Todos)
+    # Resultado: Tensor de tamaño [N, N] con valores entre 0 y 1
+    sim_matrix = util.cos_sim(embeddings, embeddings)
+
+    diversity_scores = []
+
+    for i in range(n_samples):
+        # 2. Sumamos la similitud con todos los individuos
+        # Restamos 1.0 para eliminar la similitud consigo mismo (que siempre es 1.0)
+        sum_similarity = torch.sum(sim_matrix[i]) - 1.0
+        
+        # 3. Promediamos dividiendo por (N-1)
+        avg_similarity = sum_similarity / (n_samples - 1)
+        
+        # 4. Invertimos: Queremos que "diferente" sea "mejor"
+        # Score de Novedad = 1 - Similitud Promedio
+        score = 1.0 - float(avg_similarity)
+        
+        # Clamp para seguridad numérica (evitar -0.00001)
+        diversity_scores.append(max(0.0, score))
+
+    return diversity_scores
