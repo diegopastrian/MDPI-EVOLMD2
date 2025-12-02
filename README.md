@@ -1,72 +1,85 @@
-# Modelo Evolutivo de Prompts
+# Modelo Evolutivo de Prompts (NSGA-II + SBERT + MMR)
 
-Este proyecto utiliza un Algoritmo Genético (AG) para evolucionar y optimizar automáticamente prompts de LLM. El objetivo es encontrar individuos (compuestos por `role`, `topic`, `prompt` y `keywords`) que generen texto con un alto `fitness` (similitud semántica) respecto a un texto de referencia.
+Este proyecto implementa un **Algoritmo Genético Multiobjetivo (NSGA-II)** para evolucionar y optimizar prompts de LLM. El sistema busca generar datasets sintéticos (tweets) resolviendo el conflicto entre dos objetivos fundamentales:
+
+1.  **Fidelidad Semántica:** Que el texto generado sea fiel al mensaje de referencia (medido con **SBERT**).
+2.  **Diversidad Individual:** Que cada individuo aporte novedad semántica única respecto al resto de la población (medido con **Similitud Coseno Inversa** y **Entropía Normalizada**).
+
+La selección final de los mejores prompts utiliza una estrategia híbrida de **TOPSIS** (para calidad) y **MMR** (para reducir redundancia).
 
 ## 1. Configuración del Entorno
 
 ### Requisitos Previos
 
 * Python 3.10+
-* Un servicio de Ollama corriendo localmente. El `LLMAgent` está configurado para conectarse a `http://127.0.0.1:11434`. Asegúrate de que Ollama esté en ejecución y tenga el modelo que deseas usar (ej. `llama3`).
+* Un servicio de **Ollama** corriendo localmente. El `LLMAgent` se conecta a `http://127.0.0.1:11434`.
+* Modelo recomendado: `llama3` (asegúrate de tenerlo descargado: `ollama pull llama3`).
 
 ### Instalación
 
 1.  Clona el repositorio.
-2.  (Opcional pero recomendado) Crea un entorno virtual:
+2.  Crea un entorno virtual:
     ```bash
     python -m venv venv
     source venv/bin/activate  # En Windows: venv\Scripts\activate
     ```
-3.  Instala las dependencias:
+3.  Instala las dependencias (incluye `sentence-transformers`, `pymoo`, `scikit-learn`):
     ```bash
     pip install -r requirements.txt
     ```
-4.  La librería `nltk` descargará los modelos necesarios (`wordnet`, `averaged_perceptron_tagger_eng`) automáticamente la primera vez que se ejecute el script de mutación.
+4.  Descarga el modelo de Spacy necesario para la métrica de entropía:
+    ```bash
+    python -m spacy download en_core_web_sm
+    ```
 
 ## 2. Preparación del Corpus (Paso Único)
 
-El algoritmo necesita un corpus de textos de referencia. El script `prepare_corpus.py` está diseñado para filtrar un archivo CSV masivo.
+El algoritmo necesita un corpus de textos de referencia.
 
-1.  Coloca tu archivo de corpus masivo en la raíz del proyecto y asegúrate de que se llame `corpus.csv`.
-2.  Ejecuta el script de filtrado **una sola vez**:
+1.  Coloca tu archivo `corpus.csv` en la raíz.
+2.  Ejecuta el filtrado para eliminar textos demasiado cortos:
     ```bash
     python prepare_corpus.py
     ```
-3.  Esto generará un nuevo archivo, `corpus_filtrado.csv`, que será utilizado por el algoritmo.
+3.  Se generará `corpus_filtrado.csv`, que será la fuente de inspiración para el algoritmo.
 
-## 3. Ejecución del Algoritmo Genético
+## 3. Ejecución del Algoritmo Genético (Fase de Generación)
 
-El script principal es `main.py`. Se ejecuta desde la terminal y acepta varios argumentos para configurar la ejecución.
+El script `main.py` ejecuta el ciclo evolutivo completo. Utiliza **NSGA-II** para optimizar el Frente de Pareto entre Fidelidad y Diversidad.
 
-### Ejemplo de Ejecución
+### Comando Básico
 
 ```bash
-python main.py --n 50 --generaciones 10 --model llama3
+python main.py --n 100 --generaciones 100 --model llama3
 ```
 
 ### Argumentos Clave
 
-Puedes ver todos los argumentos en `main.py`. Los más importantes son:
-
 * `--n` (Requerido): Número de individuos en la población (ej. `50` o `100`).
 * `--generaciones`: Número de generaciones que evolucionará el algoritmo (ej. `10`).
-* `--model`: El nombre del modelo Ollama a utilizar (ej. `llama3`, `mistral`).
+* `--model`: El nombre del modelo Ollama a utilizar (ej. `llama3`).
 * `--k`: Tamaño del torneo para la selección (ej. `3`).
 * `--prob-crossover`: Probabilidad de cruce (ej. `0.8`).
 * `--prob-mutacion`: Probabilidad de mutación (ej. `0.1`).
-* `--num-elitismo`: Número de individuos de élite que pasan a la siguiente generación (ej. `2`).
-* `--texto-referencia`: (Opcional) Ruta a un archivo `.txt` específico si no quieres usar uno aleatorio del corpus filtrado.
-* `--bert-model`: El modelo a usar para BERTScore (ej. `bert-base-uncased`).
+* `--texto-referencia`: (Opcional) Ruta a un archivo `.txt` específico si no quieres usar uno aleatorio del corpus.
 
-## 4. Salida y Resultados
+> **Nota:** El algoritmo calcula automáticamente la **Entropía Normalizada** para penalizar la verborrea (textos innecesariamente largos) y la **Diversidad Individual** (SBERT) para evitar el colapso de modo.
 
-Todas las ejecuciones se guardan en el directorio `exec/`.
+## 4. Selección Final (Fase de Análisis MCDM)
 
-Cada ejecución crea una carpeta única con un *timestamp* (ej. `exec/2025-11-09_01-08-32/`), que contendrá:
+Una vez que el algoritmo genético termina, genera un **Frente de Pareto** (`pareto_front.json`) con los candidatos óptimos. Para seleccionar los mejores prompts de este frente, utilizamos una estrategia post-hoc avanzada que combina calidad y diversidad.
 
-* `reference.txt`: El texto de referencia aleatorio usado para esta ejecución.
-* `data_initial_population.json`: Los individuos de la Generación 0 (antes de la evaluación).
-* `data_inicial_evaluada.json`: La Generación 0 con su `fitness` calculado.
-* `data_final_evaluada.json`: La población final después de todas las generaciones.
-* `metrics_gen.csv`: Un CSV con las estadísticas (min, max, media) de fitness de cada generación.
-* `runtime.txt`: Tiempos de ejecución detallados.
+### Estrategia Híbrida (TOPSIS + MMR)
+
+El sistema no selecciona simplemente los individuos con mayor puntaje, sino que aplica un proceso de tres etapas:
+
+1.  **Filtro de Seguridad:** Descarta alucinaciones (fidelidad < 0.25) y copias exactas (fidelidad > 0.99).
+2.  **TOPSIS (Entropy Weights):** Calcula un puntaje de calidad individual balanceando Fidelidad y Novedad de forma objetiva, asignando pesos según la variabilidad de los datos.
+3.  **MMR (Maximal Marginal Relevance):** Selecciona el conjunto final penalizando la redundancia semántica entre los candidatos ya elegidos.
+
+### Herramienta Interactiva de Recálculo
+
+No es necesario volver a ejecutar el algoritmo genético para cambiar los criterios de selección. Puedes usar el script interactivo para probar diferentes escenarios (más creativos o más conservadores) sobre ejecuciones ya terminadas.
+
+```bash
+python scripts/recalculate_interactive.py

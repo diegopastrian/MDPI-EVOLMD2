@@ -18,7 +18,7 @@ class RegeneratePromptOutput(BaseModel):
 
 def _get_system_prompt() -> str:
 
-    return f"""
+    return """
     You are an AI prompt engineer. Your task is to create ONE high-quality instruction prompt that:
     - Will be given directly to another LLM to generate text.
     - Must align with the given topic.
@@ -27,15 +27,23 @@ def _get_system_prompt() -> str:
     - The prompt must be concise (1–2 sentences, max 2 lines).
 
     STRICT RULES:
-    - Output MUST be a JSON object valid against the schema.
+    - Output MUST be a JSON object.
     - Do NOT return the schema itself.
-    - Do NOT include explanations, comments, or code fences.
+    - Do NOT include explanations, comments, or code fences (markdown).
 
     - FORBIDDEN START: Do NOT start the prompt with "As a...". 
     - Be creative with the structure. Avoid repetitive patterns.
 
-    JSON Schema:
-    {RegeneratePromptOutput.model_json_schema()}
+    STRICT RESPONSE FORMAT:
+    - Return ONLY a valid JSON object.
+    - The JSON object must contain the key "prompt".
+    - Do NOT return the JSON Schema definition.
+    - Do NOT include keys like 'properties', 'type', 'title' or 'description'.
+
+    Example of VALID Output:
+    {
+        "prompt": "Write a short story about the importance of hygiene ensuring you mention soap and water."
+    }
     """.strip()
 
 def _get_user_prompt(texto_referencia: str, role: str, topic: str, keywords: List[str]) -> str:
