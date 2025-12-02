@@ -9,7 +9,10 @@ exec/
 logs/
 *.log
 
-# Ignorar Datos (Solo subir ejemplos o templates)
-data/raw/
-data/processed/
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
 !data/corpus_ejemplo.txt  # Mantener el ejemplo
