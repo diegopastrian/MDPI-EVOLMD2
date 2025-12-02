@@ -36,12 +36,12 @@ La selección final de los mejores prompts utiliza una estrategia híbrida de **
 
 El algoritmo necesita un corpus de textos de referencia.
 
-1.  Coloca tu archivo `corpus.csv` en la raíz.
-2.  Ejecuta el filtrado para eliminar textos demasiado cortos:
+1.  Coloca tu archivo `corpus.csv` en la carpeta `data/raw/`.
+2.  Ejecuta el filtrado para eliminar textos demasiado cortos desde la raíz del proyecto:
     ```bash
-    python prepare_corpus.py
+    python scripts/prepare_corpus.py
     ```
-3.  Se generará `corpus_filtrado.csv`, que será la fuente de inspiración para el algoritmo.
+3.  Se generará el archivo limpio en `data/processed/corpus_filtrado.csv`, que será la fuente de inspiración para el algoritmo.
 
 ## 3. Ejecución del Algoritmo Genético (Fase de Generación)
 
@@ -79,7 +79,8 @@ El sistema no selecciona simplemente los individuos con mayor puntaje, sino que 
 
 ### Herramienta Interactiva de Recálculo
 
-No es necesario volver a ejecutar el algoritmo genético para cambiar los criterios de selección. Puedes usar el script interactivo para probar diferentes escenarios (más creativos o más conservadores) sobre ejecuciones ya terminadas.
+No es necesario volver a ejecutar el algoritmo genético para cambiar los criterios de selección del frente de pareto. Puedes usar el script interactivo para probar la selección final sobre ejecuciones ya terminadas.
 
 ```bash
 python scripts/recalculate_interactive.py
+```

@@ -3,8 +3,11 @@ from pathlib import Path
 import sys
 
 # --- Configuración ---
-ARCHIVO_ENTRADA = Path("data/raw/corpus.csv")      
-ARCHIVO_SALIDA = Path("data/processed/corpus_filtrado.csv") 
+script_dir = Path(__file__).resolve().parent 
+project_root = script_dir.parent           
+
+ARCHIVO_ENTRADA = project_root / "data" / "raw" / "corpus.csv"
+ARCHIVO_SALIDA = project_root / "data" / "processed" / "corpus_filtrado.csv"
 MIN_PALABRAS = 5
 # ---------------------
 

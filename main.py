@@ -61,21 +61,17 @@ async def main():
 
     # --- 4. Evaluación Inicial (Multiobjetivo) ---
     print("4/5 Evaluando fitness inicial (SBERT + Diversidad)...")
-    # Usamos la nueva función de evaluación de ga.py
     individuos = evaluar_poblacion(individuos, ref_text)
-    
-    # Guardamos la población inicial evaluada
     guardar_individuos(individuos, outdir / "data_inicial_evaluada.json") 
 
     # --- 5. Evolución (NSGA-II) ---
     print("5/5 Iniciando evolución NSGA-II...")
     
-    # Llamamos a la nueva metaheurística
     poblacion_final = await metaheuristica(
         individuos=individuos,
         ref_text=ref_text,
         llm_agent=llm_agent,
-        bert_model=args.bert_model, # Se pasa pero se ignora dentro
+        bert_model=args.bert_model, 
         generaciones=args.generaciones,
         k=args.k,
         prob_crossover=args.prob_crossover,
@@ -84,14 +80,13 @@ async def main():
         outdir=outdir,
     )
 
-    # --- Guardado Final (Frente de Pareto) ---
+    # --- Frente de Pareto ---
     print("💾 Guardando Frente de Pareto final...")
-    # La población final YA es el frente de pareto (o la mejor aproximación)
     guardar_individuos(poblacion_final, outdir / "pareto_front.json")
     
     total_sec = time.perf_counter() - t_total0
 
-    # --- Escribir Tiempos ---
+    # ---  Tiempos ---
     runtime_path = outdir / "runtime.txt"
     evo_sec = 0.0
     tmp_path = outdir / "runtime.tmp"

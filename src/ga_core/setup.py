@@ -1,4 +1,4 @@
-# setup.py
+# ga_core/setup.py
 
 import random
 from pathlib import Path
@@ -6,55 +6,69 @@ from typing import Optional, Tuple
 from datetime import datetime
 import csv
 
-def cargar_texto_unico(archivo: str = "corpus_filtrado.csv") -> str:
+# --- CONFIGURACIÓN DE RUTAS ---
+# Definimos las rutas relativas a la raíz del proyecto
+DEFAULT_CORPUS_PATH = Path("data/processed/corpus_filtrado.csv")
+FALLBACK_CORPUS_PATH = Path("data/corpus_ejemplo.txt")
+
+def cargar_texto_unico(archivo: str = str(DEFAULT_CORPUS_PATH)) -> str:
     """
     Carga una línea aleatoria del archivo de corpus especificado.
+    Si no encuentra el archivo principal, intenta usar el fallback (ejemplo).
     """
     p = Path(archivo)
-    if not p.exists():
-        # Si no se encuentra el corpus filtrado, usar el de ejemplo
-        p_ejemplo = Path("data/corpus_ejemplo.txt")
-        if p_ejemplo.exists():
-            print(f"Advertencia: No se encontró '{archivo}'. Usando 'corpus_ejemplo.txt' como fallback.")
-            p = p_ejemplo
-            # Lógica original para leer el .txt
-            lineas = [ln.strip() for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
-            if not lineas:
-                raise ValueError(f"El archivo {p} está vacío o sin líneas válidas.")
-            return random.choice(lineas)
-        else:
-            raise FileNotFoundError(f"No se encontró el archivo de corpus {archivo}. Usa el corpus de ejemplo o busca el corpus original y ejecuta 'preparar_corpus.py'.")
     
-    # Leer CSV filtrado
+    # 1. Intentar cargar el archivo principal
+    if not p.exists():
+        # Si no existe, probamos con el fallback
+        if FALLBACK_CORPUS_PATH.exists():
+            print(f"⚠️  Advertencia: No se encontró '{p}'. Usando '{FALLBACK_CORPUS_PATH}' como fallback.")
+            print(f"   (Consejo: Ejecuta 'python scripts/prepare_corpus.py' para generar el dataset completo)")
+            p = FALLBACK_CORPUS_PATH
+            
+            # Lógica específica para leer el .txt de ejemplo (texto plano)
+            try:
+                content = p.read_text(encoding="utf-8")
+                lineas = [ln.strip() for ln in content.splitlines() if ln.strip()]
+                if not lineas:
+                    raise ValueError(f"El archivo de ejemplo {p} está vacío.")
+                return random.choice(lineas)
+            except Exception as e:
+                raise IOError(f"Error leyendo fallback {p}: {e}")
+        else:
+            # Si tampoco existe el fallback, error crítico
+            raise FileNotFoundError(
+                f"❌ Error crítico: No se encontró el corpus principal en '{p}' "
+                f"ni el archivo de ejemplo en '{FALLBACK_CORPUS_PATH}'."
+            )
+    
+    # 2. Leer el archivo CSV (Lógica para corpus_filtrado.csv)
     lineas = []
     try:
         with open(p, mode='r', encoding='utf-8') as f:
             reader = csv.reader(f)
-            
-            # Leemos todas las filas
             for row in reader:
-                if row: # Si la fila no está vacía
+                if row: 
                     tweet = row[0].strip()
                     if tweet:
                         lineas.append(tweet)
                         
     except Exception as e:
-        raise IOError(f"Error al leer el archivo CSV {archivo}: {e}")
+        raise IOError(f"Error al leer el archivo CSV {p}: {e}")
 
-    
     if not lineas:
-        raise ValueError(f"El archivo {archivo} está vacío o sin líneas válidas.")
+        raise ValueError(f"El archivo {p} está vacío o sin líneas válidas.")
     
     return random.choice(lineas)
 
 def guardar_referencia_txt(texto: str, ruta: Path) -> None:
     """
-    Guarda el texto de referencia en la ruta especificada.
+    Guarda el texto de referencia en la ruta especificada dentro de la carpeta del experimento.
     """
     # Asegura que el directorio padre exista
     ruta.parent.mkdir(parents=True, exist_ok=True)
     
-    # Sobrescribe explícitamente si ya existe
+    # Sobrescribe si ya existe
     if ruta.exists():
         ruta.unlink()
     
@@ -80,18 +94,18 @@ def setup_experiment(
     # 2. Cargar texto de referencia
     ref_text = ""
     if texto_referencia_arg:
-        # Si el usuario pasó un archivo de referencia específico
+        # Si el usuario pasó un archivo específico por argumento
         p_ref = Path(texto_referencia_arg)
         if not p_ref.exists():
             raise FileNotFoundError(f"El archivo de referencia especificado no existe: {texto_referencia_arg}")
         ref_text = p_ref.read_text(encoding="utf-8").strip()
     else:
-        # Si no, carga uno aleatorio del corpus
-        ref_text = cargar_texto_unico() # Usa la función local
+        # Si no, carga uno aleatorio del corpus por defecto (o fallback)
+        ref_text = cargar_texto_unico() 
     
     # 3. Guardar la referencia DENTRO del directorio de la ejecución
     ref_save_path = outdir / "reference.txt"
-    guardar_referencia_txt(ref_text, ref_save_path) # Usa la función local
+    guardar_referencia_txt(ref_text, ref_save_path)
     
-    # 4. Devolver la ruta y el texto
+    # 4. Devolver la ruta y el texto cargado
     return outdir, ref_text
