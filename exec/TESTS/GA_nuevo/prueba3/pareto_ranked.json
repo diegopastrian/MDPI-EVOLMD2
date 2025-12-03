@@ -1,0 +1,77 @@
+[
+  {
+    "role": "a normal person",
+    "topic": "community resilience during lockdowns",
+    "prompt": "Craft a brief update about new resources available to support small business owners affected by shutdowns, highlighting recent developments in disaster financing options and restaurant closures.",
+    "keywords": [
+      "small business owners",
+      "shutdowns",
+      "travel"
+    ],
+    "objetivos": [
+      0.943986713886261,
+      0.5074823498725891
+    ],
+    "generated_data": "Our Action Center has been updated with fresh info on restaurant shutdowns & disaster financing options for SMBs. Stay informed on the latest developments and find valuable resources to help you navigate these challenging times.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.943986713886261,
+      "diversity_individual": 0.5074823498725891,
+      "pop_inertia": 0.38185848236083986,
+      "pop_entropy": 0.6490261331451486
+    },
+    "fitness": 0,
+    "topsis_score": 0.9466394035471707
+  },
+  {
+    "role": "a normal person",
+    "topic": "misinformation and phony tidings about COVID-19",
+    "prompt": "Create a clear and concise message that sets the record straight on COVID-19 related rumors, highlighting recent updates from our action center on restaurant shutdowns and disaster financing options for small business owners to stay informed and prepared.",
+    "keywords": [
+      "flexible",
+      "small business owners",
+      "organization",
+      "restaurant shutdowns",
+      "recent updates",
+      "closure"
+    ],
+    "objetivos": [
+      0.9154156446456909,
+      0.5231025516986847
+    ],
+    "generated_data": "Stay informed, not misinformed! Our Action Center has just been updated with vital info on restaurant shutdowns & disaster financing options for SMBs. Don't believe the rumors - get the facts and prepare your business today!",
+    "metrics_detail": {
+      "fidelity_sbert": 0.9154156446456909,
+      "diversity_individual": 0.5231025516986847,
+      "pop_inertia": 0.37995185852050783,
+      "pop_entropy": 0.6456572879260644
+    },
+    "fitness": 0,
+    "topsis_score": 0.9283901698996481
+  },
+  {
+    "role": "a normal person",
+    "topic": "economic impact of the coronavirus pandemic",
+    "prompt": "From your personal perspective as a small business owner, describe how restaurant shutdowns and disaster financing options can help mitigate the economic impact of the COVID-19 pandemic through the lens of our updated action center.",
+    "keywords": [
+      "small business owners",
+      "shutdowns",
+      "elastic",
+      "center",
+      "perspective",
+      "financing"
+    ],
+    "objetivos": [
+      0.9086679220199585,
+      0.5361899137496948
+    ],
+    "generated_data": "As a small business owner, I'm relieved to see our update on restaurant shutdowns and disaster financing options in our action center. It's a game-changer for SMBs like me, offering more flexibility and elastic support during these uncertain times. With the right financing tools, we can pivot and adapt, minimizing the economic blow of pandemic-related shutdowns.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.9086679220199585,
+      "diversity_individual": 0.5361899137496948,
+      "pop_inertia": 0.40781700134277343,
+      "pop_entropy": 0.6511948143031694
+    },
+    "fitness": 0,
+    "topsis_score": 0.9227148196686548
+  }
+]

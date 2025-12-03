@@ -1,99 +1,114 @@
-# test_metrics_loop.py
+# tests/test_fidelity_metrics.py
 import time
 import torch
 import sys
 import os
+
+# Ajuste de rutas para importar desde 'src'
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
+# --- Importamos nuestras funciones ---
 from metrics.fidelity import calculate_sbert_similarity, calculate_bertscore
-from metrics.diversity import get_population_embeddings
+from sentence_transformers import SentenceTransformer
 
-# Importamos la librería SBERT directamente para controlar la carga
-from sentence_transformers import SentenceTransformer, util
+# ==========================================
+# CONFIGURACIÓN DE LA SIMULACIÓN A ESCALA
+# ==========================================
+N_GENERATIONS = 100   # Escala real de tu experimento
+N_INDIVIDUALS = 100   # Tamaño real de tu población
 
+print(f"--- SIMULACIÓN DE CARGA REAL ({N_GENERATIONS} Gen x {N_INDIVIDUALS} Ind) ---")
 
-# frase de referencia
+# 1. Frase de referencia
 ref_text = "The hospital is overwhelmed with new patients, and the lack of medical supplies is compromising patient care."
 
-# textos generados
-population_data = [
-    # --- FIDELIDAD ALTA / COLAPSO DE MODO ---
-    "Patient care is being compromised by the shortage of medical supplies as the hospital struggles with being overwhelmed.", # Paráfrasis 1
-    "A lack of medical supplies is hurting patient care because the hospital is completely overwhelmed with new cases.", # Paráfrasis 2
-    "Due to the hospital being overwhelmed, a crisis in medical supplies is directly compromising the care of patients.", # Paráfrasis 3
-    
-    # --- FIDELIDAD MEDIA (Tópico correcto, idea diferente) ---
-    "We need to send more funding to hospitals so they can buy medical supplies for future pandemics.", # Relevante, pero es una *solución*, no el *problema*.
-
-    # --- FIDELIDAD BAJA (Irrelevante) ---
-    "I saw a new TV show about doctors in a hospital, it was very dramatic.", # Irrelevante (Palabra clave "hospital")
-    "The new city budget includes funding for parks and public transport, which is great." # Totalmente irrelevante
+# 2. Generación de Población Sintética (100 individuos)
+# Usamos patrones base y los multiplicamos para llegar a 100
+base_patterns = [
+    "Patient care is compromised by the shortage of supplies.",
+    "Hospitals are overwhelmed and lack medical supplies.",
+    "A crisis in medical supplies is hurting patient care.",
+    "Funding is needed for hospitals to buy supplies.",
+    "Doctors are struggling with the wave of new patients.",
+    "The city budget cuts are affecting public transport."
 ]
+# Multiplicamos la lista hasta tener 100 elementos
+population_data = (base_patterns * 20)[:N_INDIVIDUALS]
 ref_list = [ref_text] * len(population_data)
 
-N_GENERATIONS = 10  # Simularemos 10 generaciones del AG
+print(f"Población: {len(population_data)} textos únicos.")
+print(f"Total de evaluaciones a realizar: {N_GENERATIONS * N_INDIVIDUALS}")
+print("-" * 60)
 
-print(f"--- Prueba de Costo Amortizado (Simulando {N_GENERATIONS} Generaciones) ---")
 
-# --- 1. PRUEBA BERTScore (Carga en cada bucle) ---
+# ==========================================
+# 1. PRUEBA BERTSCORE (O(N^2) complexity)
+# ==========================================
 print("\n--- 1. Probando BERTScore... ---")
-bert_times = []
+
+# A) Warm-up: Cargar modelo en memoria (no contamos este tiempo)
+print("   Cargando modelo BERTScore (Warm-up)...")
+calculate_bertscore(population_data[:2], ref_list[:2], model_type="bert-base-uncased")
+
+# B) Bucle de Inferencia
+print(f"   Ejecutando {N_GENERATIONS} generaciones...")
 t_bert_start = time.perf_counter()
 
 for i in range(N_GENERATIONS):
-    t_gen_start = time.perf_counter()
+    # Feedback visual cada 10 gens
+    if i % 10 == 0: print(f"   > Gen {i}/{N_GENERATIONS}...", end="\r")
+    
+    # Inferencia real
+    calculate_bertscore(population_data, ref_list, model_type="bert-base-uncased")
 
-    # calculate_bertscore tiene que cargar/gestionar el modelo CADA VEZ
-    bert_scores = calculate_bertscore(population_data, ref_list, model_type="bert-base-uncased")
-
-    t_gen_end = time.perf_counter()
-    bert_times.append(t_gen_end - t_gen_start)
-
-t_bert_total = time.perf_counter() - t_bert_start
-avg_bert = sum(bert_times) / len(bert_times)
-
-print(f"Tiempo Total (BERTScore): {t_bert_total:.4f} segundos")
-print(f"Tiempo Promedio por Gen: {avg_bert:.4f} segundos")
-print(f"(Scores Gen 0: {['{:.2f}'.format(s) for s in bert_scores]})")
+t_bert_end = time.perf_counter()
+t_bert_total = t_bert_end - t_bert_start
+print(f"   ✅ Terminado. Tiempo: {t_bert_total:.4f} s")
 
 
-# --- 2. PRUEBA SBERT (Carga UNA SOLA VEZ) ---
+# ==========================================
+# 2. PRUEBA SBERT (Vectorización Eficiente)
+# ==========================================
 print("\n--- 2. Probando SBERT... ---")
-sbert_times = []
 
-# (A) Carga del modelo (¡FUERA DEL BUCLE!)
-print("Cargando modelo SBERT (una sola vez)...")
-t_sbert_load_start = time.perf_counter()
+# A) Carga de Modelo (Se hace una sola vez al inicio del script principal)
+print("   Cargando modelo SBERT (Warm-up)...")
 sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
-t_sbert_load_end = time.perf_counter()
-load_time = t_sbert_load_end - t_sbert_load_start
-print(f"Tiempo de Carga SBERT: {load_time:.4f} segundos")
 
+# Pre-cálculo del embedding de referencia (Optimización estándar en tu GA)
+ref_embedding = sbert_model.encode([ref_text], convert_to_tensor=True)
+
+# B) Bucle de Inferencia
+print(f"   Ejecutando {N_GENERATIONS} generaciones...")
 t_sbert_start = time.perf_counter()
 
 for i in range(N_GENERATIONS):
-    t_gen_start = time.perf_counter()
+    if i % 10 == 0: print(f"   > Gen {i}/{N_GENERATIONS}...", end="\r")
 
-    # (B) Cálculo de Embeddings (Dentro del bucle)
-    pop_embeddings = sbert_model.encode(population_data, convert_to_tensor=True, normalize_embeddings=True)
-    ref_embedding = sbert_model.encode([ref_text], convert_to_tensor=True, normalize_embeddings=True)
+    # 1. Vectorizar población (Batch processing)
+    pop_embeddings = sbert_model.encode(population_data, convert_to_tensor=True)
+    
+    # 2. Calcular similitud (Operación matricial rápida)
+    scores = calculate_sbert_similarity(pop_embeddings, ref_embedding)
 
-    # (C) Cálculo de Similitud (Dentro del bucle)
-    sbert_scores = calculate_sbert_similarity(pop_embeddings, ref_embedding)
-
-    t_gen_end = time.perf_counter()
-    sbert_times.append(t_gen_end - t_gen_start)
-
-t_sbert_total = time.perf_counter() - t_sbert_start
-avg_sbert = sum(sbert_times) / len(sbert_times)
-
-print(f"Tiempo Total (SBERT, solo bucle): {t_sbert_total:.4f} segundos")
-print(f"Tiempo Promedio por Gen: {avg_sbert:.4f} segundos")
-print(f"(Scores Gen 0: {['{:.2f}'.format(s) for s in sbert_scores]})")
+t_sbert_end = time.perf_counter()
+t_sbert_total = t_sbert_end - t_sbert_start
+print(f"   ✅ Terminado. Tiempo: {t_sbert_total:.4f} s")
 
 
-# --- 3. CONCLUSIÓN ---
-print("\n--- 3. Conclusión ---")
-print(f"Ahorro por generación (SBERT): {avg_bert / avg_sbert:.2f}x más rápido")
-print(f"Tiempo total (SBERT, incl. carga): {load_time + t_sbert_total:.4f} segundos")
-print(f"Tiempo total (BERTScore): {t_bert_total:.4f} segundos")
+# ==========================================
+# 3. CONCLUSIÓN Y REPORTE
+# ==========================================
+print("\n" + "="*60)
+print(f"RESULTADOS FINALES DE RENDIMIENTO")
+print("="*60)
+print(f"Tiempo Total BERTScore:  {t_bert_total:.4f} s")
+print(f"Tiempo Total SBERT:      {t_sbert_total:.4f} s")
+print("-" * 60)
+
+if t_sbert_total > 0:
+    speedup = t_bert_total / t_sbert_total
+    print(f"🚀 SPEEDUP FACTOR: SBERT es {speedup:.2f}x veces más rápido.")
+    print(f"   Ahorro de tiempo por experimento: {(t_bert_total - t_sbert_total)/60:.2f} minutos.")
+else:
+    print("SBERT fue instantáneo (0s), speedup infinito.")

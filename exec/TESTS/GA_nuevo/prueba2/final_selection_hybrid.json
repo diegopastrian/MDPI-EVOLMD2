@@ -1,0 +1,135 @@
+[
+  {
+    "role": "a normal person",
+    "topic": "travel restrictions and safety",
+    "prompt": "Reflecting on your current state amidst travel restrictions, write about how quarantine has personally affected you, addressing concerns around mental well-being and the role of routine in coping with public anxiety.",
+    "keywords": [
+      "quarantine",
+      "concern",
+      "mental",
+      "routine",
+      "public anxiety"
+    ],
+    "objetivos": [
+      0.9216272830963135,
+      0.4249573349952698
+    ],
+    "generated_data": "Quarantine's got me feeling stuck, my depression creeping up as usual when my work and routine get disrupted. It's like everyone's gone crazy on social media, sending coronavirus updates nonstop - I'm avoiding my phone now just to cope with the public anxiety.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.9216272830963135,
+      "diversity_individual": 0.4249573349952698,
+      "pop_inertia": 0.3312173080444336,
+      "pop_entropy": 0.6680218795188361
+    },
+    "fitness": 0,
+    "topsis_score": 0.8719557061085143
+  },
+  {
+    "role": "a normal person",
+    "topic": "travel restrictions and safety",
+    "prompt": "Write about a personal struggle with mental health during a quarantine period, highlighting the consequences on an individual's well-being, specifically focusing on the anxiety and depression that can arise when daily routines are disrupted.",
+    "keywords": [
+      "quarantine",
+      "consequence",
+      "person",
+      "anxiety",
+      "depression"
+    ],
+    "objetivos": [
+      0.814743161201477,
+      0.5352912247180939
+    ],
+    "generated_data": "Quarantining has triggered my depression, and I'm struggling to cope. The lack of structure and constant updates about corona cases have me stuck in a vicious cycle of anxiety and avoidance.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.814743161201477,
+      "diversity_individual": 0.5352912247180939,
+      "pop_inertia": 0.35729522705078126,
+      "pop_entropy": 0.666277627590359
+    },
+    "fitness": 0,
+    "topsis_score": 0.8171303231219449
+  },
+  {
+    "role": "a normal person",
+    "topic": "travel restrictions and safety",
+    "prompt": "Describe the consequences of extended travel restrictions on mental health, exploring how it can lead to increased anxiety, depression, and avoidance behaviors in individuals like yourself who are already vulnerable to these issues.",
+    "keywords": [
+      "quarantine",
+      "consequence",
+      "psychological impact",
+      "anxiety",
+      "health",
+      "personal",
+      "depression"
+    ],
+    "objetivos": [
+      0.8835368156433105,
+      0.43992459774017334
+    ],
+    "generated_data": "The quarantine's prolonged consequence is a severe blow to my mental well-being. The lack of structure and social interaction has triggered my depression, while the constant stream of corona updates on my phone fuels my anxiety, causing me to avoid it altogether – a vicious cycle that's suffocating me.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.8835368156433105,
+      "diversity_individual": 0.43992459774017334,
+      "pop_inertia": 0.3365953063964844,
+      "pop_entropy": 0.6743646955733569
+    },
+    "fitness": 0,
+    "topsis_score": 0.8615284003432471
+  },
+  {
+    "role": "a normal person",
+    "topic": "genial wellness during the pandemic",
+    "prompt": "Craft a plea for self-care and mental well-being during the pandemic's isolation phase, highlighting the psychological impact of quarantine on mental health, as if addressing someone struggling with anxiety and depression.",
+    "keywords": [
+      "quarantine",
+      "plea",
+      "mental health",
+      "proposition",
+      "phone etiquette",
+      "psychological impact",
+      "anxiety",
+      "genial"
+    ],
+    "objetivos": [
+      0.819625735282898,
+      0.49606019258499146
+    ],
+    "generated_data": "Hey there, friend! I totally get it - this quarantine can be overwhelming, especially when our routines are disrupted and social media is flooded with Corona-related updates. It's normal to feel anxious and depressed. But here's the thing: we have the power to take control of our mental well-being. Take breaks from your phone, engage in activities that bring you joy, and prioritize self-care. Remember, it's okay not to be okay - but it's also okay to ask for help. Let's look out for each other and get through this together!",
+    "metrics_detail": {
+      "fidelity_sbert": 0.819625735282898,
+      "diversity_individual": 0.49606019258499146,
+      "pop_inertia": 0.33458354949951175,
+      "pop_entropy": 0.6738523167975763
+    },
+    "fitness": 0,
+    "topsis_score": 0.815514247064568
+  },
+  {
+    "role": "a normal person",
+    "topic": "travel restrictions and safety",
+    "prompt": "Reflecting on your recent experiences with quarantine and its impact on your mental health, consider the balance between prophylactic measures for safety and maintaining a sense of daily routine as a normal person dealing with depression.",
+    "keywords": [
+      "prophylactic",
+      "quarantine",
+      "mental",
+      "daily",
+      "of a normal",
+      "health",
+      "a normal person",
+      "depression"
+    ],
+    "objetivos": [
+      0.8433377742767334,
+      0.49688804149627686
+    ],
+    "generated_data": "As I'm stuck in this endless quarantine, my depression's been getting worse - it's like my work and routine were put on pause and I've lost all sense of control. The constant stream of corona updates is draining, but I get why people are sharing them. Still, I find myself avoiding my phone more often than not to cope with the anxiety. It's a balancing act between taking prophylactic measures for safety and trying to maintain some semblance of daily routine - as a normal person dealing with depression, it's hard to know what's right.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.8433377742767334,
+      "diversity_individual": 0.49688804149627686,
+      "pop_inertia": 0.3389973449707031,
+      "pop_entropy": 0.6763305894588184
+    },
+    "fitness": 0,
+    "topsis_score": 0.8426844670704067
+  }
+]

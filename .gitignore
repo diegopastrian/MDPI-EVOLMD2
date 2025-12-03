@@ -5,7 +5,8 @@ venv/
 .env
 
 # Ignorar Outputs y Logs
-exec/
+exec/*
+!exec/TESTS/
 logs/
 *.log
 
