@@ -63,7 +63,7 @@ def calculate_topsis_scores(candidates):
     
     return topsis_scores.tolist()
 
-def run_hybrid_selection(data, n_select=5, lambda_param=0.5, max_fidelity_threshold=0.99, min_fidelity_threshold=0.25):
+def run_hybrid_selection(data, n_select=5, lambda_param=0.35, max_fidelity_threshold=0.99, min_fidelity_threshold=0.25):
     print(f" Análisis MCDM (TOPSIS + MMR)...")
     model = SentenceTransformer('all-MiniLM-L6-v2')
     

@@ -5,17 +5,14 @@ import json
 import argparse
 from pathlib import Path
 
-# --- 1. CONFIGURACIÓN DE RUTAS (A prueba de balas) ---
-# Detectamos la ruta absoluta de ESTE archivo
+# --- 1. CONFIGURACIÓN DE RUTAS  ---
 script_location = Path(__file__).resolve()
-scripts_dir = script_location.parent        # Carpeta /scripts
-project_root = scripts_dir.parent           # Carpeta raíz del proyecto
+scripts_dir = script_location.parent        
+project_root = scripts_dir.parent           
 
-# Añadimos la carpeta 'scripts' al path de Python para asegurar la importación
 if str(scripts_dir) not in sys.path:
     sys.path.append(str(scripts_dir))
 
-# Intentamos importar
 try:
     from analyze_pareto import load_json, run_hybrid_selection
 except ImportError as e:
@@ -35,14 +32,14 @@ DEFAULT_CONFIG = {
 
 def get_exec_folders():
     """Busca la carpeta exec en la raíz del proyecto."""
-    exec_path = project_root / "exec"
+    exec_path = project_root / "exec" / "TESTS" / "GA_nuevo(exp)"
     
     if not exec_path.exists():
         print(f"\n❌ ERROR: No se encuentra la carpeta 'exec'.")
         print(f"   Buscada en: {exec_path}")
         return []
     
-    # Listar carpetas y ordenar
+    
     folders = sorted([d for d in exec_path.iterdir() if d.is_dir()])
     return folders
 
@@ -50,15 +47,15 @@ def process_folder(folder_path, config):
     json_path = folder_path / "pareto_front.json"
     
     if not json_path.exists():
-        return "⏳ Incompleto (Falta pareto)"
+        return " Incompleto (Falta pareto)"
     
     try:
         data = load_json(json_path)
     except:
-        return "❌ JSON corrupto"
+        return " JSON corrupto"
 
     if not data:
-        return "⚠️ JSON vacío"
+        return " JSON vacío"
 
     try:
         selection = run_hybrid_selection(

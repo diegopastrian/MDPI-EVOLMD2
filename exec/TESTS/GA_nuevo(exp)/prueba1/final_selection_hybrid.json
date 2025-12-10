@@ -1,0 +1,138 @@
+[
+  {
+    "role": "a normal person",
+    "topic": "COVID-19 examination and tracing",
+    "prompt": "Create an urgent appeal to the Italian government to address the rapidly escalating COVID-19 cases, highlighting the devastating impact on small businesses and neighboring countries, emphasizing the need for speedy updates and effective tracing measures.",
+    "keywords": [
+      "covid 19",
+      "speedy",
+      "small business",
+      "rapid",
+      "cases",
+      "devastating",
+      "update",
+      "east"
+    ],
+    "objetivos": [
+      0.9407210350036621,
+      0.43925756216049194
+    ],
+    "generated_data": "Brother, please look at Italy's case! The first few cases came in January 31st, now Italy tops the death list due to Corona virus cases spreading very fast. Medical facilities are also not good in South East Asia and your neighboring countries have the worst conditions. Your government needs to be very careful.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.9407210350036621,
+      "diversity_individual": 0.43925756216049194,
+      "pop_inertia": 0.3553975677490234,
+      "pop_entropy": 0.6711620508883903
+    },
+    "fitness": 0,
+    "topsis_score": 0.8736983883977084
+  },
+  {
+    "role": "an influencer",
+    "topic": "misinformation and fake news about COVID-19",
+    "prompt": "Address the concerns of brother in Italy by debunking false information spreading rapidly about COVID-19, highlighting the alarming rate of new cases and poor medical facilities in South East Asia, particularly in the East.",
+    "keywords": [
+      "false information",
+      "testing",
+      "south east asia",
+      "medical facilities",
+      "east",
+      "covid 19",
+      "speedy",
+      "cases",
+      "corona virus"
+    ],
+    "objetivos": [
+      0.8078420162200928,
+      0.4454120397567749
+    ],
+    "generated_data": "Hey brother, I totally get your concern about the rapid spread of corona virus cases in Italy and globally. Let's tackle the misinformation head-on - it's essential to verify the sources before sharing anything online. In South East Asia, particularly in the East, the situation is even more dire with poor medical facilities struggling to keep up with the speedy rise in cases. We need to stay vigilant and rely on credible testing methods to get accurate results.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.8078420162200928,
+      "diversity_individual": 0.4454120397567749,
+      "pop_inertia": 0.36538890838623045,
+      "pop_entropy": 0.6769868950271074
+    },
+    "fitness": 0,
+    "topsis_score": 0.7679699368881373
+  },
+  {
+    "role": "a normal person",
+    "topic": "COVID-19 examination and tracing",
+    "prompt": "Provide an update on the rapid spread of COVID-19 in Italy, focusing on the current case numbers and circumstances, considering the limitations of medical facilities in South East Asia and the neighbor's worst conditions.",
+    "keywords": [
+      "covid 19",
+      "italy",
+      "cases",
+      "corona virus",
+      "testing",
+      "update",
+      "east"
+    ],
+    "objetivos": [
+      0.8699177503585815,
+      0.3934115171432495
+    ],
+    "generated_data": "Italy's COVID-19 cases have skyrocketed with over 31st January cases already reported, now ranking top on the death list. Corona virus cases are spreading rapidly, and with limited medical facilities in South East Asia and neighboring countries' worst conditions, it's crucial for governments to be cautious.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.8699177503585815,
+      "diversity_individual": 0.3934115171432495,
+      "pop_inertia": 0.3365669250488281,
+      "pop_entropy": 0.6639746565169301
+    },
+    "fitness": 0,
+    "topsis_score": 0.8189503458288393
+  },
+  {
+    "role": "a normal person",
+    "topic": "misinformation and fake news about COVID-19",
+    "prompt": "Reflect on the public's growing concern about COVID-19 cases in Italy and surrounding regions with poor medical facilities, highlighting the rapid spread and high-risk conditions that put many lives at stake.",
+    "keywords": [
+      "public",
+      "rapid",
+      "medical facilities",
+      "high risk",
+      "people"
+    ],
+    "objetivos": [
+      0.8534247875213623,
+      0.43111753463745117
+    ],
+    "generated_data": "Italy tops the death list as corona virus cases boom, spreading very fast. Medical facilities are also not good in south east Asia and neighbor countries have worst conditions, putting people's lives at high risk.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.8534247875213623,
+      "diversity_individual": 0.43111753463745117,
+      "pop_inertia": 0.32203964233398436,
+      "pop_entropy": 0.6690880811605641
+    },
+    "fitness": 0,
+    "topsis_score": 0.8153320118362385
+  },
+  {
+    "role": "a normal person",
+    "topic": "COVID-19 testing and tracing",
+    "prompt": "Write a reflection on the rapid spread of COVID-19 cases in Italy, highlighting the importance of effective testing and tracing strategies during a crisis like this, as if advising your brother to be cautious.",
+    "keywords": [
+      "covid 19",
+      "italy",
+      "testing",
+      "corona virus",
+      "medical",
+      "crisis",
+      "east"
+    ],
+    "objetivos": [
+      0.9110125303268433,
+      0.45750558376312256
+    ],
+    "generated_data": "Brother, look at Italy's case - first few came on January 31st now it tops the death list due to Corona Virus cases spreading very fast. Medical facilities are also struggling in South East Asia where conditions are already dire. You need to be extremely careful with your government and family.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.9110125303268433,
+      "diversity_individual": 0.45750558376312256,
+      "pop_inertia": 0.36660961151123045,
+      "pop_entropy": 0.6730438064927361
+    },
+    "fitness": 0,
+    "topsis_score": 0.8703927130816499
+  }
+]

@@ -215,7 +215,7 @@ def main():
     pruebas = ["prueba1", "prueba2", "prueba3"]
     
     dir_original = exec_path / "GA_original"
-    dir_nuevo = exec_path / "GA_nuevo"
+    dir_nuevo = exec_path / "GA_nuevo(exp)"
 
     if not dir_original.exists() or not dir_nuevo.exists():
         print(f"❌ Error: Faltan carpetas 'GA_original' o 'GA_nuevo' dentro de {exec_path}")
