@@ -2,105 +2,86 @@
   {
     "role": "a normal person",
     "topic": "community resilience during lockdowns",
-    "prompt": "Craft a brief update about new resources available to support small business owners affected by shutdowns, highlighting recent developments in disaster financing options and restaurant closures.",
+    "prompt": "Imagine you're a concerned member of the community trying to stay informed about local businesses' survival during lockdowns. Write a concise summary that highlights new options for small business financing and restaurant shutdown updates.",
     "keywords": [
-      "small business owners",
-      "shutdowns",
-      "travel"
+      "financing",
+      "closure",
+      "strive"
     ],
     "objetivos": [
-      0.943986713886261,
-      0.5074823498725891
+      0.8349957466125488,
+      0.5787561237812042
     ],
-    "generated_data": "Our Action Center has been updated with fresh info on restaurant shutdowns & disaster financing options for SMBs. Stay informed on the latest developments and find valuable resources to help you navigate these challenging times.",
+    "generated_data": "I've just checked our action center and found some crucial updates! For SMBs struggling with restaurant closures, there are now more financing options available to help them strive through this tough time. Let's stay informed and support our local businesses!",
     "metrics_detail": {
-      "fidelity_sbert": 0.943986713886261,
-      "diversity_individual": 0.5074823498725891,
+      "fidelity_sbert": 0.8349957466125488,
+      "diversity_individual": 0.5787561237812042,
+      "pop_inertia": 0.3970827102661133,
+      "pop_entropy": 0.6542684147451034
+    },
+    "fitness": 0,
+    "topsis_score": 0.9820726649173651
+  },
+  {
+    "role": "a normal person",
+    "topic": "remote cultivate and on-line train",
+    "prompt": "Based on recent updates, I need you to create a helpful resource for small business owners. Please provide guidance on how they can best utilize their action center's new arrangements for executing their plans, taking into account average late submissions and ensuring verity in funding, with the ultimate goal of improving work efficiency.",
+    "keywords": [
+      "small business",
+      "execute",
+      "arrangements",
+      "average",
+      "late",
+      "recent updates",
+      "verity",
+      "funding",
+      "small business owners",
+      "work",
+      "nerve center"
+    ],
+    "objetivos": [
+      0.2869105935096741,
+      0.7465035617351532
+    ],
+    "generated_data": "To maximize your remote cultivate and on-line train efforts, update your nerve center by using recent updates to create a plan execution strategy. This includes making arrangements for timely submissions and verifying funding options to ensure a smooth workflow.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.2869105935096741,
+      "diversity_individual": 0.7465035617351532,
+      "pop_inertia": 0.3730157470703125,
+      "pop_entropy": 0.640054700904585
+    },
+    "fitness": 0,
+    "topsis_score": 0.04596568957917806
+  },
+  {
+    "role": "a normal person",
+    "topic": "misinformation and fake news about COVID-19",
+    "prompt": "Write a concise statement debunking misinformation about wearing an elastic band to prevent COVID-19 transmission, emphasizing the importance of factual updates over false claims, and highlighting resources like the action center's updated information on restaurant shutdowns and disaster financing options for SMBs.",
+    "keywords": [
+      "wearing",
+      "shutdowns",
+      "elastic",
+      "perspective",
+      "update"
+    ],
+    "objetivos": [
+      0.26780539751052856,
+      0.7453266382217407
+    ],
+    "generated_data": "Don't fall for fake news! Wearing an elastic band won't stop COVID-19 transmission. Stay informed with accurate updates from our Action Center, which now has valuable info on restaurant shutdowns and disaster financing options for small businesses.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.26780539751052856,
+      "diversity_individual": 0.7453266382217407,
       "pop_inertia": 0.38185848236083986,
       "pop_entropy": 0.6490261331451486
     },
     "fitness": 0,
-    "topsis_score": 0.9466394035471707
+    "topsis_score": 0.019324741541727072
   },
   {
     "role": "a normal person",
-    "topic": "misinformation and phony tidings about COVID-19",
-    "prompt": "Create a clear and concise message that sets the record straight on COVID-19 related rumors, highlighting recent updates from our action center on restaurant shutdowns and disaster financing options for small business owners to stay informed and prepared.",
-    "keywords": [
-      "flexible",
-      "small business owners",
-      "organization",
-      "restaurant shutdowns",
-      "recent updates",
-      "closure"
-    ],
-    "objetivos": [
-      0.9154156446456909,
-      0.5231025516986847
-    ],
-    "generated_data": "Stay informed, not misinformed! Our Action Center has just been updated with vital info on restaurant shutdowns & disaster financing options for SMBs. Don't believe the rumors - get the facts and prepare your business today!",
-    "metrics_detail": {
-      "fidelity_sbert": 0.9154156446456909,
-      "diversity_individual": 0.5231025516986847,
-      "pop_inertia": 0.37995185852050783,
-      "pop_entropy": 0.6456572879260644
-    },
-    "fitness": 0,
-    "topsis_score": 0.9283901698996481
-  },
-  {
-    "role": "a normal person",
-    "topic": "economic impact of the coronavirus pandemic",
-    "prompt": "From your personal perspective as a small business owner, describe how restaurant shutdowns and disaster financing options can help mitigate the economic impact of the COVID-19 pandemic through the lens of our updated action center.",
-    "keywords": [
-      "small business owners",
-      "shutdowns",
-      "elastic",
-      "center",
-      "perspective",
-      "financing"
-    ],
-    "objetivos": [
-      0.9086679220199585,
-      0.5361899137496948
-    ],
-    "generated_data": "As a small business owner, I'm relieved to see our update on restaurant shutdowns and disaster financing options in our action center. It's a game-changer for SMBs like me, offering more flexibility and elastic support during these uncertain times. With the right financing tools, we can pivot and adapt, minimizing the economic blow of pandemic-related shutdowns.",
-    "metrics_detail": {
-      "fidelity_sbert": 0.9086679220199585,
-      "diversity_individual": 0.5361899137496948,
-      "pop_inertia": 0.40781700134277343,
-      "pop_entropy": 0.6511948143031694
-    },
-    "fitness": 0,
-    "topsis_score": 0.9227148196686548
-  },
-  {
-    "role": "an organization",
-    "topic": "community resilience during lockdowns",
-    "prompt": "Develop a concise update highlighting new resources for small business owners navigating shutdowns and disaster financing options to maintain community resilience during lockdowns.",
-    "keywords": [
-      "small business owners",
-      "shutdowns",
-      "travel"
-    ],
-    "objetivos": [
-      0.9378887414932251,
-      0.5116358995437622
-    ],
-    "generated_data": "We've updated our Action Center with fresh info on restaurant shutdowns and disaster financing options for SMBs, empowering them to adapt & thrive during lockdowns. Explore the latest resources and stay resilient!",
-    "metrics_detail": {
-      "fidelity_sbert": 0.9378887414932251,
-      "diversity_individual": 0.5116358995437622,
-      "pop_inertia": 0.39481414794921876,
-      "pop_entropy": 0.6563308787877598
-    },
-    "fitness": 0,
-    "topsis_score": 0.9448353663782728
-  },
-  {
-    "role": "a politician",
     "topic": "quarantine and closing off communications protocol",
-    "prompt": "As the representative for the district, I need you to generate a brief announcement that clarifies our response to the latest updates on restaurant shutdowns and disaster financing options in our action center, ensuring small business owners have access to critical information.",
+    "prompt": "Create an official update announcement for our community's action center, emphasizing recent additions to the resource hub supporting small business owners during pandemic-related shutdowns, including disaster financing options and emergency protocols.",
     "keywords": [
       "small business owners",
       "shutdowns",
@@ -110,17 +91,42 @@
       "small"
     ],
     "objetivos": [
-      0.9468791484832764,
-      0.4590728282928467
+      0.7374358177185059,
+      0.589224100112915
     ],
-    "generated_data": "I'm pleased to announce that our Action Center has been updated with vital information regarding restaurant shutdowns and disaster financing options for SMBs. This crucial resource provides small business owners with the necessary support and guidance during these challenging times.",
+    "generated_data": "Our Action Center has been updated with valuable resources for small business owners navigating pandemic-related shutdowns! You can now access crucial information on disaster financing options and emergency protocols to help you stay afloat. Stay informed and prepared at [Action Center URL].",
     "metrics_detail": {
-      "fidelity_sbert": 0.9468791484832764,
-      "diversity_individual": 0.4590728282928467,
-      "pop_inertia": 0.3727582550048828,
-      "pop_entropy": 0.6431883423771689
+      "fidelity_sbert": 0.7374358177185059,
+      "diversity_individual": 0.589224100112915,
+      "pop_inertia": 0.3970824432373047,
+      "pop_entropy": 0.655310296374356
     },
     "fitness": 0,
-    "topsis_score": 0.9379662347574991
+    "topsis_score": 0.8288982047233445
+  },
+  {
+    "role": "a normal person",
+    "topic": "journey restriction and sanctuary",
+    "prompt": "Considering the recent updates on restaurant shutdowns and seeking flexible solutions to navigate these changes, please outline our personal sanctuary plan, incorporating any relevant information from the organization's latest action center updates.",
+    "keywords": [
+      "flexible",
+      "organization",
+      "restaurant shutdowns",
+      "recent updates",
+      "closure"
+    ],
+    "objetivos": [
+      0.2677268981933594,
+      0.7514759004116058
+    ],
+    "generated_data": "Considering recent updates on restaurant shutdowns, I'm prioritizing self-care by creating a personal sanctuary within my home. This space will serve as a flexible retreat for relaxation and rejuvenation, incorporating calming elements and soothing colors to promote mental clarity.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.2677268981933594,
+      "diversity_individual": 0.7514759004116058,
+      "pop_inertia": 0.3781561279296875,
+      "pop_entropy": 0.6468541227294561
+    },
+    "fitness": 0,
+    "topsis_score": 0.01979877667673349
   }
 ]

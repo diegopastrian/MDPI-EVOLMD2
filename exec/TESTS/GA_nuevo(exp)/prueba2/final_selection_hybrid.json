@@ -1,135 +1,132 @@
 [
   {
     "role": "a normal person",
-    "topic": "travel restrictions and safety",
-    "prompt": "Reflecting on your current state amidst travel restrictions, write about how quarantine has personally affected you, addressing concerns around mental well-being and the role of routine in coping with public anxiety.",
+    "topic": "social distancing practices",
+    "prompt": "Consider how your daily life has changed during this quarantine and its unforeseen consequences on your mental health. Describe your personal experience of dealing with the added stress and anxiety",
     "keywords": [
       "quarantine",
       "concern",
-      "mental",
-      "routine",
-      "public anxiety"
-    ],
-    "objetivos": [
-      0.9216272830963135,
-      0.4249573349952698
-    ],
-    "generated_data": "Quarantine's got me feeling stuck, my depression creeping up as usual when my work and routine get disrupted. It's like everyone's gone crazy on social media, sending coronavirus updates nonstop - I'm avoiding my phone now just to cope with the public anxiety.",
-    "metrics_detail": {
-      "fidelity_sbert": 0.9216272830963135,
-      "diversity_individual": 0.4249573349952698,
-      "pop_inertia": 0.3312173080444336,
-      "pop_entropy": 0.6680218795188361
-    },
-    "fitness": 0,
-    "topsis_score": 0.8719557061085143
-  },
-  {
-    "role": "a normal person",
-    "topic": "travel restrictions and safety",
-    "prompt": "Write about a personal struggle with mental health during a quarantine period, highlighting the consequences on an individual's well-being, specifically focusing on the anxiety and depression that can arise when daily routines are disrupted.",
-    "keywords": [
-      "quarantine",
-      "consequence",
-      "person",
-      "anxiety",
-      "depression"
-    ],
-    "objetivos": [
-      0.814743161201477,
-      0.5352912247180939
-    ],
-    "generated_data": "Quarantining has triggered my depression, and I'm struggling to cope. The lack of structure and constant updates about corona cases have me stuck in a vicious cycle of anxiety and avoidance.",
-    "metrics_detail": {
-      "fidelity_sbert": 0.814743161201477,
-      "diversity_individual": 0.5352912247180939,
-      "pop_inertia": 0.35729522705078126,
-      "pop_entropy": 0.666277627590359
-    },
-    "fitness": 0,
-    "topsis_score": 0.8171303231219449
-  },
-  {
-    "role": "a normal person",
-    "topic": "travel restrictions and safety",
-    "prompt": "Describe the consequences of extended travel restrictions on mental health, exploring how it can lead to increased anxiety, depression, and avoidance behaviors in individuals like yourself who are already vulnerable to these issues.",
-    "keywords": [
-      "quarantine",
-      "consequence",
-      "psychological impact",
-      "anxiety",
-      "health",
-      "personal",
-      "depression"
-    ],
-    "objetivos": [
-      0.8835368156433105,
-      0.43992459774017334
-    ],
-    "generated_data": "The quarantine's prolonged consequence is a severe blow to my mental well-being. The lack of structure and social interaction has triggered my depression, while the constant stream of corona updates on my phone fuels my anxiety, causing me to avoid it altogether – a vicious cycle that's suffocating me.",
-    "metrics_detail": {
-      "fidelity_sbert": 0.8835368156433105,
-      "diversity_individual": 0.43992459774017334,
-      "pop_inertia": 0.3365953063964844,
-      "pop_entropy": 0.6743646955733569
-    },
-    "fitness": 0,
-    "topsis_score": 0.8615284003432471
-  },
-  {
-    "role": "a normal person",
-    "topic": "genial wellness during the pandemic",
-    "prompt": "Craft a plea for self-care and mental well-being during the pandemic's isolation phase, highlighting the psychological impact of quarantine on mental health, as if addressing someone struggling with anxiety and depression.",
-    "keywords": [
-      "quarantine",
-      "plea",
       "mental health",
+      "consequence",
       "proposition",
-      "phone etiquette",
       "psychological impact",
-      "anxiety",
-      "genial"
+      "anxiety"
     ],
     "objetivos": [
-      0.819625735282898,
-      0.49606019258499146
+      0.8428698778152466,
+      0.5196007490158081
     ],
-    "generated_data": "Hey there, friend! I totally get it - this quarantine can be overwhelming, especially when our routines are disrupted and social media is flooded with Corona-related updates. It's normal to feel anxious and depressed. But here's the thing: we have the power to take control of our mental well-being. Take breaks from your phone, engage in activities that bring you joy, and prioritize self-care. Remember, it's okay not to be okay - but it's also okay to ask for help. Let's look out for each other and get through this together!",
+    "generated_data": "Quarantining has amplified my depression's symptoms, as my usual routine and work have been disrupted. The constant stream of corona-related updates on social media is overwhelming, causing me to avoid my phone to mitigate the anxiety.",
     "metrics_detail": {
-      "fidelity_sbert": 0.819625735282898,
-      "diversity_individual": 0.49606019258499146,
-      "pop_inertia": 0.33458354949951175,
-      "pop_entropy": 0.6738523167975763
+      "fidelity_sbert": 0.8428698778152466,
+      "diversity_individual": 0.5196007490158081,
+      "pop_inertia": 0.3577214050292969,
+      "pop_entropy": 0.6724991505011296
     },
     "fitness": 0,
-    "topsis_score": 0.815514247064568
+    "topsis_score": 0.9344640052130944
+  },
+  {
+    "role": "an artist",
+    "topic": "misinformation and fake news about COVID-19",
+    "prompt": "Reflecting on the pandemic's impact, craft a piece that captures the turmoil of misinformation and fear-mongering through a vivid cityscape mural, where chaotic scenes of false reports swirl like paint on a wall, mirroring my own anxiety and frustration as I watch the world go mad from behind my digital barricades.",
+    "keywords": [
+      "false reports",
+      "fear mongering",
+      "pandemic",
+      "chaos",
+      "anxiety",
+      "frustration",
+      "vivid colors",
+      "city wall",
+      "mural"
+    ],
+    "objetivos": [
+      0.25205984711647034,
+      0.7723380625247955
+    ],
+    "generated_data": "In this swirling vortex of chaos, a city wall once stood tall, now breached by waves of misinformation. False reports writhe like snakes, their hissing whispers fueling fear and anxiety. As an artist, I'm trapped in this digital purgatory, watching the world descend into madness. Frustration and panic seep through my pixels, as vivid colors bleed together, a cityscape mural that mirrors the turmoil within.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.25205984711647034,
+      "diversity_individual": 0.7723380625247955,
+      "pop_inertia": 0.3409381866455078,
+      "pop_entropy": 0.6669793118521326
+    },
+    "topsis_score": 0.07536068625083116
+  },
+  {
+    "role": "first respondent",
+    "topic": "travel restrictions and safety",
+    "prompt": "As a first responder on the frontline of this pandemic, I've seen firsthand how misinformation can spread like wildfire. Generate a response that reflects my concerns about travel restrictions and safety, while also acknowledging the anxiety caused by false reports and insurance implications.",
+    "keywords": [
+      "first responder",
+      "insurance",
+      "frontline",
+      "false reports"
+    ],
+    "objetivos": [
+      0.33645614981651306,
+      0.7195064425468445
+    ],
+    "generated_data": "As a first responder, seeing misinformation spreading like wildfire is concerning me more than the actual virus. Travel restrictions are necessary for our safety, but with false reports of infected areas, it's hard to know what's real. Insurance companies need accurate data to provide fair coverage – I worry about the long-term impact on our economy if we can't trust the information.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.33645614981651306,
+      "diversity_individual": 0.7195064425468445,
+      "pop_inertia": 0.35529197692871095,
+      "pop_entropy": 0.6722366928810711
+    },
+    "fitness": 0,
+    "topsis_score": 0.15418407067974468
   },
   {
     "role": "a normal person",
-    "topic": "travel restrictions and safety",
-    "prompt": "Reflecting on your recent experiences with quarantine and its impact on your mental health, consider the balance between prophylactic measures for safety and maintaining a sense of daily routine as a normal person dealing with depression.",
+    "topic": "paw hygiene and sanitization",
+    "prompt": "In the midst of this quarantine, where reliable information seems to be scarce and people are collectively going crazy online, I'm struggling to stay sane while adapting to online schooling. Meanwhile, my furry friends at home need my attention too - write about practical paw hygiene and sanitization tips for everyday care.",
     "keywords": [
-      "prophylactic",
       "quarantine",
-      "mental",
-      "daily",
-      "of a normal",
-      "health",
-      "a normal person",
+      "reliable information",
+      "collective",
+      "struggling",
+      "online schooling",
+      "everyday"
+    ],
+    "objetivos": [
+      0.2720109224319458,
+      0.757842943072319
+    ],
+    "generated_data": "Quarantine life has me scrambling for reliable info on paw hygiene amidst the chaos. As an online schooler, I'm trying not to lose my mind while keeping Fido's paws clean. Here are some sanity-saving tips: Wash those paws daily with mild soap and warm water. Dry thoroughly to prevent bacterial growth. Trim nails regularly to avoid dirt accumulation. Sanitize high-touch areas like door handles and toys.",
+    "metrics_detail": {
+      "fidelity_sbert": 0.2720109224319458,
+      "diversity_individual": 0.757842943072319,
+      "pop_inertia": 0.35365058898925783,
+      "pop_entropy": 0.6655191332188908
+    },
+    "fitness": 0,
+    "topsis_score": 0.08035835976654518
+  },
+  {
+    "role": "first respondent",
+    "topic": "misinformation and fake news about COVID-19",
+    "prompt": "Write a response to someone who's feeling overwhelmed by COVID-related misinformation and fake news, acknowledging their struggle with depression and offering a message of hope for finding reliable information.",
+    "keywords": [
+      "reliable information",
+      "struggling",
+      "insurance",
+      "false reports",
       "depression"
     ],
     "objetivos": [
-      0.8433377742767334,
-      0.49688804149627686
+      0.4751007556915283,
+      0.6807682514190674
     ],
-    "generated_data": "As I'm stuck in this endless quarantine, my depression's been getting worse - it's like my work and routine were put on pause and I've lost all sense of control. The constant stream of corona updates is draining, but I get why people are sharing them. Still, I find myself avoiding my phone more often than not to cope with the anxiety. It's a balancing act between taking prophylactic measures for safety and trying to maintain some semblance of daily routine - as a normal person dealing with depression, it's hard to know what's right.",
+    "generated_data": "I completely understand how you're feeling right now - it's like a never-ending nightmare! As someone who's struggled with depression myself, I know how easy it is to get sucked into the vortex of false reports and misinformation about COVID-19. But here's the thing: there is hope! By seeking out reliable information from trusted sources, you can start to regain control over your life. Don't be afraid to reach out to your insurance provider or a mental health professional for support - they're there to help you through this tough time.",
     "metrics_detail": {
-      "fidelity_sbert": 0.8433377742767334,
-      "diversity_individual": 0.49688804149627686,
-      "pop_inertia": 0.3389973449707031,
-      "pop_entropy": 0.6763305894588184
+      "fidelity_sbert": 0.4751007556915283,
+      "diversity_individual": 0.6807682514190674,
+      "pop_inertia": 0.3577214050292969,
+      "pop_entropy": 0.6724991505011296
     },
     "fitness": 0,
-    "topsis_score": 0.8426844670704067
+    "topsis_score": 0.3761736838482096
   }
 ]

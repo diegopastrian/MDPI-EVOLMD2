@@ -25,8 +25,8 @@ except ImportError as e:
 # --- 2. CONFIGURACIÓN ---
 DEFAULT_CONFIG = {
     "top_k": 5,
-    "lambda_param": 0.6,
-    "max_fidelity": 0.99,
+    "lambda_param": 0.25,
+    "max_fidelity": 0.85,
     "min_fidelity": 0.25
 }
 
